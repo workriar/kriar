@@ -1,0 +1,2217 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel | Kriar — Agentes de IA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        :root {
+            --bg: #0d0f14;
+            --bg2: #13161e;
+            --bg3: #1a1e2a;
+            --bg4: #212638;
+            --border: #ffffff0f;
+            --border2: #ffffff1a;
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-glow: rgba(99, 102, 241, .25);
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --blue: #3b82f6;
+            --purple: #8b5cf6;
+            --text: #f1f5f9;
+            --text2: #94a3b8;
+            --text3: #475569;
+            --sidebar: 260px;
+            --radius: 12px;
+            --radius-lg: 18px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            display: flex;
+            min-height: 100vh;
+            overflow: hidden
+        }
+
+        /* ─── SIDEBAR ─── */
+        .sidebar {
+            width: var(--sidebar);
+            background: var(--bg2);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            transition: .3s
+        }
+
+        .sidebar-logo {
+            padding: 1.5rem 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+            border-bottom: 1px solid var(--border)
+        }
+
+        .sidebar-logo img {
+            height: 34px
+        }
+
+        .sidebar-logo span {
+            font-size: 1.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent
+        }
+
+        .sidebar-nav {
+            flex: 1;
+            padding: 1.25rem .75rem;
+            overflow-y: auto
+        }
+
+        .nav-section {
+            font-size: .65rem;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--text3);
+            padding: .5rem .5rem;
+            margin-top: 1rem;
+            margin-bottom: .25rem
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+            padding: .7rem .875rem;
+            border-radius: var(--radius);
+            color: var(--text2);
+            font-size: .875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: .2s;
+            margin-bottom: .15rem;
+            position: relative
+        }
+
+        .nav-item:hover {
+            background: var(--bg3);
+            color: var(--text)
+        }
+
+        .nav-item.active {
+            background: var(--primary-glow);
+            color: var(--primary);
+            font-weight: 600
+        }
+
+        .nav-item.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 25%;
+            height: 50%;
+            width: 3px;
+            background: var(--primary);
+            border-radius: 0 4px 4px 0
+        }
+
+        .nav-item i {
+            width: 18px;
+            text-align: center;
+            font-size: .95rem
+        }
+
+        .nav-badge {
+            margin-left: auto;
+            background: var(--red);
+            color: white;
+            font-size: .65rem;
+            font-weight: 700;
+            padding: .2rem .45rem;
+            border-radius: 20px
+        }
+
+        .nav-badge.green {
+            background: var(--green)
+        }
+
+        .sidebar-footer {
+            padding: 1.25rem;
+            border-top: 1px solid var(--border)
+        }
+
+        .sidebar-plan {
+            background: linear-gradient(135deg, var(--primary-dark), var(--purple));
+            border-radius: var(--radius);
+            padding: 1rem;
+            text-align: center
+        }
+
+        .sidebar-plan p {
+            font-size: .75rem;
+            opacity: .8;
+            margin-bottom: .5rem
+        }
+
+        .sidebar-plan strong {
+            display: block;
+            font-size: .95rem;
+            margin-bottom: .75rem
+        }
+
+        .sidebar-plan a {
+            display: block;
+            background: white;
+            color: var(--primary-dark);
+            border-radius: 8px;
+            padding: .5rem;
+            font-size: .75rem;
+            font-weight: 700;
+            text-decoration: none
+        }
+
+        /* ─── MAIN ─── */
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden
+        }
+
+        .topbar {
+            background: var(--bg2);
+            border-bottom: 1px solid var(--border);
+            padding: .875rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-shrink: 0
+        }
+
+        .topbar-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            flex: 1
+        }
+
+        .topbar-search {
+            background: var(--bg3);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: .5rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            width: 300px
+        }
+
+        .topbar-search input {
+            background: none;
+            border: none;
+            outline: none;
+            color: var(--text);
+            font-size: .875rem;
+            width: 100%
+        }
+
+        .topbar-search input::placeholder {
+            color: var(--text3)
+        }
+
+        .topbar-actions {
+            display: flex;
+            align-items: center;
+            gap: .75rem
+        }
+
+        .icon-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: var(--bg3);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--text2);
+            transition: .2s;
+            position: relative
+        }
+
+        .icon-btn:hover {
+            background: var(--bg4);
+            color: var(--text)
+        }
+
+        .notif-dot {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 7px;
+            height: 7px;
+            background: var(--red);
+            border-radius: 50%;
+            border: 2px solid var(--bg2)
+        }
+
+        .avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary);
+            cursor: pointer
+        }
+
+        .avatar-placeholder {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: .9rem;
+            cursor: pointer;
+            border: 2px solid var(--primary-dark)
+        }
+
+        /* ─── CONTENT ─── */
+        .content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 2rem
+        }
+
+        .page {
+            display: none
+        }
+
+        .page.active {
+            display: block
+        }
+
+        /* ─── CARDS ─── */
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.75rem
+        }
+
+        .page-header h1 {
+            font-size: 1.5rem;
+            font-weight: 800
+        }
+
+        .page-header p {
+            color: var(--text2);
+            font-size: .875rem;
+            margin-top: .2rem
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+            margin-bottom: 1.75rem
+        }
+
+        .metric-card {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: .3s
+        }
+
+        .metric-card:hover {
+            border-color: var(--border2);
+            transform: translateY(-2px)
+        }
+
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            opacity: .08;
+            transform: translate(20px, -20px)
+        }
+
+        .metric-card.blue::before {
+            background: var(--blue)
+        }
+
+        .metric-card.green::before {
+            background: var(--green)
+        }
+
+        .metric-card.purple::before {
+            background: var(--purple)
+        }
+
+        .metric-card.yellow::before {
+            background: var(--yellow)
+        }
+
+        .metric-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            margin-bottom: 1rem
+        }
+
+        .metric-icon.blue {
+            background: rgba(59, 130, 246, .15);
+            color: var(--blue)
+        }
+
+        .metric-icon.green {
+            background: rgba(16, 185, 129, .15);
+            color: var(--green)
+        }
+
+        .metric-icon.purple {
+            background: rgba(139, 92, 246, .15);
+            color: var(--purple)
+        }
+
+        .metric-icon.yellow {
+            background: rgba(245, 158, 11, .15);
+            color: var(--yellow)
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1
+        }
+
+        .metric-label {
+            font-size: .8rem;
+            color: var(--text2);
+            margin-top: .35rem
+        }
+
+        .metric-change {
+            display: flex;
+            align-items: center;
+            gap: .3rem;
+            font-size: .75rem;
+            margin-top: .75rem
+        }
+
+        .metric-change.up {
+            color: var(--green)
+        }
+
+        .metric-change.down {
+            color: var(--red)
+        }
+
+        /* ─── GRID 2COL ─── */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1.25rem;
+            margin-bottom: 1.75rem
+        }
+
+        .card {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.25rem
+        }
+
+        .card-title {
+            font-size: 1rem;
+            font-weight: 700
+        }
+
+        .card-action {
+            font-size: .8rem;
+            color: var(--primary);
+            cursor: pointer;
+            text-decoration: none
+        }
+
+        /* ─── CHART ─── */
+        .chart-bars {
+            display: flex;
+            align-items: flex-end;
+            gap: 8px;
+            height: 140px;
+            padding-top: 1rem
+        }
+
+        .chart-bar-wrap {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: .5rem
+        }
+
+        .chart-bar {
+            width: 100%;
+            border-radius: 6px 6px 0 0;
+            transition: 1s ease;
+            min-height: 4px
+        }
+
+        .chart-label {
+            font-size: .65rem;
+            color: var(--text3)
+        }
+
+        .chart-legend {
+            display: flex;
+            gap: 1rem;
+            margin-top: .75rem
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+            font-size: .75rem;
+            color: var(--text2)
+        }
+
+        .legend-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%
+        }
+
+        /* ─── ACTIVITY ─── */
+        .activity-list {
+            display: flex;
+            flex-direction: column;
+            gap: .75rem
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: flex-start;
+            gap: .875rem
+        }
+
+        .activity-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .8rem;
+            flex-shrink: 0
+        }
+
+        .activity-text {
+            font-size: .825rem;
+            line-height: 1.5
+        }
+
+        .activity-text strong {
+            display: block;
+            font-weight: 600
+        }
+
+        .activity-time {
+            font-size: .7rem;
+            color: var(--text3);
+            margin-top: .15rem
+        }
+
+        /* ─── AGENTS ─── */
+        .agents-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem
+        }
+
+        .agent-card {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            transition: .3s;
+            cursor: pointer
+        }
+
+        .agent-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px var(--primary-glow)
+        }
+
+        .agent-card.new-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed var(--border2);
+            min-height: 200px;
+            gap: .75rem;
+            color: var(--text2)
+        }
+
+        .agent-card.new-card:hover {
+            border-color: var(--primary);
+            color: var(--primary)
+        }
+
+        .agent-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem
+        }
+
+        .agent-name {
+            font-weight: 700;
+            margin-bottom: .25rem
+        }
+
+        .agent-desc {
+            font-size: .8rem;
+            color: var(--text2);
+            margin-bottom: 1rem;
+            line-height: 1.5
+        }
+
+        .agent-stats {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem
+        }
+
+        .agent-stat {
+            font-size: .75rem;
+            color: var(--text2)
+        }
+
+        .agent-stat strong {
+            display: block;
+            font-weight: 700;
+            color: var(--text);
+            font-size: .875rem
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: .35rem;
+            padding: .3rem .75rem;
+            border-radius: 20px;
+            font-size: .72rem;
+            font-weight: 600
+        }
+
+        .status-badge.online {
+            background: rgba(16, 185, 129, .15);
+            color: var(--green)
+        }
+
+        .status-badge.offline {
+            background: rgba(148, 163, 184, .1);
+            color: var(--text2)
+        }
+
+        .status-badge.training {
+            background: rgba(245, 158, 11, .15);
+            color: var(--yellow)
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: currentColor
+        }
+
+        /* ─── CONVERSATIONS ─── */
+        .inbox-layout {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 0;
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            height: calc(100vh - 200px)
+        }
+
+        .inbox-list {
+            border-right: 1px solid var(--border);
+            overflow-y: auto
+        }
+
+        .inbox-search {
+            padding: .875rem;
+            border-bottom: 1px solid var(--border)
+        }
+
+        .inbox-item {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+            cursor: pointer;
+            transition: .2s;
+            display: flex;
+            gap: .875rem;
+            align-items: flex-start
+        }
+
+        .inbox-item:hover {
+            background: var(--bg3)
+        }
+
+        .inbox-item.active {
+            background: var(--primary-glow)
+        }
+
+        .inbox-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: .9rem;
+            flex-shrink: 0
+        }
+
+        .inbox-name {
+            font-size: .875rem;
+            font-weight: 600
+        }
+
+        .inbox-preview {
+            font-size: .775rem;
+            color: var(--text2);
+            margin-top: .2rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 180px
+        }
+
+        .inbox-time {
+            font-size: .7rem;
+            color: var(--text3);
+            margin-left: auto;
+            white-space: nowrap
+        }
+
+        .unread-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary);
+            flex-shrink: 0;
+            margin-top: 6px
+        }
+
+        .chat-area {
+            display: flex;
+            flex-direction: column
+        }
+
+        .chat-header {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: .875rem
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem
+        }
+
+        .msg {
+            max-width: 65%;
+            padding: .75rem 1rem;
+            border-radius: 16px;
+            font-size: .875rem;
+            line-height: 1.6
+        }
+
+        .msg.bot {
+            background: var(--bg3);
+            border-radius: 4px 16px 16px 16px;
+            align-self: flex-start
+        }
+
+        .msg.user {
+            background: var(--primary);
+            border-radius: 16px 4px 16px 16px;
+            align-self: flex-end
+        }
+
+        .chat-input-area {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            gap: .75rem
+        }
+
+        .chat-input {
+            flex: 1;
+            background: var(--bg3);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: .75rem 1rem;
+            color: var(--text);
+            font-size: .875rem;
+            outline: none;
+            font-family: inherit
+        }
+
+        .chat-input:focus {
+            border-color: var(--primary)
+        }
+
+        /* ─── ANALYTICS ─── */
+        .analytics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            margin-bottom: 1.25rem
+        }
+
+        .donut-wrap {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 1rem
+        }
+
+        .donut-wrap svg {
+            transform: rotate(-90deg)
+        }
+
+        .donut-value {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center
+        }
+
+        .donut-value strong {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 800
+        }
+
+        .donut-value span {
+            font-size: .7rem;
+            color: var(--text2)
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: .625rem 0;
+            border-bottom: 1px solid var(--border)
+        }
+
+        .stat-row:last-child {
+            border: none
+        }
+
+        .stat-name {
+            font-size: .825rem;
+            color: var(--text2)
+        }
+
+        .stat-val {
+            font-size: .875rem;
+            font-weight: 700
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: var(--bg3);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: .4rem
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 1s ease
+        }
+
+        /* ─── INTEGRATIONS ─── */
+        .integrations-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem
+        }
+
+        .integration-card {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem
+        }
+
+        .integration-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem
+        }
+
+        .integration-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem
+        }
+
+        .integration-name {
+            font-weight: 700
+        }
+
+        .integration-desc {
+            font-size: .8rem;
+            color: var(--text2)
+        }
+
+        .toggle-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: auto
+        }
+
+        .toggle {
+            width: 44px;
+            height: 24px;
+            border-radius: 12px;
+            background: var(--bg4);
+            cursor: pointer;
+            position: relative;
+            transition: .3s
+        }
+
+        .toggle.on {
+            background: var(--primary)
+        }
+
+        .toggle::after {
+            content: '';
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: white;
+            top: 3px;
+            left: 3px;
+            transition: .3s
+        }
+
+        .toggle.on::after {
+            left: 23px
+        }
+
+        /* ─── SETTINGS ─── */
+        .settings-layout {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 1.5rem
+        }
+
+        .settings-menu a {
+            display: block;
+            padding: .625rem .875rem;
+            border-radius: 10px;
+            font-size: .875rem;
+            color: var(--text2);
+            text-decoration: none;
+            margin-bottom: .25rem;
+            transition: .2s
+        }
+
+        .settings-menu a:hover,
+        .settings-menu a.active {
+            background: var(--bg3);
+            color: var(--text)
+        }
+
+        .form-field {
+            margin-bottom: 1.25rem
+        }
+
+        .form-field label {
+            display: block;
+            font-size: .8rem;
+            font-weight: 600;
+            color: var(--text2);
+            margin-bottom: .5rem
+        }
+
+        .form-field input,
+        .form-field select,
+        .form-field textarea {
+            width: 100%;
+            background: var(--bg3);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: .75rem 1rem;
+            color: var(--text);
+            font-size: .875rem;
+            outline: none;
+            font-family: inherit;
+            transition: .2s
+        }
+
+        .form-field input:focus,
+        .form-field select:focus {
+            border-color: var(--primary)
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem
+        }
+
+        /* ─── BUTTONS ─── */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .65rem 1.25rem;
+            border-radius: 10px;
+            font-size: .875rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: .2s;
+            text-decoration: none
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark)
+        }
+
+        .btn-ghost {
+            background: var(--bg3);
+            color: var(--text2);
+            border: 1px solid var(--border)
+        }
+
+        .btn-ghost:hover {
+            color: var(--text);
+            border-color: var(--border2)
+        }
+
+        .btn-danger {
+            background: rgba(239, 68, 68, .15);
+            color: var(--red);
+            border: 1px solid rgba(239, 68, 68, .3)
+        }
+
+        .btn-danger:hover {
+            background: rgba(239, 68, 68, .25)
+        }
+
+        .btn-sm {
+            padding: .45rem .875rem;
+            font-size: .8rem
+        }
+
+        /* ─── SCROLLBAR ─── */
+        ::-webkit-scrollbar {
+            width: 6px
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border2);
+            border-radius: 3px
+        }
+
+        /* ─── TABLE ─── */
+        .table-wrap {
+            overflow-x: auto
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse
+        }
+
+        th {
+            font-size: .75rem;
+            font-weight: 600;
+            color: var(--text3);
+            text-align: left;
+            padding: .75rem 1rem;
+            border-bottom: 1px solid var(--border);
+            text-transform: uppercase;
+            letter-spacing: .05em
+        }
+
+        td {
+            font-size: .85rem;
+            padding: .875rem 1rem;
+            border-bottom: 1px solid var(--border)
+        }
+
+        tr:last-child td {
+            border: none
+        }
+
+        tr:hover td {
+            background: var(--bg3)
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media(max-width:1100px) {
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr)
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr
+            }
+
+            .agents-grid {
+                grid-template-columns: 1fr 1fr
+            }
+        }
+
+        @media(max-width:768px) {
+            .sidebar {
+                position: fixed;
+                left: -260px;
+                height: 100vh;
+                z-index: 100;
+                transition: .3s
+            }
+
+            .sidebar.open {
+                left: 0
+            }
+
+            .content {
+                padding: 1.25rem
+            }
+
+            .topbar {
+                padding: .875rem 1rem
+            }
+
+            .analytics-grid {
+                grid-template-columns: 1fr
+            }
+
+            .integrations-grid {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+</head>
+
+<body style="display:none" id="dashBody">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo">
+            <img src="assets/images/logo-kriar.png" alt="Kriar">
+            <span>Kriar</span>
+        </div>
+        <nav class="sidebar-nav">
+            <div class="nav-section">Principal</div>
+            <div class="nav-item active" data-page="overview"><i class="fas fa-chart-line"></i> Visão Geral</div>
+            <div class="nav-item" data-page="agents"><i class="fas fa-robot"></i> Meus Agentes <span
+                    class="nav-badge green">3</span></div>
+            <div class="nav-item" data-page="conversations"><i class="fas fa-comments"></i> Conversas <span
+                    class="nav-badge">12</span></div>
+            <div class="nav-section">Análise</div>
+            <div class="nav-item" data-page="analytics"><i class="fas fa-chart-pie"></i> Analytics</div>
+            <div class="nav-item" data-page="integrations"><i class="fas fa-plug"></i> Integrações</div>
+            <div class="nav-section">Conta</div>
+            <div class="nav-item" data-page="settings"><i class="fas fa-cog"></i> Configurações</div>
+            <div class="nav-item" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Sair</div>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="sidebar-plan">
+                <p>Plano atual</p>
+                <strong id="planLabel">Trial Gratuito</strong>
+                <a href="checkout.html">Fazer Upgrade →</a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN -->
+    <div class="main">
+        <!-- TOPBAR -->
+        <div class="topbar">
+            <div class="topbar-search">
+                <i class="fas fa-search" style="color:var(--text3)"></i>
+                <input type="text" placeholder="Buscar agentes, conversas...">
+            </div>
+            <div class="topbar-title" id="pageTitle">Visão Geral</div>
+            <div class="topbar-actions">
+                <div class="icon-btn" title="Notificações"><i class="fas fa-bell"></i>
+                    <div class="notif-dot"></div>
+                </div>
+                <div class="icon-btn" title="Ajuda"><i class="fas fa-question-circle"></i></div>
+                <div class="avatar-placeholder" id="avatarEl">K</div>
+            </div>
+        </div>
+
+        <!-- CONTENT -->
+        <div class="content">
+
+            <!-- ──────────────── PAGE: OVERVIEW ──────────────── -->
+            <div class="page active" id="page-overview">
+                <div class="page-header">
+                    <div>
+                        <h1>Visão Geral</h1>
+                        <p id="welcomeMsg">Bem-vindo de volta! Seus agentes estão trabalhando.</p>
+                    </div>
+                    <a href="#" class="btn btn-primary" onclick="navigate('agents')"><i class="fas fa-plus"></i> Novo
+                        Agente</a>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-card blue">
+                        <div class="metric-icon blue"><i class="fas fa-comments"></i></div>
+                        <div class="metric-value" id="m-conv">0</div>
+                        <div class="metric-label">Conversas este mês</div>
+                        <div class="metric-change up"><i class="fas fa-arrow-up"></i> +24% vs mês passado</div>
+                    </div>
+                    <div class="metric-card green">
+                        <div class="metric-icon green"><i class="fas fa-user-plus"></i></div>
+                        <div class="metric-value" id="m-leads">0</div>
+                        <div class="metric-label">Leads capturados</div>
+                        <div class="metric-change up"><i class="fas fa-arrow-up"></i> +18% vs mês passado</div>
+                    </div>
+                    <div class="metric-card purple">
+                        <div class="metric-icon purple"><i class="fas fa-percentage"></i></div>
+                        <div class="metric-value" id="m-rate">0%</div>
+                        <div class="metric-label">Taxa de conversão</div>
+                        <div class="metric-change up"><i class="fas fa-arrow-up"></i> +3.2% vs mês passado</div>
+                    </div>
+                    <div class="metric-card yellow">
+                        <div class="metric-icon yellow"><i class="fas fa-robot"></i></div>
+                        <div class="metric-value" id="m-agents">0</div>
+                        <div class="metric-label">Agentes ativos</div>
+                        <div class="metric-change up"><i class="fas fa-check"></i> Todos operacionais</div>
+                    </div>
+                </div>
+
+                <div class="grid-2">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Conversas por Dia</div>
+                            <select
+                                style="background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:8px;padding:.35rem .75rem;font-size:.8rem">
+                                <option>Últimos 7 dias</option>
+                                <option>Últimos 30 dias</option>
+                            </select>
+                        </div>
+                        <div class="chart-bars" id="chartBars"></div>
+                        <div class="chart-legend">
+                            <div class="legend-item">
+                                <div class="legend-dot" style="background:var(--primary)"></div> WhatsApp
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-dot" style="background:var(--purple)"></div> Instagram
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-dot" style="background:var(--blue)"></div> Site
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Atividade Recente</div><a class="card-action"
+                                onclick="navigate('conversations')">Ver todas</a>
+                        </div>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon" style="background:rgba(16,185,129,.15);color:var(--green)"><i
+                                        class="fas fa-user-plus"></i></div>
+                                <div class="activity-text"><strong>Novo lead capturado</strong>Maria S. entrou em
+                                    contato via WhatsApp<div class="activity-time">2 min atrás</div>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon" style="background:rgba(99,102,241,.15);color:var(--primary)">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div class="activity-text"><strong>Agente Vendas respondeu</strong>47 mensagens enviadas
+                                    automaticamente<div class="activity-time">15 min atrás</div>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon" style="background:rgba(245,158,11,.15);color:var(--yellow)">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="activity-text"><strong>Avaliação recebida</strong>João M. deu 5 estrelas ao
+                                    atendimento<div class="activity-time">1h atrás</div>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon" style="background:rgba(59,130,246,.15);color:var(--blue)"><i
+                                        class="fas fa-shopping-cart"></i></div>
+                                <div class="activity-text"><strong>Venda realizada</strong>Plano Professional — R$
+                                    297,00<div class="activity-time">3h atrás</div>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon" style="background:rgba(139,92,246,.15);color:var(--purple)">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <div class="activity-text"><strong>Automação disparada</strong>Sequência de boas-vindas
+                                    enviada<div class="activity-time">5h atrás</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Agents -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Seus Agentes</div><a class="card-action"
+                            onclick="navigate('agents')">Gerenciar</a>
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Agente</th>
+                                    <th>Canal</th>
+                                    <th>Conversas</th>
+                                    <th>Taxa Resp.</th>
+                                    <th>Status</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Agente Vendas</strong></td>
+                                    <td><i class="fab fa-whatsapp" style="color:#25d366"></i> WhatsApp</td>
+                                    <td>1.2k</td>
+                                    <td>98%</td>
+                                    <td><span class="status-badge online"><span class="status-dot"></span>Online</span>
+                                    </td>
+                                    <td><button class="btn btn-ghost btn-sm">Editar</button></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Suporte 24h</strong></td>
+                                    <td><i class="fab fa-instagram" style="color:#e1306c"></i> Instagram</td>
+                                    <td>843</td>
+                                    <td>95%</td>
+                                    <td><span class="status-badge online"><span class="status-dot"></span>Online</span>
+                                    </td>
+                                    <td><button class="btn btn-ghost btn-sm">Editar</button></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Qualificador</strong></td>
+                                    <td><i class="fas fa-globe" style="color:var(--blue)"></i> Site</td>
+                                    <td>412</td>
+                                    <td>91%</td>
+                                    <td><span class="status-badge training"><span
+                                                class="status-dot"></span>Treinando</span></td>
+                                    <td><button class="btn btn-ghost btn-sm">Editar</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ──────────────── PAGE: AGENTS ──────────────── -->
+            <div class="page" id="page-agents">
+                <div class="page-header">
+                    <div>
+                        <h1>Meus Agentes</h1>
+                        <p>Crie e gerencie seus assistentes de IA</p>
+                    </div>
+                    <button class="btn btn-primary"><i class="fas fa-plus"></i> Criar Agente</button>
+                </div>
+                <div class="agents-grid">
+                    <div class="agent-card">
+                        <div class="agent-avatar" style="background:rgba(37,211,102,.15);color:#25d366"><i
+                                class="fab fa-whatsapp"></i></div>
+                        <div class="agent-name">Agente Vendas</div>
+                        <div class="agent-desc">Especialista em conversão. Qualifica leads, apresenta produtos e fecha
+                            vendas automaticamente.</div>
+                        <div class="agent-stats">
+                            <div class="agent-stat"><strong>1.247</strong> conversas</div>
+                            <div class="agent-stat"><strong>68%</strong> conversão</div>
+                        </div>
+                        <div style="display:flex;justify-content:space-between;align-items:center">
+                            <span class="status-badge online"><span class="status-dot"></span>Online</span>
+                            <button class="btn btn-ghost btn-sm"><i class="fas fa-edit"></i> Editar</button>
+                        </div>
+                    </div>
+                    <div class="agent-card">
+                        <div class="agent-avatar" style="background:rgba(225,48,108,.15);color:#e1306c"><i
+                                class="fab fa-instagram"></i></div>
+                        <div class="agent-name">Suporte 24h</div>
+                        <div class="agent-desc">Atendimento ao cliente no Instagram. Resolve dúvidas, gerencia
+                            reclamações e redireciona ao humano quando necessário.</div>
+                        <div class="agent-stats">
+                            <div class="agent-stat"><strong>843</strong> conversas</div>
+                            <div class="agent-stat"><strong>95%</strong> satisfação</div>
+                        </div>
+                        <div style="display:flex;justify-content:space-between;align-items:center">
+                            <span class="status-badge online"><span class="status-dot"></span>Online</span>
+                            <button class="btn btn-ghost btn-sm"><i class="fas fa-edit"></i> Editar</button>
+                        </div>
+                    </div>
+                    <div class="agent-card">
+                        <div class="agent-avatar" style="background:rgba(59,130,246,.15);color:var(--blue)"><i
+                                class="fas fa-globe"></i></div>
+                        <div class="agent-name">Qualificador de Leads</div>
+                        <div class="agent-desc">Widget no site que captura visitantes, qualifica o interesse e agenda
+                            demonstrações automaticamente.</div>
+                        <div class="agent-stats">
+                            <div class="agent-stat"><strong>412</strong> conversas</div>
+                            <div class="agent-stat"><strong>52</strong> demos agendadas</div>
+                        </div>
+                        <div style="display:flex;justify-content:space-between;align-items:center">
+                            <span class="status-badge training"><span class="status-dot"></span>Treinando</span>
+                            <button class="btn btn-ghost btn-sm"><i class="fas fa-edit"></i> Editar</button>
+                        </div>
+                    </div>
+                    <div class="agent-card new-card" onclick="alert('Em breve: criador visual de agentes!')">
+                        <i class="fas fa-plus-circle" style="font-size:2rem;opacity:.5"></i>
+                        <span style="font-weight:600">Criar Novo Agente</span>
+                        <span style="font-size:.8rem;text-align:center">WhatsApp, Instagram, Telegram, Site e
+                            mais</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ──────────────── PAGE: CONVERSATIONS ──────────────── -->
+            <div class="page" id="page-conversations">
+                <div class="page-header">
+                    <div>
+                        <h1>Conversas</h1>
+                        <p>12 conversas não lidas</p>
+                    </div>
+                    <div style="display:flex;gap:.75rem">
+                        <select class="btn btn-ghost" style="cursor:pointer;border:1px solid var(--border)">
+                            <option>Todos os canais</option>
+                            <option>WhatsApp</option>
+                            <option>Instagram</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="inbox-layout">
+                    <div class="inbox-list">
+                        <div class="inbox-search">
+                            <div class="topbar-search" style="width:100%"><i class="fas fa-search"
+                                    style="color:var(--text3)"></i><input type="text" placeholder="Buscar contato...">
+                            </div>
+                        </div>
+                        <div id="inboxItems"></div>
+                    </div>
+                    <div class="chat-area">
+                        <div class="chat-header">
+                            <div class="inbox-avatar" style="background:rgba(99,102,241,.2);color:var(--primary)">M
+                            </div>
+                            <div>
+                                <div style="font-weight:700">Maria Silva</div>
+                                <div style="font-size:.75rem;color:var(--green)"><i class="fas fa-circle"
+                                        style="font-size:.5rem"></i> Online agora</div>
+                            </div>
+                            <div style="margin-left:auto;display:flex;gap:.5rem">
+                                <button class="icon-btn" title="Assumir conversa"><i
+                                        class="fas fa-headset"></i></button>
+                                <button class="icon-btn" title="Informações"><i class="fas fa-info-circle"></i></button>
+                            </div>
+                        </div>
+                        <div class="chat-messages" id="chatMessages">
+                            <div class="msg bot">Olá! Sou a assistente virtual da Kriar. Como posso ajudar você hoje? 😊
+                            </div>
+                            <div class="msg user">Quero saber mais sobre os planos de vocês</div>
+                            <div class="msg bot">Claro! Temos 3 opções: <strong>Starter (R$97/mês)</strong> para
+                                começar, <strong>Professional (R$297/mês)</strong> o mais completo, e <strong>Enterprise
+                                    (R$897/mês)</strong> para grandes operações. Qual seu volume de atendimento atual?
+                            </div>
+                            <div class="msg user">Umas 500 mensagens por dia</div>
+                            <div class="msg bot">Perfeito! Para 500 mensagens/dia, o <strong>Professional</strong> é
+                                ideal. Contempla 10.000 conversas/mês, canais ilimitados e IA avançada. Quer agendar uma
+                                demonstração gratuita? 🚀</div>
+                        </div>
+                        <div class="chat-input-area">
+                            <input class="chat-input" type="text" placeholder="Assumir conversa e digitar...">
+                            <button class="btn btn-primary"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ──────────────── PAGE: ANALYTICS ──────────────── -->
+            <div class="page" id="page-analytics">
+                <div class="page-header">
+                    <div>
+                        <h1>Analytics</h1>
+                        <p>Relatório de desempenho dos seus agentes</p>
+                    </div>
+                    <select class="btn btn-ghost" style="cursor:pointer">
+                        <option>Últimos 30 dias</option>
+                        <option>Últimos 7 dias</option>
+                        <option>Este mês</option>
+                    </select>
+                </div>
+                <div class="metrics-grid" style="margin-bottom:1.25rem">
+                    <div class="metric-card blue">
+                        <div class="metric-icon blue"><i class="fas fa-comments"></i></div>
+                        <div class="metric-value">2.502</div>
+                        <div class="metric-label">Total de conversas</div>
+                    </div>
+                    <div class="metric-card green">
+                        <div class="metric-icon green"><i class="fas fa-check-circle"></i></div>
+                        <div class="metric-value">94%</div>
+                        <div class="metric-label">Taxa de resolução</div>
+                    </div>
+                    <div class="metric-card purple">
+                        <div class="metric-icon purple"><i class="fas fa-clock"></i></div>
+                        <div class="metric-value">1.2s</div>
+                        <div class="metric-label">Tempo médio de resposta</div>
+                    </div>
+                    <div class="metric-card yellow">
+                        <div class="metric-icon yellow"><i class="fas fa-star"></i></div>
+                        <div class="metric-value">4.8</div>
+                        <div class="metric-label">Satisfação média (★)</div>
+                    </div>
+                </div>
+                <div class="analytics-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Conversas por Canal</div>
+                        </div>
+                        <div class="donut-wrap">
+                            <svg width="140" height="140" viewBox="0 0 140 140">
+                                <circle cx="70" cy="70" r="55" fill="none" stroke="var(--bg3)" stroke-width="18" />
+                                <circle cx="70" cy="70" r="55" fill="none" stroke="#6366f1" stroke-width="18"
+                                    stroke-dasharray="207 138" stroke-dashoffset="0" />
+                                <circle cx="70" cy="70" r="55" fill="none" stroke="#8b5cf6" stroke-width="18"
+                                    stroke-dasharray="104 241" stroke-dashoffset="-207" />
+                                <circle cx="70" cy="70" r="55" fill="none" stroke="#3b82f6" stroke-width="18"
+                                    stroke-dasharray="34 310" stroke-dashoffset="-311" />
+                            </svg>
+                            <div class="donut-value"><strong>2.5k</strong><span>conversas</span></div>
+                        </div>
+                        <div class="stat-row"><span class="stat-name"><i class="fab fa-whatsapp"
+                                    style="color:#25d366"></i> WhatsApp</span><span class="stat-val">60% — 1.501</span>
+                        </div>
+                        <div class="stat-row"><span class="stat-name"><i class="fab fa-instagram"
+                                    style="color:#e1306c"></i> Instagram</span><span class="stat-val">30% — 750</span>
+                        </div>
+                        <div class="stat-row"><span class="stat-name"><i class="fas fa-globe"
+                                    style="color:var(--blue)"></i> Site</span><span class="stat-val">10% — 251</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Desempenho por Agente</div>
+                        </div>
+                        <div class="stat-row">
+                            <div>
+                                <div class="stat-name">Agente Vendas</div>
+                                <div class="progress-bar" style="width:100%">
+                                    <div class="progress-fill" style="width:68%;background:var(--primary)"></div>
+                                </div>
+                            </div><span class="stat-val" style="margin-left:1rem">68%</span>
+                        </div>
+                        <div class="stat-row">
+                            <div>
+                                <div class="stat-name">Suporte 24h</div>
+                                <div class="progress-bar" style="width:100%">
+                                    <div class="progress-fill" style="width:95%;background:var(--green)"></div>
+                                </div>
+                            </div><span class="stat-val" style="margin-left:1rem">95%</span>
+                        </div>
+                        <div class="stat-row">
+                            <div>
+                                <div class="stat-name">Qualificador</div>
+                                <div class="progress-bar" style="width:100%">
+                                    <div class="progress-fill" style="width:52%;background:var(--yellow)"></div>
+                                </div>
+                            </div><span class="stat-val" style="margin-left:1rem">52%</span>
+                        </div>
+                        <div style="margin-top:1.5rem">
+                            <div class="card-title" style="margin-bottom:1rem">Perguntas mais frequentes</div>
+                            <div class="stat-row"><span class="stat-name">Qual o preço?</span><span
+                                    class="stat-val">342x</span></div>
+                            <div class="stat-row"><span class="stat-name">Como funciona?</span><span
+                                    class="stat-val">218x</span></div>
+                            <div class="stat-row"><span class="stat-name">Tem integrações?</span><span
+                                    class="stat-val">156x</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ──────────────── PAGE: INTEGRATIONS ──────────────── -->
+            <div class="page" id="page-integrations">
+                <div class="page-header">
+                    <div>
+                        <h1>Integrações</h1>
+                        <p>Conecte seus canais e comece a automatizar em minutos</p>
+                    </div>
+                </div>
+
+                <!-- Social Channels -->
+                <div
+                    style="margin-bottom:.75rem;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text3)">
+                    Canais Sociais</div>
+                <div class="integrations-grid" style="margin-bottom:1.75rem">
+
+                    <!-- WhatsApp -->
+                    <div class="integration-card" id="wa-card">
+                        <div class="integration-header">
+                            <div class="integration-icon" style="background:rgba(37,211,102,.15);color:#25d366"><i
+                                    class="fab fa-whatsapp"></i></div>
+                            <div>
+                                <div class="integration-name">WhatsApp Business</div>
+                                <div class="integration-desc">Conecte via QR Code — sem custo extra</div>
+                            </div>
+                        </div>
+                        <div id="wa-status"
+                            style="display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--text3);margin:.5rem 0">
+                            <i class="fas fa-circle" style="font-size:.5rem"></i> Não conectado
+                        </div>
+                        <button class="btn btn-primary" style="width:100%;justify-content:center"
+                            onclick="openModal('wa-modal')">
+                            <i class="fab fa-whatsapp"></i> Conectar via QR Code
+                        </button>
+                    </div>
+
+                    <!-- Instagram -->
+                    <div class="integration-card" id="ig-card">
+                        <div class="integration-header">
+                            <div class="integration-icon" style="background:rgba(225,48,108,.15);color:#e1306c"><i
+                                    class="fab fa-instagram"></i></div>
+                            <div>
+                                <div class="integration-name">Instagram Direct</div>
+                                <div class="integration-desc">Mensagens diretas via Meta API</div>
+                            </div>
+                        </div>
+                        <div id="ig-status"
+                            style="display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--text3);margin:.5rem 0">
+                            <i class="fas fa-circle" style="font-size:.5rem"></i> Não conectado
+                        </div>
+                        <button class="btn"
+                            style="width:100%;justify-content:center;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:white"
+                            onclick="openModal('ig-modal')">
+                            <i class="fab fa-instagram"></i> Conectar com Instagram
+                        </button>
+                    </div>
+
+                    <!-- Facebook -->
+                    <div class="integration-card" id="fb-card">
+                        <div class="integration-header">
+                            <div class="integration-icon" style="background:rgba(24,119,242,.15);color:#1877f2"><i
+                                    class="fab fa-facebook"></i></div>
+                            <div>
+                                <div class="integration-name">Facebook Messenger</div>
+                                <div class="integration-desc">Inbox do Facebook via Graph API</div>
+                            </div>
+                        </div>
+                        <div id="fb-status"
+                            style="display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--text3);margin:.5rem 0">
+                            <i class="fas fa-circle" style="font-size:.5rem"></i> Não conectado
+                        </div>
+                        <button class="btn" style="width:100%;justify-content:center;background:#1877f2;color:white"
+                            onclick="openModal('fb-modal')">
+                            <i class="fab fa-facebook"></i> Conectar com Facebook
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Extra Integrations -->
+                <div
+                    style="margin-bottom:.75rem;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text3)">
+                    Ferramentas</div>
+                <div class="integrations-grid">
+                    <div class="integration-card">
+                        <div class="integration-header">
+                            <div class="integration-icon" style="background:rgba(99,102,241,.15);color:var(--primary)">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <div class="integration-name">E-mail Marketing</div>
+                                <div class="integration-desc">Mailchimp, RD Station</div>
+                            </div>
+                        </div>
+                        <div style="font-size:.8rem;color:var(--text2);margin:.5rem 0">Não conectado</div>
+                        <div class="toggle-wrap"><span style="font-size:.8rem;color:var(--text2)">Inativo</span>
+                            <div class="toggle" onclick="this.classList.toggle('on')"></div>
+                        </div>
+                    </div>
+                    <div class="integration-card">
+                        <div class="integration-header">
+                            <div class="integration-icon" style="background:rgba(245,158,11,.15);color:var(--yellow)"><i
+                                    class="fas fa-shopping-cart"></i></div>
+                            <div>
+                                <div class="integration-name">E-commerce</div>
+                                <div class="integration-desc">Shopify, WooCommerce</div>
+                            </div>
+                        </div>
+                        <div style="font-size:.8rem;color:var(--text2);margin:.5rem 0">Não conectado</div>
+                        <div class="toggle-wrap"><span style="font-size:.8rem;color:var(--text2)">Inativo</span>
+                            <div class="toggle" onclick="this.classList.toggle('on')"></div>
+                        </div>
+                    </div>
+                    <div class="integration-card">
+                        <div class="integration-header">
+                            <div class="integration-icon" style="background:rgba(139,92,246,.15);color:var(--purple)"><i
+                                    class="fas fa-calendar-check"></i></div>
+                            <div>
+                                <div class="integration-name">Google Calendar</div>
+                                <div class="integration-desc">Agendamentos automáticos</div>
+                            </div>
+                        </div>
+                        <div style="font-size:.8rem;color:var(--text2);margin:.5rem 0">Não conectado</div>
+                        <div class="toggle-wrap"><span style="font-size:.8rem;color:var(--text2)">Inativo</span>
+                            <div class="toggle" onclick="this.classList.toggle('on')"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ═══════════════ MODAL: WhatsApp QR Code ═══════════════ -->
+            <div id="wa-modal"
+                style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:1000;align-items:center;justify-content:center">
+                <div
+                    style="background:var(--bg2);border:1px solid var(--border2);border-radius:20px;padding:2rem;max-width:420px;width:90%;text-align:center;position:relative">
+                    <button onclick="closeModal('wa-modal')"
+                        style="position:absolute;top:1rem;right:1rem;background:var(--bg3);border:none;color:var(--text2);width:32px;height:32px;border-radius:8px;cursor:pointer;font-size:1rem"><i
+                            class="fas fa-times"></i></button>
+                    <div
+                        style="width:52px;height:52px;background:rgba(37,211,102,.15);color:#25d366;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin:0 auto 1rem">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3 style="font-size:1.1rem;font-weight:800;margin-bottom:.5rem">Conectar WhatsApp</h3>
+                    <p style="font-size:.85rem;color:var(--text2);margin-bottom:1.5rem;line-height:1.6">Escaneie o QR
+                        Code abaixo com o seu WhatsApp para conectar. Após o escaneio, seu número ficará ativo
+                        automaticamente.</p>
+
+                    <!-- QR Code display área -->
+                    <div id="wa-qr-wrap"
+                        style="background:white;border-radius:16px;padding:1.25rem;margin:0 auto 1rem;width:200px;height:200px;display:flex;align-items:center;justify-content:center">
+                        <canvas id="wa-qr-canvas"></canvas>
+                    </div>
+
+                    <div id="wa-loading" style="margin-bottom:1rem">
+                        <div
+                            style="display:flex;align-items:center;justify-content:center;gap:.5rem;font-size:.8rem;color:var(--text2)">
+                            <span id="wa-timer-icon" class="fa-spin" style="display:inline-block"><i
+                                    class="fas fa-spinner fa-spin"></i></span>
+                            <span id="wa-timer-text">Gerando QR Code... aguarde</span>
+                        </div>
+                    </div>
+
+                    <div id="wa-steps"
+                        style="text-align:left;background:var(--bg3);border-radius:12px;padding:1rem;font-size:.8rem;color:var(--text2);line-height:2">
+                        <div><strong style="color:var(--text)">Como conectar:</strong></div>
+                        <div>1. Abra o <strong style="color:var(--text)">WhatsApp</strong> no celular</div>
+                        <div>2. Toque em <strong style="color:var(--text)">⋮ Menu → Dispositivos conectados</strong>
+                        </div>
+                        <div>3. Toque em <strong style="color:var(--text)">Conectar um dispositivo</strong></div>
+                        <div>4. Aponte a câmera para o QR Code acima</div>
+                    </div>
+
+                    <div id="wa-success"
+                        style="display:none;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.3);border-radius:12px;padding:1rem;margin-top:1rem">
+                        <i class="fas fa-check-circle" style="color:var(--green);font-size:1.5rem"></i>
+                        <div style="font-weight:700;margin:.5rem 0">WhatsApp Conectado!</div>
+                        <div style="font-size:.8rem;color:var(--text2)" id="wa-connected-number"></div>
+                    </div>
+
+                    <button id="wa-refresh-btn" onclick="refreshWaQR()" style="margin-top:1rem;width:100%"
+                        class="btn btn-ghost">
+                        <i class="fas fa-redo"></i> Gerar novo QR Code
+                    </button>
+                </div>
+            </div>
+
+            <!-- ═══════════════ MODAL: Instagram OAuth ═══════════════ -->
+            <div id="ig-modal"
+                style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:1000;align-items:center;justify-content:center">
+                <div
+                    style="background:var(--bg2);border:1px solid var(--border2);border-radius:20px;padding:2rem;max-width:420px;width:90%;text-align:center;position:relative">
+                    <button onclick="closeModal('ig-modal')"
+                        style="position:absolute;top:1rem;right:1rem;background:var(--bg3);border:none;color:var(--text2);width:32px;height:32px;border-radius:8px;cursor:pointer;font-size:1rem"><i
+                            class="fas fa-times"></i></button>
+                    <div
+                        style="width:52px;height:52px;background:rgba(225,48,108,.15);color:#e1306c;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin:0 auto 1rem">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <h3 style="font-size:1.1rem;font-weight:800;margin-bottom:.5rem">Conectar Instagram</h3>
+                    <p style="font-size:.85rem;color:var(--text2);margin-bottom:1.5rem;line-height:1.6">Você será
+                        redirecionado para o Facebook para autorizar o acesso às mensagens diretas do Instagram
+                        Business.</p>
+                    <div
+                        style="text-align:left;background:var(--bg3);border-radius:12px;padding:1rem;font-size:.8rem;color:var(--text2);line-height:1.8;margin-bottom:1.5rem">
+                        <div><strong style="color:var(--text)">Permissões necessárias:</strong></div>
+                        <div><i class="fas fa-check" style="color:var(--green);width:16px"></i> Leitura de mensagens
+                            diretas</div>
+                        <div><i class="fas fa-check" style="color:var(--green);width:16px"></i> Envio de mensagens
+                            diretas</div>
+                        <div><i class="fas fa-check" style="color:var(--green);width:16px"></i> Dados básicos da conta
+                        </div>
+                        <div><i class="fas fa-times" style="color:var(--text3);width:16px"></i> Publicação de posts (não
+                            solicitado)</div>
+                    </div>
+                    <button class="btn"
+                        style="width:100%;justify-content:center;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:white;border:none"
+                        onclick="connectInstagram()">
+                        <i class="fab fa-instagram"></i> Autorizar com Facebook/Meta
+                    </button>
+                    <p style="font-size:.72rem;color:var(--text3);margin-top:.75rem">Requer conta <strong>Instagram
+                            Business</strong> ou <strong>Creator</strong> conectada a uma Página do Facebook.</p>
+                </div>
+            </div>
+
+            <!-- ═══════════════ MODAL: Facebook OAuth ═══════════════ -->
+            <div id="fb-modal"
+                style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:1000;align-items:center;justify-content:center">
+                <div
+                    style="background:var(--bg2);border:1px solid var(--border2);border-radius:20px;padding:2rem;max-width:420px;width:90%;text-align:center;position:relative">
+                    <button onclick="closeModal('fb-modal')"
+                        style="position:absolute;top:1rem;right:1rem;background:var(--bg3);border:none;color:var(--text2);width:32px;height:32px;border-radius:8px;cursor:pointer;font-size:1rem"><i
+                            class="fas fa-times"></i></button>
+                    <div
+                        style="width:52px;height:52px;background:rgba(24,119,242,.15);color:#1877f2;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin:0 auto 1rem">
+                        <i class="fab fa-facebook"></i>
+                    </div>
+                    <h3 style="font-size:1.1rem;font-weight:800;margin-bottom:.5rem">Conectar Facebook</h3>
+                    <p style="font-size:.85rem;color:var(--text2);margin-bottom:1.5rem;line-height:1.6">Conecte sua
+                        Página do Facebook para responder mensagens do Messenger automaticamente com IA.</p>
+                    <div
+                        style="text-align:left;background:var(--bg3);border-radius:12px;padding:1rem;font-size:.8rem;color:var(--text2);line-height:1.8;margin-bottom:1.5rem">
+                        <div><strong style="color:var(--text)">Permissões necessárias:</strong></div>
+                        <div><i class="fas fa-check" style="color:var(--green);width:16px"></i> Mensagens do Messenger
+                        </div>
+                        <div><i class="fas fa-check" style="color:var(--green);width:16px"></i> Gerenciar Página</div>
+                        <div><i class="fas fa-check" style="color:var(--green);width:16px"></i> Dados do usuário (nome,
+                            foto)</div>
+                    </div>
+                    <button class="btn"
+                        style="width:100%;justify-content:center;background:#1877f2;color:white;border:none"
+                        onclick="connectFacebook()">
+                        <i class="fab fa-facebook"></i> Entrar com Facebook
+                    </button>
+                    <p style="font-size:.72rem;color:var(--text3);margin-top:.75rem">Requer uma <strong>Página do
+                            Facebook</strong> (não perfil pessoal).</p>
+                </div>
+            </div>
+
+
+            <!-- ──────────────── PAGE: SETTINGS ──────────────── -->
+            <div class="page" id="page-settings">
+                <div class="page-header">
+                    <div>
+                        <h1>Configurações</h1>
+                        <p>Gerencie sua conta e assinatura</p>
+                    </div>
+                </div>
+                <div class="settings-layout">
+                    <div class="settings-menu">
+                        <a href="#" class="active">Perfil</a>
+                        <a href="#">Assinatura</a>
+                        <a href="#">Notificações</a>
+                        <a href="#">Segurança</a>
+                        <a href="#" style="color:var(--red)"
+                            onclick="window.kriarAuth && window.kriarAuth.logout()">Encerrar conta</a>
+                    </div>
+                    <div>
+                        <div class="card" style="margin-bottom:1.25rem">
+                            <div class="card-header" style="margin-bottom:1.5rem">
+                                <div class="card-title">Informações do Perfil</div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-field"><label>Nome completo</label><input type="text" id="settingName"
+                                        value=""></div>
+                                <div class="form-field"><label>E-mail</label><input type="email" id="settingEmail"
+                                        value="" readonly style="opacity:.6;cursor:not-allowed"></div>
+                            </div>
+                            <div class="form-field"><label>Empresa</label><input type="text"
+                                    placeholder="Nome da sua empresa"></div>
+                            <div class="form-field"><label>WhatsApp</label><input type="text"
+                                    placeholder="+55 (11) 9xxxx-xxxx"></div>
+                            <button class="btn btn-primary">Salvar Alterações</button>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" style="margin-bottom:1.5rem">
+                                <div class="card-title">Minha Assinatura</div>
+                            </div>
+                            <div
+                                style="display:flex;justify-content:space-between;align-items:center;padding:1rem;background:var(--bg3);border-radius:var(--radius);margin-bottom:1rem">
+                                <div>
+                                    <div style="font-weight:700" id="planName">Trial Gratuito</div>
+                                    <div style="font-size:.8rem;color:var(--text2)">Renova em: No expiration</div>
+                                </div>
+                                <a href="checkout.html" class="btn btn-primary btn-sm">Fazer Upgrade</a>
+                            </div>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Data</th>
+                                        <th>Plano</th>
+                                        <th>Valor</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>—</td>
+                                        <td>Trial</td>
+                                        <td>R$ 0,00</td>
+                                        <td><span class="status-badge online">Ativo</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /content -->
+    </div><!-- /main -->
+
+    <script type="module" src="js/auth.js"></script>
+    <script type="module">
+        // ── AUTH GUARD ──
+        window.kriarAuth.checkAuthState((user) => {
+            if (!user) { window.location.href = 'login.html'; return; }
+            document.getElementById('dashBody').style.display = 'flex';
+
+            // Preenche dados do usuário
+            const name = user.displayName || user.email.split('@')[0];
+            const initial = name[0].toUpperCase();
+            document.getElementById('welcomeMsg').textContent = `Bem-vindo de volta, ${name}! Seus agentes estão trabalhando.`;
+            document.getElementById('settingEmail').value = user.email;
+            document.getElementById('settingName').value = user.displayName || '';
+
+            const av = document.getElementById('avatarEl');
+            if (user.photoURL) {
+                av.innerHTML = `<img src="${user.photoURL}" class="avatar" alt="avatar">`;
+            } else {
+                av.textContent = initial;
+            }
+        });
+
+        // Logout
+        document.getElementById('logoutBtn').addEventListener('click', () => window.kriarAuth.logout());
+    </script>
+    <script>
+        // ── NAVIGATION ──
+        function navigate(page) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            document.getElementById('page-' + page).classList.add('active');
+            const item = document.querySelector(`.nav-item[data-page="${page}"]`);
+            if (item) item.classList.add('active');
+            const titles = { overview: 'Visão Geral', agents: 'Meus Agentes', conversations: 'Conversas', analytics: 'Analytics', integrations: 'Integrações', settings: 'Configurações' };
+            document.getElementById('pageTitle').textContent = titles[page] || '';
+        }
+        document.querySelectorAll('.nav-item[data-page]').forEach(item => {
+            item.addEventListener('click', () => navigate(item.dataset.page));
+        });
+
+        // ── ANIMATED COUNTERS ──
+        function animateCount(id, target, suffix) {
+            let current = 0;
+            const step = target / 60;
+            const el = document.getElementById(id);
+            const timer = setInterval(() => {
+                current = Math.min(current + step, target);
+                el.textContent = (suffix === '%') ? Math.round(current) + '%' : Math.round(current).toLocaleString('pt-BR');
+                if (current >= target) clearInterval(timer);
+            }, 16);
+        }
+        setTimeout(() => {
+            animateCount('m-conv', 2502, '');
+            animateCount('m-leads', 847, '');
+            animateCount('m-rate', 34, '%');
+            animateCount('m-agents', 3, '');
+        }, 600);
+
+        // ── CHART BARS ──
+        const days = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'];
+        const vals = [120, 185, 95, 210, 175, 88, 142];
+        const chartEl = document.getElementById('chartBars');
+        const maxVal = Math.max(...vals);
+        vals.forEach((v, i) => {
+            const wrap = document.createElement('div');
+            wrap.className = 'chart-bar-wrap';
+            const bar = document.createElement('div');
+            bar.className = 'chart-bar';
+            bar.style.cssText = `height:0;background:linear-gradient(to top,var(--primary),var(--purple));flex:none;width:100%`;
+            const label = document.createElement('div');
+            label.className = 'chart-label';
+            label.textContent = days[i];
+            wrap.appendChild(bar);
+            wrap.appendChild(label);
+            chartEl.appendChild(wrap);
+            setTimeout(() => { bar.style.height = (v / maxVal * 120) + 'px'; }, 300 + i * 80);
+        });
+
+        // ── INBOX ──
+        const contacts = [
+            { name: 'Maria Silva', preview: 'Quero saber sobre os planos', time: 'agora', unread: true, color: '#6366f1' },
+            { name: 'João Mendes', preview: 'Obrigado pelo atendimento!', time: '5m', unread: true, color: '#10b981' },
+            { name: 'Ana Costa', preview: 'Pode me enviar o contrato?', time: '23m', unread: true, color: '#f59e0b' },
+            { name: 'Pedro Lima', preview: 'Vocês integram com CRM?', time: '1h', unread: false, color: '#8b5cf6' },
+            { name: 'Carla Souza', preview: 'Quero cancelar a assinatura', time: '2h', unread: false, color: '#ef4444' },
+            { name: 'Rafael Neto', preview: 'Quando sai a versão mobile?', time: '3h', unread: false, color: '#3b82f6' },
+        ];
+        const inbox = document.getElementById('inboxItems');
+        contacts.forEach((c, i) => {
+            const el = document.createElement('div');
+            el.className = 'inbox-item' + (i === 0 ? ' active' : '');
+            el.innerHTML = `
+    <div class="inbox-avatar" style="background:${c.color}22;color:${c.color}">${c.name[0]}</div>
+    <div style="flex:1;min-width:0">
+      <div style="display:flex;justify-content:space-between"><span class="inbox-name">${c.name}</span><span class="inbox-time">${c.time}</span></div>
+      <div class="inbox-preview">${c.preview}</div>
+    </div>
+    ${c.unread ? '<div class="unread-dot"></div>' : ''}
+  `;
+            el.addEventListener('click', () => {
+                document.querySelectorAll('.inbox-item').forEach(x => x.classList.remove('active'));
+                el.classList.add('active');
+            });
+            inbox.appendChild(el);
+        });
+    </script>
+    <!-- QRCode.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        // ── MODAL HELPERS ──
+        function openModal(id) {
+            const el = document.getElementById(id);
+            el.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            if (id === 'wa-modal') initWaQR();
+        }
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+            document.body.style.overflow = '';
+            if (id === 'wa-modal') clearInterval(window._waTimer);
+        }
+        // Fechar ao clicar fora
+        ['wa-modal', 'ig-modal', 'fb-modal'].forEach(id => {
+            document.getElementById(id).addEventListener('click', function (e) {
+                if (e.target === this) closeModal(id);
+            });
+        });
+
+        // ── WhatsApp QR CODE ──
+        let _waQRInstance = null;
+        let _waCountdown = 60;
+
+        function initWaQR() {
+            const wrap = document.getElementById('wa-qr-wrap');
+            const timerText = document.getElementById('wa-timer-text');
+            const timerIcon = document.getElementById('wa-timer-icon');
+
+            timerText.textContent = 'Conectando ao servidor...';
+            timerIcon.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+            wrap.innerHTML = '<canvas id="wa-qr-canvas"></canvas>';
+
+            clearInterval(window._waTimer);
+            clearInterval(window._waPoll);
+            _waCountdown = 60;
+
+            const WA_API = 'http://localhost:3001/api/wa';
+
+            async function fetchQR() {
+                try {
+                    const res = await fetch(`${WA_API}/qr`, { cache: 'no-cache' });
+                    const data = await res.json();
+
+                    if (data.status === 'connected') {
+                        clearInterval(window._waPoll);
+                        onWaConnected(data.number);
+                        return;
+                    }
+
+                    if (data.status === 'qr' && data.qr) {
+                        // Exibe QR recebido do backend como imagem base64
+                        wrap.innerHTML = `<img src="${data.qr}" style="width:168px;height:168px;border-radius:8px">`;
+                        timerText.textContent = `QR Code válido por ${_waCountdown}s`;
+                        timerIcon.innerHTML = '<i class="fas fa-clock"></i>';
+
+                        clearInterval(window._waTimer);
+                        window._waTimer = setInterval(() => {
+                            _waCountdown--;
+                            timerText.textContent = `QR Code válido por ${_waCountdown}s`;
+                            if (_waCountdown <= 0) {
+                                clearInterval(window._waTimer);
+                                timerText.textContent = 'QR Code expirado. Gerando novo...';
+                                timerIcon.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+                                _waCountdown = 60;
+                            }
+                        }, 1000);
+                        return;
+                    }
+
+                    // status: 'connecting' ou 'disconnected'
+                    timerText.textContent = data.status === 'connecting' ? 'Conectando ao WhatsApp...' : 'Aguardando QR Code do servidor...';
+
+                } catch (err) {
+                    timerText.textContent = 'Servidor offline. Inicie: node server.js';
+                    timerIcon.innerHTML = '<i class="fas fa-exclamation-triangle" style="color:#f59e0b"></i>';
+                    wrap.innerHTML = `<div style="text-align:center;padding:1rem;font-size:.8rem;color:var(--text2)">
+                        <i class="fas fa-server" style="font-size:2rem;opacity:.3;margin-bottom:.75rem;display:block"></i>
+                        Servidor não encontrado.<br><br>
+                        <code style="background:var(--bg4);padding:.25rem .5rem;border-radius:6px;font-size:.75rem">node server.js</code>
+                    </div>`;
+                }
+            }
+
+            fetchQR();
+            window._waPoll = setInterval(fetchQR, 2000); // polling a cada 2s
+        }
+
+        function refreshWaQR() { initWaQR(); }
+
+        function onWaConnected(number) {
+            clearInterval(window._waTimer);
+            document.getElementById('wa-qr-wrap').style.display = 'none';
+            document.getElementById('wa-loading').style.display = 'none';
+            document.getElementById('wa-steps').style.display = 'none';
+            document.getElementById('wa-refresh-btn').style.display = 'none';
+            document.getElementById('wa-success').style.display = 'block';
+            document.getElementById('wa-connected-number').textContent = 'Número: ' + number;
+
+            // Atualiza card na página de integrações
+            const status = document.getElementById('wa-status');
+            status.innerHTML = `<i class="fas fa-circle" style="font-size:.5rem;color:#25d366"></i> <span style="color:#25d366;font-weight:600">Conectado: ${number}</span>`;
+            document.querySelector('#wa-card button').innerHTML = '<i class="fas fa-check-circle"></i> WhatsApp Conectado';
+            document.querySelector('#wa-card button').style.background = 'rgba(37,211,102,.15)';
+            document.querySelector('#wa-card button').style.color = '#25d366';
+        }
+
+        // ── Instagram OAuth ──
+        function connectInstagram() {
+            // URL de OAuth da Meta — substitua APP_ID pelo seu ID de App do Facebook Developers
+            const META_APP_ID = '1984546758971108';
+            const REDIRECT_URI = encodeURIComponent('https://kriar.digital/dashboard.html?channel=instagram');
+            const SCOPE = encodeURIComponent('instagram_basic,instagram_manage_messages,pages_show_list');
+            const oauthUrl = `https://www.facebook.com/v18.0/dialog/oauth?client_id=${META_APP_ID}&redirect_uri=${REDIRECT_URI}&scope=${SCOPE}&response_type=code`;
+
+            // Abre em popup
+            const popup = window.open(oauthUrl, 'instagram-oauth', 'width=600,height=700,left=200,top=100');
+
+            // Monitora fechamento do popup (em produção: message event com token)
+            const check = setInterval(() => {
+                if (popup && popup.closed) {
+                    clearInterval(check);
+                    closeModal('ig-modal');
+                    // Simula sucesso para demo
+                    const s = document.getElementById('ig-status');
+                    s.innerHTML = `<i class="fas fa-circle" style="font-size:.5rem;color:#e1306c"></i> <span style="color:#e1306c;font-weight:600">Conectado: @kriar.digital</span>`;
+                }
+            }, 1000);
+        }
+
+        // ── Facebook OAuth ──
+        function connectFacebook() {
+            const META_APP_ID = '1984546758971108';
+            const REDIRECT_URI = encodeURIComponent('https://kriar.digital/dashboard.html?channel=facebook');
+            const SCOPE = encodeURIComponent('pages_messaging,pages_show_list,pages_read_engagement');
+            const oauthUrl = `https://www.facebook.com/v18.0/dialog/oauth?client_id=${META_APP_ID}&redirect_uri=${REDIRECT_URI}&scope=${SCOPE}&response_type=code`;
+
+            const popup = window.open(oauthUrl, 'facebook-oauth', 'width=600,height=700,left=200,top=100');
+            const check = setInterval(() => {
+                if (popup && popup.closed) {
+                    clearInterval(check);
+                    closeModal('fb-modal');
+                    const s = document.getElementById('fb-status');
+                    s.innerHTML = `<i class="fas fa-circle" style="font-size:.5rem;color:#1877f2"></i> <span style="color:#1877f2;font-weight:600">Página conectada</span>`;
+                }
+            }, 1000);
+        }
+
+        // Verifica se voltou do OAuth redirect
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('channel') === 'instagram') navigate('integrations');
+        if (urlParams.get('channel') === 'facebook') navigate('integrations');
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolha seu Plano | Kriar - Automações Inteligentes</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Rastreamento Meta Pixel InitiateCheckout -->
+    <script>
+        if (window.fbq) fbq('track', 'InitiateCheckout');
+    </script>
+</head>
+
+<body class="bg-primary">
+    <header class="header">
+        <nav class="navbar container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo-kriar.png" alt="Kriar" style="height: 40px;">
+                <span style="font-weight: 800; font-size: 1.5rem; margin-left: 0.5rem;">Kriar</span>
+            </a>
+            <div class="nav-buttons">
+                <a href="dashboard.html" class="btn btn-ghost">Acessar Painel</a>
+            </div>
+        </nav>
+    </header>
+
+    <main style="padding-top: 100px;">
+        <section class="pricing">
+            <div class="container">
+                <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
+                    <h1 class="lp-title">Escolha o plano ideal para <span class="gradient-text">escalar seu
+                            negócio</span></h1>
+                    <p class="section-description">Sem taxas de setup. Comece a automatizar hoje mesmo.</p>
+                </div>
+
+                <div class="pricing-grid">
+                    <!-- Starter -->
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3 class="pricing-plan">Starter</h3>
+                            <p class="pricing-subtitle">Para pequenos negócios</p>
+                        </div>
+                        <div class="pricing-price">
+                            <span class="currency">R$</span>
+                            <span class="amount">97</span>
+                            <span class="period">/mês</span>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> 1.000 conversas/mês</li>
+                            <li><i class="fas fa-check"></i> 2 canais ativos</li>
+                            <li><i class="fas fa-check"></i> IA Básica</li>
+                            <li><i class="fas fa-check"></i> Suporte por e-mail</li>
+                        </ul>
+                        <!-- Substitua o link abaixo pelo seu link da Kirvano/Hotmart/etc -->
+                        <a href="https://wa.me/5511997666735?text=Quero%20assinar%20o%20Plano%20Starter"
+                            class="btn btn-primary checkout-btn" data-plan="Starter">Assinar Agora</a>
+                    </div>
+
+                    <!-- Professional -->
+                    <div class="pricing-card featured">
+                        <div class="pricing-badge">Mais Vendido</div>
+                        <div class="pricing-header">
+                            <h3 class="pricing-plan">Professional</h3>
+                            <p class="pricing-subtitle">Para empresas em escala</p>
+                        </div>
+                        <div class="pricing-price">
+                            <span class="currency">R$</span>
+                            <span class="amount">297</span>
+                            <span class="period">/mês</span>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> 10.000 conversas/mês</li>
+                            <li><i class="fas fa-check"></i> Canais ilimitados</li>
+                            <li><i class="fas fa-check"></i> IA Avançada + GPT-4</li>
+                            <li><i class="fas fa-check"></i> Suporte prioritário</li>
+                            <li><i class="fas fa-check"></i> Integrações Nativas</li>
+                        </ul>
+                        <a href="https://wa.me/5511997666735?text=Quero%20assinar%20o%20Plano%20Professional"
+                            class="btn btn-primary checkout-btn" data-plan="Professional">Assinar Agora</a>
+                    </div>
+
+                    <!-- Enterprise -->
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3 class="pricing-plan">Enterprise</h3>
+                            <p class="pricing-subtitle">Soluções customizadas</p>
+                        </div>
+                        <div class="pricing-price">
+                            <span class="currency">R$</span>
+                            <span class="amount">897</span>
+                            <span class="period">/mês</span>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> Conversas ilimitadas</li>
+                            <li><i class="fas fa-check"></i> Treinamento com seus dados</li>
+                            <li><i class="fas fa-check"></i> Gerente dedicado</li>
+                            <li><i class="fas fa-check"></i> SLA de 99,9%</li>
+                        </ul>
+                        <a href="https://wa.me/5511997666735?text=Quero%20assinar%20o%20Plano%20Enterprise"
+                            class="btn btn-primary checkout-btn" data-plan="Enterprise">Assinar Agora</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Rastreamento de clique no checkout
+        document.querySelectorAll('.checkout-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const plan = this.getAttribute('data-plan');
+                if (window.fbq) {
+                    fbq('track', 'AddToCart', {
+                        content_name: plan,
+                        content_category: 'Assinatura',
+                        value: (plan === 'Starter' ? 97 : plan === 'Professional' ? 297 : 897),
+                        currency: 'BRL'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

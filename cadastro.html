@@ -1,0 +1,202 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Conta | Kriar - Automações Inteligentes</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .login-page {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .login-panel {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 60%, #0f2d4a 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-form-panel {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background: var(--bg-dark);
+            overflow-y: auto;
+        }
+
+        .login-box {
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .social-btn {
+            width: 100%;
+            padding: .875rem;
+            border: 1.5px solid var(--border-color);
+            border-radius: .75rem;
+            background: var(--card-bg);
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .5rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .login-error {
+            background: rgba(239, 68, 68, .1);
+            border: 1px solid rgba(239, 68, 68, .3);
+            border-radius: .5rem;
+            padding: .75rem 1rem;
+            color: #f87171;
+            font-size: .875rem;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .login-error.show {
+            display: flex;
+            gap: .5rem;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .login-page {
+                grid-template-columns: 1fr;
+            }
+
+            .login-panel {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-page">
+        <!-- Left Panel -->
+        <div class="login-panel">
+            <div style="text-align: center; color: white;">
+                <img src="assets/images/logo-kriar.png" alt="Kriar" style="width: 80px; margin-bottom: 1.5rem;">
+                <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 1rem;">Comece sua jornada hoje.</h2>
+                <p style="opacity: 0.7;">Libere o poder da IA no seu atendimento em menos de 5 minutos.</p>
+            </div>
+        </div>
+
+        <!-- Right Panel -->
+        <div class="login-form-panel">
+            <div class="login-box">
+                <div class="login-header">
+                    <h1>Criar sua conta</h1>
+                    <p>Entre para a elite da automação digital</p>
+                </div>
+
+                <div id="authError" class="login-error">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span id="authErrorMsg"></span>
+                </div>
+
+                <form id="signupForm">
+                    <div class="form-group">
+                        <label class="form-label">E-mail</label>
+                        <input type="email" id="email" class="form-input" required placeholder="seu@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Senha</label>
+                        <input type="password" id="password" class="form-input" required placeholder="••••••••">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Confirmar Senha</label>
+                        <input type="password" id="confirmPassword" class="form-input" required placeholder="••••••••">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary"
+                        style="width:100%; justify-content:center; padding: 1rem;" id="signupBtn">
+                        <span id="btnText">Criar Conta Gratuitamente</span>
+                    </button>
+                </form>
+
+                <div class="divider"
+                    style="margin: 2rem 0; text-align: center; border-bottom: 1px solid var(--border-color); line-height: 0.1em;">
+                    <span
+                        style="background: var(--bg-dark); padding: 0 10px; color: var(--text-light); font-size: 0.8rem;">OU</span>
+                </div>
+
+                <button class="social-btn" id="googleBtn">
+                    <i class="fab fa-google" style="color:#ea4335;"></i> Cadastrar com Google
+                </button>
+
+                <p style="text-align: center; margin-top: 2rem; color: var(--text-secondary);">
+                    Já tem uma conta? <a href="login.html"
+                        style="color: var(--primary-light); font-weight: 600;">Entrar</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/auth.js"></script>
+    <script type="module">
+        document.getElementById('signupForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirm = document.getElementById('confirmPassword').value;
+            const errorDiv = document.getElementById('authError');
+            const errorMsg = document.getElementById('authErrorMsg');
+            const btn = document.getElementById('signupBtn');
+            const btnText = document.getElementById('btnText');
+
+            if (password !== confirm) {
+                errorMsg.textContent = "As senhas não coincidem.";
+                errorDiv.classList.add('show');
+                return;
+            }
+
+            try {
+                btn.disabled = true;
+                btnText.textContent = "Processando...";
+                await window.kriarAuth.signUp(email, password);
+
+                // Rastreamento Meta Pixel Lead
+                if (window.fbq) fbq('track', 'CompleteRegistration');
+
+                window.location.href = 'checkout.html';
+            } catch (error) {
+                btn.disabled = false;
+                btnText.textContent = "Criar Conta Gratuitamente";
+                errorMsg.textContent = "Erro ao criar conta: " + error.message;
+                errorDiv.classList.add('show');
+            }
+        });
+
+        document.getElementById('googleBtn').addEventListener('click', async () => {
+            try {
+                await window.kriarAuth.loginGoogle();
+                window.location.href = 'checkout.html';
+            } catch (error) {
+                alert("Erro no login Google.");
+            }
+        });
+    </script>
+</body>
+
+</html>
