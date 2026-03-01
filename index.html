@@ -34,7 +34,7 @@
         !function (f, b, e, v, n, t, s) {
             if (f.fbq) return; n = f.fbq = function () {
                 n.callMethod ?
-                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
             };
             if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
             n.queue = []; t = b.createElement(e); t.async = !0;
@@ -169,53 +169,58 @@
     </script>
 </head>
 
-<body>
+<body class="theme-dark">
+
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PZ8QNQC3" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
 
     <!-- Scroll Progress Bar -->
     <div class="scroll-progress" id="scrollProgress"></div>
 
-    <!-- Header / Navbar -->
+    <!-- ===== HEADER / NAVBAR ===== -->
     <header class="header" id="header">
         <nav class="navbar container">
-            <div class="nav-brand">
-                <a href="index.html" class="logo">
-                    <span class="logo-icon">
-                        <img src="assets/images/logo-kriar.png" alt="Kriar - Automações Inteligentes">
-                    </span>
-                </a>
-            </div>
+            <a href="index.html" class="logo">
+                <span class="logo-icon">
+                    <img src="assets/images/logo-kriar.png" alt="Kriar - Automações Inteligentes">
+                </span>
+            </a>
 
             <div class="nav-menu" id="navMenu">
                 <ul class="nav-list">
-                    <li class="nav-item"><a href="#inicio" class="nav-link active">Início</a></li>
-                    <li class="nav-item"><a href="#solucoes" class="nav-link">Soluções</a></li>
-                    <li class="nav-item"><a href="#funcionalidades" class="nav-link">Funcionalidades</a></li>
-                    <li class="nav-item"><a href="#servicos" class="nav-link">Serviços</a></li>
-                    <li class="nav-item"><a href="#casos" class="nav-link">Casos de Uso</a></li>
-                    <li class="nav-item"><a href="#precos" class="nav-link">Preços</a></li>
-                    <li class="nav-item"><a href="contato.html" class="nav-link">Contato</a></li>
+                    <li><a href="#inicio" class="nav-link active">Home</a></li>
+                    <li><a href="#servicos" class="nav-link">Serviços</a></li>
+                    <li><a href="#sobre" class="nav-link">Sobre</a></li>
+                    <li><a href="#depoimentos" class="nav-link">Depoimentos</a></li>
+                    <li><a href="#contato" class="nav-link">Contato</a></li>
                 </ul>
-                <div class="nav-buttons">
-                    <a href="login.html" class="btn btn-ghost">Entrar</a>
-                    <a href="https://wa.me/5511997666735?text=Oi,%20vim%20pelo%20site%20e%20gostaria%20de%20uma%20consultoria%20em%20Agentes%20de%20IA"
-                        class="btn btn-primary">Falar no WhatsApp</a>
+                <div class="nav-actions">
+                    <!-- Theme toggle -->
+                    <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+                        <span class="theme-icon theme-icon-dark"><i class="fas fa-moon"></i></span>
+                        <span class="theme-icon theme-icon-light"><i class="fas fa-sun"></i></span>
+                    </button>
+                    <a href="#contato" class="btn btn-primary">Fale Conosco</a>
                 </div>
             </div>
 
-            <button class="nav-toggle" id="navToggle" aria-label="Menu">
-                <span class="hamburger"></span>
-                <span class="hamburger"></span>
-                <span class="hamburger"></span>
-            </button>
+            <div class="nav-right-mobile">
+                <button class="theme-toggle" id="themeToggleMobile" aria-label="Alternar tema">
+                    <span class="theme-icon theme-icon-dark"><i class="fas fa-moon"></i></span>
+                    <span class="theme-icon theme-icon-light"><i class="fas fa-sun"></i></span>
+                </button>
+                <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </button>
+            </div>
         </nav>
         <div class="menu-overlay" id="menuOverlay"></div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- ===== HERO ===== -->
     <section class="hero" id="inicio">
         <div class="hero-background">
             <div class="hero-gradient"></div>
@@ -227,958 +232,457 @@
         </div>
 
         <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <span class="hero-badge">
-                        <i class="fas fa-rocket"></i>
-                        Automação Inteligente
-                    </span>
-                    <h1 class="hero-title">
-                        Escale suas Vendas com
-                        <span class="gradient-text">Agentes de IA</span> de Alta Performance
-                    </h1>
-                    <p class="hero-description">
-                        Automatize o atendimento no WhatsApp, Instagram e Site com IA que aprende sobre seu negócio.
-                        Converta leads em clientes 24/7 sem aumentar sua equipe.
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="cadastro.html" class="btn btn-primary btn-lg">
-                            <i class="fas fa-rocket"></i>
-                            Começar Agora Grátis
-                        </a>
-                        <a href="#demo" class="btn btn-secondary btn-lg">
-                            <i class="fas fa-video"></i>
-                            Ver Demonstração
-                        </a>
-                    </div>
-                    <div class="hero-stats">
-                        <div class="stat-item">
-                            <div class="stat-number">10k+</div>
-                            <div class="stat-label">Conversas Automatizadas</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">500+</div>
-                            <div class="stat-label">Empresas Atendidas</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">99%</div>
-                            <div class="stat-label">Satisfação</div>
-                        </div>
-                    </div>
+            <div class="hero-content hero-centered">
+                <span class="hero-badge">
+                    <i class="fas fa-rocket"></i> Automação Inteligente com IA
+                </span>
+                <h1 class="hero-title">
+                    Transformamos Seu<br>
+                    <span class="gradient-text">Atendimento Digital</span>
+                </h1>
+                <p class="hero-description">
+                    Estratégias de IA personalizadas para elevar seu negócio ao próximo nível —
+                    chatbots inteligentes, automação 24/7 e resultados reais no WhatsApp, Instagram e além.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contato" class="btn btn-primary btn-lg">
+                        <i class="fas fa-comments"></i> Fale Conosco
+                    </a>
+                    <a href="#servicos" class="btn btn-outline btn-lg">
+                        Ver Serviços <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
-                <div class="hero-visual">
-                    <div class="mockup-container">
-                        <div class="chat-mockup">
-                            <div class="chat-header">
-                                <div class="chat-avatar">
-                                    <i class="fas fa-robot"></i>
-                                </div>
-                                <div class="chat-info">
-                                    <div class="chat-name">Assistente Kriar</div>
-                                    <div class="chat-status">Online</div>
-                                </div>
-                            </div>
-                            <div class="chat-messages">
-                                <div class="message bot">
-                                    <div class="message-bubble">
-                                        Olá! ðŸ‘‹ Como posso ajudar você hoje?
-                                    </div>
-                                </div>
-                                <div class="message user">
-                                    <div class="message-bubble">
-                                        Quero conhecer os planos
-                                    </div>
-                                </div>
-                                <div class="message bot">
-                                    <div class="message-bubble">
-                                        Perfeito! Temos planos a partir de R$ 97/mês. Posso te mostrar?
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
+                <!-- Excellence badges -->
+                <div class="excellence-row">
+                    <div class="excellence-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>+500 empresas atendidas</span>
+                    </div>
+                    <div class="excellence-divider"></div>
+                    <div class="excellence-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>10M+ mensagens automáticas/mês</span>
+                    </div>
+                    <div class="excellence-divider"></div>
+                    <div class="excellence-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Automação real 24/7</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Trusted By Section -->
-    <section class="trusted-by">
-        <div class="container">
-            <p class="trusted-title">Tecnologia que impulsiona o crescimento de empresas de diversos setores</p>
-            <div class="trusted-logos">
-                <div class="logo-item"><i class="fas fa-shopping-bag"></i> Varejo & E-commerce</div>
-                <div class="logo-item"><i class="fas fa-heartbeat"></i> Saúde & Bem-estar</div>
-                <div class="logo-item"><i class="fas fa-graduation-cap"></i> Educação & Infoprodutos</div>
-                <div class="logo-item"><i class="fas fa-utensils"></i> Gastronomia & Delivery</div>
-                <div class="logo-item"><i class="fas fa-briefcase"></i> Prestadores de Serviço</div>
+    <!-- ===== SERVICES TICKER ===== -->
+    <div class="services-ticker">
+        <div class="ticker-inner">
+            <div class="ticker-track">
+                <span class="ticker-item"><i class="fas fa-robot"></i> Agentes de IA</span>
+                <span class="ticker-sep">✦</span>
+                <span class="ticker-item"><i class="fas fa-comments"></i> Chatbots Inteligentes</span>
+                <span class="ticker-sep">✦</span>
+                <span class="ticker-item"><i class="fab fa-whatsapp"></i> WhatsApp Business API</span>
+                <span class="ticker-sep">✦</span>
+                <span class="ticker-item"><i class="fas fa-bolt"></i> Automação 24/7</span>
+                <span class="ticker-sep">✦</span>
+                <span class="ticker-item"><i class="fab fa-instagram"></i> Instagram Direct</span>
+                <span class="ticker-sep">✦</span>
+                <span class="ticker-item"><i class="fas fa-chart-line"></i> Analytics em Tempo Real</span>
+                <span class="ticker-sep">✦</span>
+                <span class="ticker-item"><i class="fas fa-plug"></i> Integrações Nativas</span>
+                <span class="ticker-sep">✦</span>
+                <span class="ticker-item"><i class="fas fa-shield-alt"></i> LGPD Compliant</span>
+                <span class="ticker-sep">✦</span>
+                <span class="ticker-item"><i class="fas fa-headset"></i> Atendimento Híbrido</span>
+                <span class="ticker-sep">✦</span>
+                <span class="ticker-item"><i class="fas fa-store"></i> E-commerce IA</span>
+                <span class="ticker-sep">✦</span>
+                <!-- duplicado para loop contínuo -->
+                <span class="ticker-item"><i class="fas fa-robot"></i> Agentes de IA</span>
+                <span class="ticker-sep">✦</span>
+                <span class="ticker-item"><i class="fas fa-comments"></i> Chatbots Inteligentes</span>
+                <span class="ticker-sep">✦</span>
+                <span class="ticker-item"><i class="fab fa-whatsapp"></i> WhatsApp Business API</span>
+                <span class="ticker-sep">✦</span>
+                <span class="ticker-item"><i class="fas fa-bolt"></i> Automação 24/7</span>
+                <span class="ticker-sep">✦</span>
+                <span class="ticker-item"><i class="fab fa-instagram"></i> Instagram Direct</span>
+                <span class="ticker-sep">✦</span>
+                <span class="ticker-item"><i class="fas fa-chart-line"></i> Analytics em Tempo Real</span>
+                <span class="ticker-sep">✦</span>
+                <span class="ticker-item"><i class="fas fa-plug"></i> Integrações Nativas</span>
+                <span class="ticker-sep">✦</span>
+                <span class="ticker-item"><i class="fas fa-shield-alt"></i> LGPD Compliant</span>
+                <span class="ticker-sep">✦</span>
+                <span class="ticker-item"><i class="fas fa-headset"></i> Atendimento Híbrido</span>
+                <span class="ticker-sep">✦</span>
+                <span class="ticker-item"><i class="fas fa-store"></i> E-commerce IA</span>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Solutions Section -->
-    <section class="solutions" id="solucoes">
+    <!-- ===== SERVICES SECTION ===== -->
+    <section class="services-section" id="servicos">
         <div class="container">
             <div class="section-header">
                 <span class="section-badge">Soluções</span>
-                <h2 class="section-title">Omnichannel: Onde seus Clientes Estão</h2>
-                <p class="section-description">
-                    Centralize sua comunicação e ofereça uma experiência fluida em todos os canais.
-                </p>
+                <h2 class="section-title">Soluções completas para <span class="gradient-text">impulsionar sua
+                        marca</span></h2>
             </div>
 
-            <div class="solutions-grid">
-                <div class="solution-card">
-                    <div class="solution-icon whatsapp">
-                        <i class="fab fa-whatsapp"></i>
-                    </div>
-                    <h3 class="solution-title">WhatsApp Business</h3>
-                    <p class="solution-description">
-                        Venda enquanto dorme com a API oficial. Recuperação de carrinho e automação total.
-                    </p>
-                    <ul class="solution-features">
-                        <li><i class="fas fa-check"></i> Resposta InstantÃ¢nea 24/7</li>
-                        <li><i class="fas fa-check"></i> Catálogo Inteligente</li>
-                        <li><i class="fas fa-check"></i> Checkout no Chat</li>
-                    </ul>
-
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-brain"></i></div>
+                    <h3>Inteligência Artificial</h3>
+                    <p>Agentes de IA que entendem contexto, aprendem com seu negócio e atendem clientes automaticamente
+                        24/7.</p>
                 </div>
-
-                <div class="solution-card">
-                    <div class="solution-icon instagram">
-                        <i class="fab fa-instagram"></i>
-                    </div>
-                    <h3 class="solution-title">Instagram Direct</h3>
-                    <p class="solution-description">
-                        Transforme seguidores em compradores. Comentários e DMs respondidos pela IA.
-                    </p>
-                    <ul class="solution-features">
-                        <li><i class="fas fa-check"></i> Engajamento em Escala</li>
-                        <li><i class="fas fa-check"></i> Automação de Mentions</li>
-                        <li><i class="fas fa-check"></i> Atendimento via DM</li>
-                    </ul>
-
+                <div class="service-card">
+                    <div class="service-icon"><i class="fab fa-whatsapp"></i></div>
+                    <h3>WhatsApp Business</h3>
+                    <p>API Oficial Meta. Venda enquanto dorme, recupere carrinhos e automatize todo o atendimento no
+                        WhatsApp.</p>
                 </div>
-
-                <div class="solution-card">
-                    <div class="solution-icon messenger">
-                        <i class="fab fa-facebook-messenger"></i>
-                    </div>
-                    <h3 class="solution-title">Facebook Messenger</h3>
-                    <p class="solution-description">
-                        Atenda seus clientes no Messenger com chatbots inteligentes.
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-chart-pie"></i></div>
+                    <h3>Marketing Digital</h3>
+                    <p>Estratégias de SEO, mídia paga e conteúdo para atingir seu público-alvo e maximizar o seu ROI.
                     </p>
-                    <ul class="solution-features">
-                        <li><i class="fas fa-check"></i> Chat automatizado</li>
-                        <li><i class="fas fa-check"></i> Integração com página</li>
-                        <li><i class="fas fa-check"></i> Anúncios diretos</li>
-                    </ul>
-
                 </div>
-
-                <div class="solution-card">
-                    <div class="solution-icon webchat">
-                        <i class="fas fa-comment-dots"></i>
-                    </div>
-                    <h3 class="solution-title">Chat para Site</h3>
-                    <p class="solution-description">
-                        Widget de chat personalizado para seu site com IA integrada.
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Desenvolvimento Web</h3>
+                    <p>Sites modernos, responsivos e focados em alta conversão. Tecnologia de ponta a serviço do seu
+                        negócio.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-cogs"></i></div>
+                    <h3>Consultoria em TI</h3>
+                    <p>Análise técnica profunda e otimização de processos digitais para garantir eficiência operacional.
                     </p>
-                    <ul class="solution-features">
-                        <li><i class="fas fa-check"></i> Design customizável</li>
-                        <li><i class="fas fa-check"></i> Atendimento híbrido</li>
-                        <li><i class="fas fa-check"></i> Analytics completo</li>
-                    </ul>
-
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3>Apps Mobile</h3>
+                    <p>Aplicativos nativos e híbridos para iOS e Android que conectam sua marca aos usuários em qualquer
+                        lugar.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-magic"></i></div>
+                    <h3>Design UX/UI</h3>
+                    <p>Interfaces centradas no usuário que combinam estética deslumbrante com usabilidade intuitiva.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-bolt"></i></div>
+                    <h3>Automação</h3>
+                    <p>Conecte sistemas e automatize tarefas repetitivas para ganhar tempo e reduzir erros operacionais.
+                    </p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-chart-bar"></i></div>
+                    <h3>Análise de Dados & BI</h3>
+                    <p>Transforme dados brutos em inteligência de negócios para tomadas de decisão assertivas e
+                        estratégicas.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features" id="funcionalidades">
+    <!-- ===== SOBRE + FORM ===== -->
+    <section class="about-section" id="sobre">
         <div class="container">
-            <div class="section-header">
-                <span class="section-badge">Funcionalidades</span>
-                <h2 class="section-title">Tudo que Você Precisa em Uma Plataforma</h2>
-                <p class="section-description">
-                    Ferramentas poderosas para criar, gerenciar e otimizar suas automações.
-                </p>
-            </div>
+            <div class="about-inner">
 
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3 class="feature-title">Inteligência Artificial</h3>
-                    <p class="feature-description">
-                        Chatbots com IA avançada que entendem contexto e aprendem continuamente.
+                <!-- Texto Sobre -->
+                <div class="about-text">
+                    <span class="section-badge">Sobre a Kriar</span>
+                    <h2 class="about-title">Tecnologia + <span class="gradient-text">Resultados Reais</span></h2>
+                    <p class="about-desc">
+                        Somos especialistas apaixonados por tecnologia dedicados a ajudar empresas a prosperar na era
+                        digital.
+                        Com mais de 5 anos de atuação e uma liderança com mais de 15 anos de experiência, entregamos
+                        soluções inovadoras que geram resultados concretos.
                     </p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-code-branch"></i>
-                    </div>
-                    <h3 class="feature-title">Fluxos Personalizados</h3>
-                    <p class="feature-description">
-                        Construtor visual drag-and-drop para criar fluxos conversacionais complexos.
-                    </p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-plug"></i>
-                    </div>
-                    <h3 class="feature-title">Integrações Nativas</h3>
-                    <p class="feature-description">
-                        Conecte com CRM, ERP, e-commerce, pagamentos e centenas de aplicativos.
-                    </p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3 class="feature-title">Analytics Avançado</h3>
-                    <p class="feature-description">
-                        Dashboards em tempo real com métricas detalhadas de desempenho.
-                    </p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3 class="feature-title">Atendimento Híbrido</h3>
-                    <p class="feature-description">
-                        Combine automação com atendimento humano para experiência perfeita.
-                    </p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3 class="feature-title">Segurança LGPD</h3>
-                    <p class="feature-description">
-                        Proteção de dados completa em conformidade com LGPD e GDPR.
-                    </p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-language"></i>
-                    </div>
-                    <h3 class="feature-title">Multi-idioma</h3>
-                    <p class="feature-description">
-                        Atenda clientes em português, inglês, espanhol e outros idiomas.
-                    </p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3 class="feature-title">App Mobile</h3>
-                    <p class="feature-description">
-                        Gerencie suas automações de qualquer lugar com nossos apps.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Complementary Services Section -->
-    <section class="complementary-services" id="servicos">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-badge comp-badge">
-                    <i class="fas fa-layer-group"></i>
-                    Serviços Complementares
-                </span>
-                <h2 class="section-title">Potencialize suas Automações</h2>
-                <p class="section-description">
-                    Combine nossa tecnologia de automação com estratégias de marketing digital para resultados ainda
-                    maiores.
-                </p>
-            </div>
-
-            <div class="comp-services-grid">
-                <!-- Assessoria em Marketing -->
-                <div class="comp-card">
-                    <div class="comp-card-header">
-                        <div class="comp-icon marketing">
-                            <i class="fas fa-chart-pie"></i>
+                    <ul class="about-list">
+                        <li><i class="fas fa-check"></i> +5 anos de atuação no mercado</li>
+                        <li><i class="fas fa-check"></i> +15 anos de experiência da equipe em IA e automação</li>
+                        <li><i class="fas fa-check"></i> +500 empresas atendidas com sucesso</li>
+                        <li><i class="fas fa-check"></i> Equipe especialista em desenvolvimento e consultoria</li>
+                        <li><i class="fas fa-check"></i> Soluções tecnológicas de ponta com resultados reais</li>
+                    </ul>
+                    <div class="about-stats">
+                        <div class="about-stat">
+                            <span class="about-stat-num">500+</span>
+                            <span class="about-stat-label">Empresas</span>
                         </div>
-                        <span class="comp-tag">Estratégia</span>
-                    </div>
-                    <h3 class="comp-title">Assessoria em Marketing</h3>
-                    <p class="comp-description">
-                        Consultoria estratégica para posicionamento de mercado e escala de marca. Defina sua presença
-                        digital antes de automatizar.
-                    </p>
-                    <ul class="comp-features">
-                        <li><i class="fas fa-check-circle"></i> Diagnóstico de mercado</li>
-                        <li><i class="fas fa-check-circle"></i> Planejamento de marca</li>
-                        <li><i class="fas fa-check-circle"></i> Estratégia de conteúdo</li>
-                    </ul>
-                    <a href="https://wa.me/5511997666735?text=Oi,%20tenho%20interesse%20em%20Assessoria%20em%20Marketing"
-                        class="comp-cta" target="_blank">
-                        Saiba Mais <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-
-                <!-- Tráfego Pago -->
-                <div class="comp-card">
-                    <div class="comp-card-header">
-                        <div class="comp-icon traffic">
-                            <i class="fas fa-bullseye"></i>
+                        <div class="about-stat">
+                            <span class="about-stat-num">10M+</span>
+                            <span class="about-stat-label">Mensagens/mês</span>
                         </div>
-                        <span class="comp-tag">Performance</span>
-                    </div>
-                    <h3 class="comp-title">Tráfego Pago</h3>
-                    <p class="comp-description">
-                        Investimento inteligente em anúncios focado em aquisição de clientes qualificados. Leve leads
-                        direto para seus chatbots.
-                    </p>
-                    <ul class="comp-features">
-                        <li><i class="fas fa-check-circle"></i> Google Ads & Meta Ads</li>
-                        <li><i class="fas fa-check-circle"></i> Otimização de ROI</li>
-                        <li><i class="fas fa-check-circle"></i> Relatórios detalhados</li>
-                    </ul>
-                    <a href="https://wa.me/5511997666735?text=Oi,%20tenho%20interesse%20em%20Trafego%20Pago"
-                        class="comp-cta" target="_blank">
-                        Saiba Mais <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-
-                <!-- Gestão de Mídias Sociais -->
-                <div class="comp-card">
-                    <div class="comp-card-header">
-                        <div class="comp-icon social">
-                            <i class="fas fa-share-alt"></i>
+                        <div class="about-stat">
+                            <span class="about-stat-num">99%</span>
+                            <span class="about-stat-label">Satisfação</span>
                         </div>
-                        <span class="comp-tag">Engajamento</span>
                     </div>
-                    <h3 class="comp-title">Gestão de Mídias Sociais</h3>
-                    <p class="comp-description">
-                        Curadoria de conteúdo e gestão de comunidades que geram desejo e fidelidade. Integre com
-                        nossas
-                        automações de DM.
-                    </p>
-                    <ul class="comp-features">
-                        <li><i class="fas fa-check-circle"></i> Conteúdo estratégico</li>
-                        <li><i class="fas fa-check-circle"></i> Gestão de comunidade</li>
-                        <li><i class="fas fa-check-circle"></i> Instagram & Facebook</li>
-                    </ul>
-                    <a href="https://wa.me/5511997666735?text=Oi,%20tenho%20interesse%20em%20Gestao%20de%20Midias%20Sociais"
-                        class="comp-cta" target="_blank">
-                        Saiba Mais <i class="fas fa-arrow-right"></i>
-                    </a>
                 </div>
 
-                <!-- Design de Produto -->
-                <div class="comp-card">
-                    <div class="comp-card-header">
-                        <div class="comp-icon design">
-                            <i class="fas fa-palette"></i>
-                        </div>
-                        <span class="comp-tag">Identidade</span>
-                    </div>
-                    <h3 class="comp-title">Design de Produto</h3>
-                    <p class="comp-description">
-                        Interfaces e identidades visuais que elevam a percepção de valor do seu negócio e tornam suas
-                        automações mais atraentes.
-                    </p>
-                    <ul class="comp-features">
-                        <li><i class="fas fa-check-circle"></i> Identidade visual</li>
-                        <li><i class="fas fa-check-circle"></i> UI/UX profissional</li>
-                        <li><i class="fas fa-check-circle"></i> Materiais gráficos</li>
-                    </ul>
-                    <a href="https://wa.me/5511997666735?text=Oi,%20tenho%20interesse%20em%20Design%20de%20Produto"
-                        class="comp-cta" target="_blank">
-                        Saiba Mais <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="comp-cta-row">
-                <p class="comp-note">
-                    <i class="fas fa-info-circle"></i>
-                    Estes serviços são oferecidos como complemento Ã s nossas soluções de automação.
-                </p>
-                <a href="https://wa.me/5511997666735?text=Oi,%20gostaria%20de%20saber%20mais%20sobre%20os%20servicos%20complementares"
-                    class="btn btn-outline" target="_blank">
-                    <i class="fab fa-whatsapp"></i>
-                    Conversar sobre pacotes completos
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Use Cases Section -->
-    <section class="use-cases" id="casos">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-badge">Casos de Uso</span>
-                <h2 class="section-title">Soluções para Cada Necessidade</h2>
-            </div>
-
-            <div class="use-cases-grid">
-                <div class="use-case-card">
-                    <div class="use-case-icon">
-                        <i class="fas fa-shopping-cart"></i>
-                    </div>
-                    <h3>E-commerce & Vendas</h3>
-                    <p>Automatize pedidos, recupere carrinhos abandonados e aumente conversões.</p>
-                </div>
-
-                <div class="use-case-card">
-                    <div class="use-case-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3>Suporte ao Cliente</h3>
-                    <p>Responda Dúvidas frequentes 24/7 e reduza tempo de espera.</p>
-                </div>
-
-                <div class="use-case-card">
-                    <div class="use-case-icon">
-                        <i class="fas fa-calendar-check"></i>
-                    </div>
-                    <h3>Agendamentos</h3>
-                    <p>Automatize marcações de consultas, reservas e compromissos.</p>
-                </div>
-
-                <div class="use-case-card">
-                    <div class="use-case-icon">
-                        <i class="fas fa-bullhorn"></i>
-                    </div>
-                    <h3>Marketing & Leads</h3>
-                    <p>Capture, qualifique e nutra leads automaticamente.</p>
-                </div>
-
-                <div class="use-case-card">
-                    <div class="use-case-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>Educação</h3>
-                    <p>Tire Dúvidas de alunos, envie materiais e notificações.</p>
-                </div>
-
-                <div class="use-case-card">
-                    <div class="use-case-icon">
-                        <i class="fas fa-credit-card"></i>
-                    </div>
-                    <h3>Cobranças & Pagamentos</h3>
-                    <p>Automatize lembretes de pagamento e processos de cobrança.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section class="pricing" id="precos">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-badge">Planos</span>
-                <h2 class="section-title">Escolha o Plano Ideal para Seu Negócio</h2>
-                <p class="section-description">
-                    Transparência total. Sem taxas ocultas. Cancele quando quiser.
-                </p>
-            </div>
-
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3 class="pricing-plan">Starter</h3>
-                        <p class="pricing-subtitle">Para começar</p>
-                    </div>
-                    <div class="pricing-price">
-                        <span class="currency">R$</span>
-                        <span class="amount">97</span>
-                        <span class="period">/mês</span>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> 1.000 conversas/mês</li>
-                        <li><i class="fas fa-check"></i> 2 canais ativos</li>
-                        <li><i class="fas fa-check"></i> Chatbot básico com IA</li>
-                        <li><i class="fas fa-check"></i> Suporte por email</li>
-                        <li><i class="fas fa-check"></i> Analytics básico</li>
-                        <li class="disabled"><i class="fas fa-times"></i> Integrações avançadas</li>
-                        <li class="disabled"><i class="fas fa-times"></i> API personalizada</li>
-                    </ul>
-                    <a href="cadastro.html" class="btn btn-outline">Começar Trial Grátis</a>
-                </div>
-
-                <div class="pricing-card featured">
-                    <div class="pricing-badge">Mais Popular</div>
-                    <div class="pricing-header">
-                        <h3 class="pricing-plan">Professional</h3>
-                        <p class="pricing-subtitle">Para crescer</p>
-                    </div>
-                    <div class="pricing-price">
-                        <span class="currency">R$</span>
-                        <span class="amount">297</span>
-                        <span class="period">/mês</span>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> 10.000 conversas/mês</li>
-                        <li><i class="fas fa-check"></i> Canais ilimitados</li>
-                        <li><i class="fas fa-check"></i> IA avançada + GPT</li>
-                        <li><i class="fas fa-check"></i> Suporte prioritário</li>
-                        <li><i class="fas fa-check"></i> Analytics completo</li>
-                        <li><i class="fas fa-check"></i> Todas as integrações</li>
-                        <li><i class="fas fa-check"></i> Atendimento híbrido</li>
-                    </ul>
-                    <a href="cadastro.html" class="btn btn-primary">Assinar Agora</a>
-                </div>
-
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3 class="pricing-plan">Enterprise</h3>
-                        <p class="pricing-subtitle">Para escalar</p>
-                    </div>
-                    <div class="pricing-price">
-                        <span class="currency">R$</span>
-                        <span class="amount">897</span>
-                        <span class="period">/mês</span>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> Conversas ilimitadas</li>
-                        <li><i class="fas fa-check"></i> Tudo do Professional</li>
-                        <li><i class="fas fa-check"></i> IA personalizada</li>
-                        <li><i class="fas fa-check"></i> Gerente de sucesso</li>
-                        <li><i class="fas fa-check"></i> SLA garantido</li>
-                        <li><i class="fas fa-check"></i> API completa</li>
-                        <li><i class="fas fa-check"></i> Whitelabel disponível</li>
-                    </ul>
-                    <a href="https://wa.me/5511997666735?text=Oi,%20vim%20pelo%20site%20e%20gostaria%20de%20uma%20consultoria%20em%20Agentes%20de%20IA"
-                        class="btn btn-outline">Falar com Especialista</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section id="faq" style="padding:5rem 0;background:var(--bg-secondary);">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-badge">Dúvidas</span>
-                <h2 class="section-title">Perguntas <span class="gradient-text">Frequentes</span></h2>
-                <p class="section-description">Tudo o que você precisa saber antes de começar. Clique em qualquer
-                    pergunta para ver a resposta.</p>
-            </div>
-
-            <!-- Category Tabs -->
-            <div style="display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin:2rem 0;" id="faqTabs">
-                <button class="faq-tab active" data-group="plataforma">Plataforma</button>
-                <button class="faq-tab" data-group="servicos">Serviços</button>
-                <button class="faq-tab" data-group="planos">Planos & Preços</button>
-                <button class="faq-tab" data-group="seguranca">Segurança & Dados</button>
-            </div>
-
-            <div style="max-width:800px;margin:0 auto;">
-
-                <!-- PLATAFORMA -->
-                <div class="faq-group" data-group="plataforma">
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>O que é a Kriar e como funciona?</span>
-                            <i class="fas fa-plus faq-icon"></i>
-                        </div>
-                        <div class="faq-answer">
-                            <div class="faq-answer-inner">
-                                A Kriar é uma plataforma brasileira de automação de atendimento com inteligência
-                                artificial. Você cria chatbots sem precisar programar, conecta nos seus canais
-                                (WhatsApp, Instagram, Facebook, site) e a IA passa a responder, qualificar leads e
-                                vender automaticamente â€” 24 horas por dia, 7 dias por semana.
+                <!-- Formulário Lead -->
+                <div class="about-form" id="contato">
+                    <div class="form-card">
+                        <h3 class="form-title">Pronto para inovar?</h3>
+                        <p class="form-subtitle">Receba uma consultoria gratuita e descubra como podemos transformar seu
+                            negócio.</p>
+                        <form id="leadForm" onsubmit="submitLeadForm(event)">
+                            <div class="form-group">
+                                <input type="text" id="lead-name" placeholder="Seu nome completo" required>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>Preciso saber programar para usar a Kriar?</span>
-                            <i class="fas fa-plus faq-icon"></i>
-                        </div>
-                        <div class="faq-answer">
-                            <div class="faq-answer-inner">
-                                Não! A Kriar foi criada para ser usada por qualquer pessoa. Nosso construtor visual
-                                drag-and-drop permite criar fluxos completos de conversa sem escrever uma linha de
-                                código. Se quiser ir além, temos <a href="api.html">API completa para
-                                    desenvolvedores</a>.
+                            <div class="form-group">
+                                <input type="email" id="lead-email" placeholder="E-mail profissional" required>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>Quais canais posso automatizar com a Kriar?</span>
-                            <i class="fas fa-plus faq-icon"></i>
-                        </div>
-                        <div class="faq-answer">
-                            <div class="faq-answer-inner">
-                                Você pode automatizar o atendimento no <strong>WhatsApp Business API</strong>,
-                                <strong>Instagram Direct</strong>, <strong>Facebook Messenger</strong> e <strong>Chat do
-                                    seu site</strong>. Todos os canais são gerenciados em um único painel unificado.
+                            <div class="form-group">
+                                <input type="tel" id="lead-phone" placeholder="WhatsApp (11) 99999-9999" required>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>Como funciona o atendimento híbrido (IA + humano)?</span>
-                            <i class="fas fa-plus faq-icon"></i>
-                        </div>
-                        <div class="faq-answer">
-                            <div class="faq-answer-inner">
-                                A IA resolve até 80% das demandas comuns. Quando um cliente precisa de algo específico
-                                ou atendimento personalizado, a IA transfere a conversa para um atendente humano em
-                                tempo real, mantendo todo o histórico e contexto da conversa.
+                            <div class="form-group">
+                                <select id="lead-segment">
+                                    <option value="">Selecione seu segmento</option>
+                                    <option>E-commerce e Varejo</option>
+                                    <option>Saúde e Bem-estar</option>
+                                    <option>Educação e Infoprodutos</option>
+                                    <option>Gastronomia e Delivery</option>
+                                    <option>Prestação de Serviços</option>
+                                    <option>Agência de Marketing</option>
+                                    <option>Outro</option>
+                                </select>
                             </div>
+                            <button type="submit" class="btn btn-primary form-submit-btn">
+                                <i class="fas fa-rocket"></i> Quero minha Consultoria Gratuita
+                            </button>
+                        </form>
+                        <div id="formSuccess" class="form-success" style="display:none;">
+                            <i class="fas fa-check-circle"></i>
+                            <h4>Recebemos sua solicitação!</h4>
+                            <p>Você receberá um contato em breve. Ou <a
+                                    href="https://wa.me/5511997666735?text=Oi,%20solicitei%20uma%20consultoria%20no%20site"
+                                    target="_blank">fale agora no WhatsApp</a>.</p>
                         </div>
-                    </div>
-                    O chatbot atende automaticamente e transfere para um atendente humano quando necessário
-                    â€” seja por palavra-chave, intenção detectada pela IA ou solicitação do cliente. Você
-                    configura horários de atendimento humano; fora deles, o bot registra a demanda para
-                    followup automático.
-                </div>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">
-                <span>Quanto tempo leva para configurar e lançar meu primeiro chatbot?</span>
-                <i class="fas fa-plus faq-icon"></i>
-            </div>
-            <div class="faq-answer">
-                <div class="faq-answer-inner">
-                    Com nossos templates prontos é possível ter o primeiro bot funcionando em <strong>menos
-                        de 15 minutos</strong>. Para fluxos mais complexos com IA personalizada, o processo
-                    é de 1 a 3 dias úteis â€” e nossa equipe de onboarding te acompanha em cada etapa.
-                </div>
-            </div>
-        </div>
-
-        </div>
-
-        <!-- SERVIÇOS -->
-        <div class="faq-group" data-group="servicos" style="display:none;">
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Como funciona a integração com o WhatsApp Business API?</span>
-                    <i class="fas fa-plus faq-icon"></i>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-inner">
-                        Utilizamos a <strong>API Oficial do WhatsApp Business</strong> (nunca versões não
-                        oficiais). A Kriar é Parceiro Oficial Meta, o que garante homologação mais rápida â€”
-                        geralmente de 24h a 72h. Nossa equipe cuida de todo o processo de aprovação para você.
+                        <p class="form-privacy"><i class="fas fa-lock"></i> Não enviamos spam. Seus dados estão seguros.
+                        </p>
                     </div>
                 </div>
             </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Quais integrações a Kriar oferece com outros sistemas?</span>
-                    <i class="fas fa-plus faq-icon"></i>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-inner">
-                        A Kriar se integra nativamente com <strong>HubSpot, Salesforce, RD Station, Shopify,
-                            WooCommerce, Google Sheets, Zapier</strong> e mais de 50 outros sistemas via
-                        webhooks. Para integrações personalizadas, oferecemos API REST completa documentada. <a
-                            href="integracoes.html">Ver todas as integrações</a>.
-                    </div>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>A IA da Kriar aprende com as conversas do meu negócio?</span>
-                    <i class="fas fa-plus faq-icon"></i>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-inner">
-                        Sim. Nos planos <strong>Professional e Enterprise</strong>, a IA é treinada com os dados
-                        do seu negócio â€” produtos, FAQs, tom de voz e histórico de atendimentos. Quanto mais ela
-                        interage, mais precisa e personalizada fica para o seu contexto.
-                    </div>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Posso usar a Kriar para e-commerce e vender pelo WhatsApp?</span>
-                    <i class="fas fa-plus faq-icon"></i>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-inner">
-                        Sim! A Kriar é amplamente usada para <strong>vendas conversacionais via
-                            WhatsApp</strong>. Você pode integrar com seu catálogo de produtos, gerar links de
-                        pagamento, recuperar carrinhos abandonados e acompanhar pedidos â€” tudo de forma
-                        automática pelo chat.
-                    </div>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>A Kriar oferece suporte e consultoria de implementação?</span>
-                    <i class="fas fa-plus faq-icon"></i>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-inner">
-                        Todos os planos incluem onboarding guiado, tutoriais em vídeo e acesso Ã  central de
-                        ajuda. Os planos <strong>Professional e Enterprise</strong> contam com suporte
-                        prioritário via chat e e-mail. O plano <strong>Enterprise</strong> inclui ainda um
-                        gerente de sucesso dedicado e sessões de consultoria mensais.
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- PLANOS -->
-        <div class="faq-group" data-group="planos" style="display:none;">
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Qual a diferença entre os planos Starter, Professional e Enterprise?</span>
-                    <i class="fas fa-plus faq-icon"></i>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-inner">
-                        O <strong>Starter (R$97/mês)</strong> inclui 1.000 conversas/mês e 2 canais â€” ideal para
-                        pequenos negócios. O <strong>Professional (R$297/mês)</strong> oferece 10.000 conversas,
-                        canais ilimitados e IA avançada com GPT. O <strong>Enterprise (R$897/mês)</strong> tem
-                        conversas ilimitadas, IA personalizada, gerente dedicado e SLA com uptime garantido.
-                    </div>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Posso começar grátis antes de pagar?</span>
-                    <i class="fas fa-plus faq-icon"></i>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-inner">
-                        Sim! Oferecemos um <strong>trial gratuito de 14 dias</strong> em qualquer plano, sem
-                        necessidade de cartão de crédito. Você pode testar todas as funcionalidades e só decide
-                        se quer continuar ao final do período.
-                    </div>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Posso cancelar minha assinatura a qualquer momento?</span>
-                    <i class="fas fa-plus faq-icon"></i>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-inner">
-                        Sim, sem multas ou taxas de cancelamento. Você cancela diretamente pelo painel ou pelo
-                        suporte. O acesso permanece ativo até o final do período já pago.
-                    </div>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>O que acontece se eu ultrapassar o limite de conversas do meu plano?</span>
-                    <i class="fas fa-plus faq-icon"></i>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-inner">
-                        Você receberá um alerta quando estiver próximo ao limite. Ao ultrapassar, você pode
-                        fazer upgrade instantÃ¢neo pelo painel ou adquirir um pacote de conversas avulsas. Nunca
-                        interrompemos seu atendimento de forma abrupta.
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- SEGURANÇA -->
-        <div class="faq-group" data-group="seguranca" style="display:none;">
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>A Kriar está em conformidade com a LGPD?</span>
-                    <i class="fas fa-plus faq-icon"></i>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-inner">
-                        Sim. Todos os dados são criptografados em trÃ¢nsito (TLS 1.3) e em repouso (AES-256),
-                        armazenados em servidores no Brasil e jamais compartilhados com terceiros sem
-                        consentimento. Temos DPA disponível para clientes Enterprise. <a href="lgpd.html">Ver
-                            nossa página de LGPD</a>.
-                    </div>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Os dados das conversas dos meus clientes ficam seguros?</span>
-                    <i class="fas fa-plus faq-icon"></i>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-inner">
-                        Sim. Toda a comunicação é criptografada de ponta a ponta. Os dados são de propriedade
-                        exclusiva da sua empresa e você pode exportá-los ou excluí-los a qualquer momento.
-                        Realizamos backups automáticos diários e nosso SLA de uptime é de 99,9%.
-                    </div>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>A Kriar usa meus dados para treinar modelos de IA de terceiros?</span>
-                    <i class="fas fa-plus faq-icon"></i>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-inner">
-                        Não. Seus dados nunca são usados para treinar modelos externos sem sua autorização
-                        explícita. A IA personalizada do seu negócio é treinada exclusivamente com os dados que
-                        você fornece e permanece isolada dos demais clientes da plataforma.
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div style="text-align:center;margin-top:2.5rem;">
-            <p style="color:var(--text-secondary);margin-bottom:1rem;">Não encontrou o que procurava?</p>
-            <a href="ajuda.html" class="btn btn-outline"><i class="fas fa-headset"></i> Ver Central de Ajuda</a>
-        </div>
-        </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta">
+    <!-- ===== DEPOIMENTOS ===== -->
+    <section class="testimonials-section" id="depoimentos">
         <div class="container">
-            <div class="cta-content">
-                <h2 class="cta-title">Pronto para Transformar seu Atendimento?</h2>
-                <p class="cta-description">
-                    Comece grátis hoje e veja como a automação inteligente pode revolucionar seu negócio.
-                </p>
-                <div class="cta-buttons">
-                    <a href="https://wa.me/5511997666735?text=Oi,%20vim%20pelo%20site%20e%20gostaria%20de%20uma%20consultoria%20em%20Agentes%20de%20IA"
-                        class="btn btn-primary btn-lg">
-                        <i class="fab fa-whatsapp"></i>
-                        Falar com Especialista
-                    </a>
-                    <a href="contato.html" class="btn btn-white btn-lg">
-                        <i class="fas fa-phone"></i>
-                        Falar com Especialista
-                    </a>
+            <div class="section-header">
+                <span class="section-badge">Depoimentos</span>
+                <h2 class="section-title">O que nossos clientes <span class="gradient-text">dizem</span></h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="t-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"Em menos de 2 semanas, nosso atendimento no WhatsApp ficou 100% automatizado. Reduzimos 70% do
+                        tempo da equipe e as vendas cresceram 40%."</p>
+                    <div class="t-author">
+                        <div class="t-avatar">MR</div>
+                        <div><strong>Marcos Ribeiro</strong><br><small>CEO – E-commerce de Eletrônicos</small></div>
+                    </div>
                 </div>
-                <p class="cta-note">
-                    <i class="fas fa-shield-check"></i>
-                    Cancelamento a qualquer momento
-                </p>
+                <div class="testimonial-card t-featured">
+                    <div class="t-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"A Kriar foi um divisor de águas para a clínica. Agendamentos no WhatsApp, lembretes automáticos
+                        e zero confusão de horários. Nossos pacientes adoram!"</p>
+                    <div class="t-author">
+                        <div class="t-avatar">AP</div>
+                        <div><strong>Dra. Ana Paula</strong><br><small>Clínica de Estética – São Paulo</small></div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="t-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"Integração com o Shopify + recuperação de carrinho pelo WhatsApp: R$28k recuperados no primeiro
+                        mês. ROI impressionante."</p>
+                    <div class="t-author">
+                        <div class="t-avatar">LC</div>
+                        <div><strong>Lucas Carvalho</strong><br><small>E-commerce de Moda Feminina</small></div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ===== FOOTER ===== -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-column">
-                    <div class="footer-brand">
-                        <a href="index.html" class="logo">
-                            <span class="logo-icon logo-footer">
-                                <img src="assets/images/logo-kriar.png" alt="Kriar - Automações Inteligentes"
-                                    loading="lazy">
-                            </span>
-                        </a>
-                        <p class="footer-tagline">
-                            Automações Inteligentes para o Futuro dos Negócios
-                        </p>
-                    </div>
+                <div class="footer-brand-col">
+                    <a href="index.html" class="logo">
+                        <span class="logo-icon logo-footer">
+                            <img src="assets/images/logo-kriar.png" alt="Kriar" loading="lazy">
+                        </span>
+                    </a>
+                    <p class="footer-tagline">Transformando ideias em experiências digitais memoráveis com tecnologia e
+                        IA de ponta.</p>
                     <div class="footer-social">
-                        <a href="https://www.instagram.com/kriar.digit/" class="social-link"><i
+                        <a href="https://www.instagram.com/kriar.digit/" class="social-link" target="_blank"><i
                                 class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/5511997666735" class="social-link" target="_blank"><i
+                                class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
 
-                <div class="footer-column">
-                    <h4 class="footer-title">Produto</h4>
-                    <ul class="footer-links">
-                        <li><a href="#funcionalidades">Funcionalidades</a></li>
-                        <li><a href="#precos">Preços</a></li>
-                        <li><a href="#solucoes">Soluções</a></li>
-                        <li><a href="integracoes.html">Integrações</a></li>
-                        <li><a href="api.html">API</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-column">
-                    <h4 class="footer-title">Recursos</h4>
-                    <ul class="footer-links">
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="docs.html">Documentação</a></li>
-                        <li><a href="tutoriais.html">Tutoriais</a></li>
-                        <li><a href="webinars.html">Webinars</a></li>
-                        <li><a href="cases.html">Cases de Sucesso</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-column">
-                    <h4 class="footer-title">Empresa</h4>
-                    <ul class="footer-links">
-                        <li><a href="sobre.html">Sobre Nós</a></li>
-                        <li><a href="contato.html">Contato</a></li>
+                <div class="footer-col">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="#sobre">Sobre Nós</a></li>
+                        <li><a href="casos.html">Cases</a></li>
                         <li><a href="carreiras.html">Carreiras</a></li>
                         <li><a href="parceiros.html">Parceiros</a></li>
-                        <li><a href="afiliados.html">Afiliados</a></li>
                     </ul>
                 </div>
 
-                <div class="footer-column">
-                    <h4 class="footer-title">Suporte</h4>
-                    <ul class="footer-links">
-                        <li><a href="ajuda.html">Central de Ajuda</a></li>
-                        <li><a href="status.html">Status do Sistema</a></li>
-                        <li><a href="privacidade.html">Política de Privacidade</a></li>
-                        <li><a href="termos.html">Termos de Uso</a></li>
-                        <li><a href="lgpd.html">LGPD</a></li>
+                <div class="footer-col">
+                    <h4>Serviços</h4>
+                    <ul>
+                        <li><a href="#servicos">Inteligência Artificial</a></li>
+                        <li><a href="#servicos">Web Design</a></li>
+                        <li><a href="#servicos">Marketing Digital</a></li>
+                        <li><a href="#servicos">Consultoria Tech</a></li>
+                        <li><a href="#servicos">Apps Mobile</a></li>
+                        <li><a href="integracoes.html">Integrações</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><a href="mailto:contato@kriar.digital"><i class="fas fa-envelope"></i>
+                                contato@kriar.digital</a></li>
+                        <li><a href="https://wa.me/5511997666735" target="_blank"><i class="fab fa-whatsapp"></i> (11)
+                                99766-6735</a></li>
+                        <li><a href="ajuda.html"><i class="fas fa-headset"></i> Central de Ajuda</a></li>
+                        <li><a href="status.html"><i class="fas fa-circle" style="color:#22c55e;font-size:.6rem"></i>
+                                Status do Sistema</a></li>
                     </ul>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p class="copyright">
-                    Â© 2026 Kriar - Automações Inteligentes. Todos os direitos reservados.
-                </p>
-                <div class="footer-contact">
-                    <a href="mailto:contato@kriar.digital">
-                        <i class="fas fa-envelope"></i> contato@kriar.digital
-                    </a>
+                <p>© 2026 Kriar Tecnologia. Todos os direitos reservados.</p>
+                <div class="footer-legal">
+                    <a href="privacidade.html">Privacidade</a>
+                    <a href="termos.html">Termos</a>
+                    <a href="lgpd.html">LGPD</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Floating WhatsApp Button -->
+    <!-- Floating WhatsApp -->
     <a href="https://wa.me/5511997666735?text=Oi,%20vim%20pelo%20site%20e%20gostaria%20de%20uma%20consultoria%20em%20Agentes%20de%20IA"
-        class="whatsapp-float" target="_blank">
+        class="whatsapp-float" target="_blank" aria-label="Falar no WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Back to Top Button -->
-    <button id="backToTop" aria-label="Voltar ao topo">
-        <i class="fas fa-chevron-up"></i>
-    </button>
+    <!-- Back to Top -->
+    <button id="backToTop" aria-label="Voltar ao topo"><i class="fas fa-chevron-up"></i></button>
 
     <script src="js/script.js"></script>
+    <script>
+        // ===== THEME TOGGLE =====
+        (function () {
+            const STORAGE_KEY = 'kriar-theme';
+            const body = document.body;
+
+            function applyTheme(theme) {
+                body.classList.remove('theme-dark', 'theme-light');
+                body.classList.add('theme-' + theme);
+                localStorage.setItem(STORAGE_KEY, theme);
+            }
+
+            function toggleTheme() {
+                const current = body.classList.contains('theme-dark') ? 'dark' : 'light';
+                applyTheme(current === 'dark' ? 'light' : 'dark');
+            }
+
+            // Sempre abre dark por padrão — toggle funciona na sessão
+            applyTheme('dark');
+
+            document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+            document.getElementById('themeToggleMobile').addEventListener('click', toggleTheme);
+        })();
+
+        // ===== LEAD FORM =====
+        function submitLeadForm(e) {
+            e.preventDefault();
+            const name = document.getElementById('lead-name').value;
+            const phone = document.getElementById('lead-phone').value;
+            const seg = document.getElementById('lead-segment').value;
+            const waMsg = encodeURIComponent(
+                'Olá! Me chamo ' + name + ' (' + seg + '). Solicito uma consultoria gratuita. Meu WhatsApp: ' + phone
+            );
+            document.getElementById('leadForm').style.display = 'none';
+            document.getElementById('formSuccess').style.display = 'block';
+            setTimeout(function () {
+                window.open('https://wa.me/5511997666735?text=' + waMsg, '_blank');
+            }, 800);
+        }
+
+        // ===== NAV TOGGLE (mobile) =====
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        function closeMenu() {
+            navToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        navToggle.addEventListener('click', function () {
+            const open = navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active', open);
+            menuOverlay.classList.toggle('active', open);
+            document.body.style.overflow = open ? 'hidden' : '';
+        });
+        menuOverlay.addEventListener('click', closeMenu);
+        document.querySelectorAll('.nav-link').forEach(function (l) {
+            l.addEventListener('click', closeMenu);
+        });
+
+        // ===== SCROLL: header shrink + progress =====
+        const header = document.getElementById('header');
+        const progress = document.getElementById('scrollProgress');
+        window.addEventListener('scroll', function () {
+            header.classList.toggle('scrolled', window.scrollY > 50);
+            const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+            progress.style.width = pct + '%';
+            document.getElementById('backToTop').classList.toggle('visible', window.scrollY > 400);
+        });
+
+        // ===== BACK TO TOP =====
+        document.getElementById('backToTop').addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ===== ACTIVE NAV on scroll =====
+        const sections = document.querySelectorAll('section[id], div[id]');
+        window.addEventListener('scroll', function () {
+            let current = '';
+            sections.forEach(function (s) {
+                if (window.scrollY >= s.offsetTop - 120) current = s.id;
+            });
+            document.querySelectorAll('.nav-link').forEach(function (l) {
+                l.classList.toggle('active', l.getAttribute('href') === '#' + current);
+            });
+        });
+    </script>
 </body>
 
 </html>

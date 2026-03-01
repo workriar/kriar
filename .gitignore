@@ -1,3 +1,5 @@
-kriar-1/  
-
 kriar-1/
+node_modules/
+.wa_session/
+*.log
+.env

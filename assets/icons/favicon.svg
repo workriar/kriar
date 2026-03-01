@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7DD3FC;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3B82F6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Simplified cube for favicon -->
+  <g transform="translate(16, 16)">
+    <path d="M -8 -4 L 0 -8 L 8 -4 L 8 8 L 0 12 L -8 8 Z" fill="#1E293B"/>
+    <path d="M -4 -2 L 0 -4 L 4 -2 L 4 6 L 0 8 L -4 6 Z" fill="#FFFFFF"/>
+    <path d="M -1 0 L 1 0 L 1 2 L 2 2 L 0 4 L -2 2 L -1 2 Z" fill="url(#gradient)"/>
+  </g>
+</svg>

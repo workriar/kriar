@@ -1,0 +1,13 @@
+# Robots.txt para Kriar - Automações Inteligentes
+
+# Permitir todos os bots
+User-agent: *
+Allow: /
+
+# Bloquear apenas diretórios administrativos (quando existirem)
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://kriar.digital/sitemap.xml

@@ -1,0 +1,360 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Tutoriais Kriar - aprenda passo a passo como configurar seus chatbots e automações.">
+    <title>Tutoriais | Kriar - Automações Inteligentes</title>
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://kriar.digital/tutoriais.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Kriar - Agentes de IA">
+    <meta property="og:title" content="Tutoriais | Kriar">
+    <meta property="og:description" content="Tutoriais passo a passo para configurar chatbots, automacoes e integracoes na plataforma Kriar.">
+    <meta property="og:url" content="https://kriar.digital/tutoriais.html">
+    <meta property="og:image" content="https://kriar.digital/assets/images/logo-kriar.png">
+    <meta property="og:locale" content="pt_BR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tutoriais | Kriar">
+    <meta name="twitter:description" content="Tutoriais passo a passo para configurar chatbots, automacoes e integracoes na plataforma Kriar.">
+    <meta name="twitter:image" content="https://kriar.digital/assets/images/logo-kriar.png">
+    <link rel="apple-touch-icon" href="assets/images/logo-kriar.png">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-hero {
+            padding: 140px 0 80px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, .15), rgba(6, 182, 212, .1));
+            text-align: center;
+        }
+
+        .tutorials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .tutorial-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: var(--transition-base);
+        }
+
+        .tutorial-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-4px);
+        }
+
+        .tutorial-thumb {
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            position: relative;
+        }
+
+        .play-overlay {
+            position: absolute;
+            width: 52px;
+            height: 52px;
+            background: rgba(59, 130, 246, .9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition-base);
+        }
+
+        .tutorial-card:hover .play-overlay {
+            transform: scale(1.1);
+            background: var(--primary-color);
+        }
+
+        .tutorial-body {
+            padding: 1.25rem;
+        }
+
+        .tutorial-level {
+            display: inline-block;
+            padding: .2rem .7rem;
+            border-radius: 999px;
+            font-size: .72rem;
+            font-weight: 600;
+            margin-bottom: .6rem;
+        }
+
+        .level-init {
+            background: rgba(16, 185, 129, .2);
+            color: #34d399;
+        }
+
+        .level-mid {
+            background: rgba(234, 179, 8, .2);
+            color: #fbbf24;
+        }
+
+        .level-adv {
+            background: rgba(239, 68, 68, .2);
+            color: #f87171;
+        }
+
+        .tutorial-title {
+            font-size: .95rem;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: .6rem;
+        }
+
+        .tutorial-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: .78rem;
+            color: var(--text-secondary);
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: .75rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .filter-tab {
+            padding: .4rem 1rem;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+            font-size: .875rem;
+            cursor: pointer;
+            transition: var(--transition-base);
+            background: transparent;
+            color: var(--text-secondary);
+        }
+
+        .filter-tab.active,
+        .filter-tab:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        @media(max-width:900px) {
+            .tutorials-grid {
+                grid-template-columns: 1fr 1fr
+            }
+        }
+
+        @media(max-width:600px) {
+            .tutorials-grid {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <header class="header" id="header">
+        <nav class="navbar container">
+            <div class="nav-brand"><a href="index.html" class="logo"><span class="logo-icon"><img
+                            src="assets/images/logo-kriar.png" alt="Kriar"></span></a></div>
+            <div class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Início</a></li>
+                    <li><a href="index.html#precos" class="nav-link">Preços</a></li>
+                    <li><a href="contato.html" class="nav-link">Contato</a></li>
+                </ul>
+                <div class="nav-buttons">
+                    <a href="login.html" class="btn btn-ghost">Entrar</a>
+                    <a href="https://wa.me/5511997666735" class="btn btn-primary">WhatsApp</a>
+                </div>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu"><span class="hamburger"></span><span
+                    class="hamburger"></span><span class="hamburger"></span></button>
+        </nav>
+        <div class="menu-overlay" id="menuOverlay"></div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container">
+            <span class="section-badge">Tutoriais</span>
+            <h1 class="section-title" style="margin-top:1rem;">Aprenda <span class="gradient-text">Passo a Passo</span>
+            </h1>
+            <p class="section-description" style="max-width:560px;margin:1rem auto 0;">Guias em vídeo e texto para
+                dominar a plataforma Kriar do zero ao avançado.</p>
+        </div>
+    </section>
+
+    <section style="padding:5rem 0;">
+        <div class="container">
+            <div class="filter-tabs">
+                <button class="filter-tab active">Todos</button>
+                <button class="filter-tab">Iniciante</button>
+                <button class="filter-tab">Intermediário</button>
+                <button class="filter-tab">Avançado</button>
+                <button class="filter-tab">WhatsApp</button>
+                <button class="filter-tab">Instagram</button>
+                <button class="filter-tab">IA & GPT</button>
+            </div>
+
+            <div class="tutorials-grid">
+                <div class="tutorial-card">
+                    <div class="tutorial-thumb"
+                        style="background:linear-gradient(135deg,rgba(59,130,246,.3),rgba(6,182,212,.1));">🚀<div
+                            class="play-overlay"><i class="fas fa-play"></i></div>
+                    </div>
+                    <div class="tutorial-body">
+                        <span class="tutorial-level level-init">Iniciante</span>
+                        <h3 class="tutorial-title">Crie seu Primeiro Chatbot em 10 Minutos</h3>
+                        <div class="tutorial-meta"><span><i class="fas fa-clock"></i> 12 min</span><span><i
+                                    class="fas fa-star"></i> 4.9</span></div>
+                    </div>
+                </div>
+                <div class="tutorial-card">
+                    <div class="tutorial-thumb"
+                        style="background:linear-gradient(135deg,rgba(16,185,129,.2),rgba(6,182,212,.1));">💬<div
+                            class="play-overlay"><i class="fas fa-play"></i></div>
+                    </div>
+                    <div class="tutorial-body">
+                        <span class="tutorial-level level-init">Iniciante</span>
+                        <h3 class="tutorial-title">Conectar o WhatsApp Business API</h3>
+                        <div class="tutorial-meta"><span><i class="fas fa-clock"></i> 18 min</span><span><i
+                                    class="fas fa-star"></i> 4.8</span></div>
+                    </div>
+                </div>
+                <div class="tutorial-card">
+                    <div class="tutorial-thumb"
+                        style="background:linear-gradient(135deg,rgba(239,68,68,.2),rgba(168,85,247,.1));">📱<div
+                            class="play-overlay"><i class="fas fa-play"></i></div>
+                    </div>
+                    <div class="tutorial-body">
+                        <span class="tutorial-level level-init">Iniciante</span>
+                        <h3 class="tutorial-title">Configurar o Instagram Direct</h3>
+                        <div class="tutorial-meta"><span><i class="fas fa-clock"></i> 15 min</span><span><i
+                                    class="fas fa-star"></i> 4.7</span></div>
+                    </div>
+                </div>
+                <div class="tutorial-card">
+                    <div class="tutorial-thumb"
+                        style="background:linear-gradient(135deg,rgba(234,179,8,.2),rgba(59,130,246,.1));">🔀<div
+                            class="play-overlay"><i class="fas fa-play"></i></div>
+                    </div>
+                    <div class="tutorial-body">
+                        <span class="tutorial-level level-mid">Intermediário</span>
+                        <h3 class="tutorial-title">Fluxos Condicionais: if/else no Chatbot</h3>
+                        <div class="tutorial-meta"><span><i class="fas fa-clock"></i> 22 min</span><span><i
+                                    class="fas fa-star"></i> 4.9</span></div>
+                    </div>
+                </div>
+                <div class="tutorial-card">
+                    <div class="tutorial-thumb"
+                        style="background:linear-gradient(135deg,rgba(59,130,246,.3),rgba(16,185,129,.1));">🔗<div
+                            class="play-overlay"><i class="fas fa-play"></i></div>
+                    </div>
+                    <div class="tutorial-body">
+                        <span class="tutorial-level level-mid">Intermediário</span>
+                        <h3 class="tutorial-title">Integrando com Google Sheets</h3>
+                        <div class="tutorial-meta"><span><i class="fas fa-clock"></i> 20 min</span><span><i
+                                    class="fas fa-star"></i> 4.8</span></div>
+                    </div>
+                </div>
+                <div class="tutorial-card">
+                    <div class="tutorial-thumb"
+                        style="background:linear-gradient(135deg,rgba(168,85,247,.2),rgba(59,130,246,.1));">🤖<div
+                            class="play-overlay"><i class="fas fa-play"></i></div>
+                    </div>
+                    <div class="tutorial-body">
+                        <span class="tutorial-level level-adv">Avançado</span>
+                        <h3 class="tutorial-title">Implementar GPT-4 no seu Chatbot</h3>
+                        <div class="tutorial-meta"><span><i class="fas fa-clock"></i> 35 min</span><span><i
+                                    class="fas fa-star"></i> 5.0</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align:center;margin-top:3rem;">
+                <p style="color:var(--text-secondary);margin-bottom:1rem;">Quer um tutorial específico? Fale com a
+                    gente!</p>
+                <a href="https://wa.me/5511997666735?text=Quero%20sugerir%20um%20tutorial%20para%20a%20Kriar"
+                    class="btn btn-outline"><i class="fab fa-whatsapp"></i> Sugerir Tutorial</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-brand"><a href="index.html" class="logo"><span class="logo-icon logo-footer"><img
+                                    src="assets/images/logo-kriar.png" alt="Kriar" loading="lazy"></span></a>
+                        <p class="footer-tagline">Automações Inteligentes para o Futuro dos Negócios</p>
+                    </div>
+                    <div class="footer-social"><a href="https://www.instagram.com/kriar.digit/" class="social-link"><i
+                                class="fab fa-instagram"></i></a></div>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Produto</h4>
+                    <ul class="footer-links">
+                        <li><a href="integracoes.html">Integrações</a></li>
+                        <li><a href="api.html">API</a></li>
+                        <li><a href="index.html#precos">Preços</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Recursos</h4>
+                    <ul class="footer-links">
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="docs.html">Documentação</a></li>
+                        <li><a href="tutoriais.html">Tutoriais</a></li>
+                        <li><a href="webinars.html">Webinars</a></li>
+                        <li><a href="cases.html">Cases</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Empresa</h4>
+                    <ul class="footer-links">
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="carreiras.html">Carreiras</a></li>
+                        <li><a href="parceiros.html">Parceiros</a></li>
+                        <li><a href="afiliados.html">Afiliados</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Suporte</h4>
+                    <ul class="footer-links">
+                        <li><a href="ajuda.html">Central de Ajuda</a></li>
+                        <li><a href="status.html">Status</a></li>
+                        <li><a href="privacidade.html">Privacidade</a></li>
+                        <li><a href="termos.html">Termos</a></li>
+                        <li><a href="lgpd.html">LGPD</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2026 Kriar - Automações Inteligentes. Todos os direitos reservados.</p>
+                <div class="footer-contact"><a href="mailto:contato@kriar.digital"><i class="fas fa-envelope"></i>
+                        contato@kriar.digital</a></div>
+            </div>
+        </div>
+    </footer>
+    <a href="https://wa.me/5511997666735" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <!-- Back to Top Button -->
+    <button id="backToTop" aria-label="Voltar ao topo">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

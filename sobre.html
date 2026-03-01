@@ -1,0 +1,460 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Conheça a Kriar - Líder em Agentes de IA e automação inteligente no Brasil. Nossa missão é escalar negócios através da tecnologia conversacional.">
+    <title>Sobre Nós | Kriar - Agentes de IA e Automações</title>
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://kriar.digital/sobre.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Kriar - Agentes de IA">
+    <meta property="og:title" content="Sobre Nós | Kriar">
+    <meta property="og:description"
+        content="Nascemos para simplificar o atendimento. Conheça a história e a equipe por trás dos Agentes de IA da Kriar.">
+    <meta property="og:url" content="https://kriar.digital/sobre.html">
+    <meta property="og:image" content="https://kriar.digital/assets/images/logo-kriar.png">
+    <meta property="og:locale" content="pt_BR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sobre Nos | Kriar">
+    <meta name="twitter:description"
+        content="Conheca a Kriar: missao, valores, equipe e historia de uma empresa brasileira apaixonada por automacao com IA.">
+    <meta name="twitter:image" content="https://kriar.digital/assets/images/logo-kriar.png">
+    <link rel="apple-touch-icon" href="assets/images/logo-kriar.png">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-hero {
+            padding: 140px 0 80px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(6, 182, 212, 0.1));
+            text-align: center;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            padding: 5rem 0;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition-base);
+        }
+
+        .value-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-4px);
+        }
+
+        .value-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            margin: 0 auto 1.5rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .team-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition-base);
+        }
+
+        .team-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-4px);
+        }
+
+        .team-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin: 0 auto 1rem;
+        }
+
+        .team-name {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .team-role {
+            color: var(--primary-light);
+            font-size: 0.875rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .team-bio {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+
+        .timeline {
+            max-width: 700px;
+            margin: 3rem auto 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-year {
+            min-width: 70px;
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            padding-top: 2px;
+        }
+
+        .timeline-content {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            padding: 1.25rem 1.5rem;
+            flex: 1;
+        }
+
+        .timeline-content h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .timeline-content p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .stat-bar {
+            background: var(--bg-secondary);
+        }
+
+        @media (max-width: 768px) {
+
+            .about-grid,
+            .values-grid,
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <header class="header" id="header">
+        <nav class="navbar container">
+            <div class="nav-brand">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon"><img src="assets/images/logo-kriar.png" alt="Kriar"></span>
+                </a>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html#inicio" class="nav-link">Início</a></li>
+                    <li class="nav-item"><a href="index.html#solucoes" class="nav-link">Soluções</a></li>
+                    <li class="nav-item"><a href="index.html#funcionalidades" class="nav-link">Funcionalidades</a></li>
+                    <li class="nav-item"><a href="index.html#precos" class="nav-link">Preços</a></li>
+                    <li class="nav-item"><a href="contato.html" class="nav-link">Contato</a></li>
+                </ul>
+                <div class="nav-buttons">
+                    <a href="login.html" class="btn btn-ghost">Entrar</a>
+                    <a href="https://wa.me/5511997666735?text=Oi,%20quero%20saber%20mais%20sobre%20a%20Kriar"
+                        class="btn btn-primary">Falar no WhatsApp</a>
+                </div>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span class="hamburger"></span><span class="hamburger"></span><span class="hamburger"></span>
+            </button>
+        </nav>
+        <div class="menu-overlay" id="menuOverlay"></div>
+    </header>
+
+    <!-- Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <span class="section-badge">Sobre Nós</span>
+            <h1 class="section-title" style="margin-top:1rem;">Construindo o Futuro do<br><span
+                    class="gradient-text">Atendimento Inteligente</span></h1>
+            <p class="section-description" style="max-width:600px;margin:1rem auto 0;">
+                Somos uma empresa brasileira apaixonada por tecnologia e por ajudar negócios a crescerem com automação e
+                inteligência artificial.
+            </p>
+        </div>
+    </section>
+
+    <!-- Missão & Visão -->
+    <section style="background: var(--bg-dark); padding: 5rem 0;">
+        <div class="container">
+            <div class="about-grid">
+                <div>
+                    <span class="section-badge">Nossa História</span>
+                    <h2 class="section-title" style="font-size:2rem;margin-top:1rem;">Missão: <span
+                            class="gradient-text">Escalabilidade</span></h2>
+                    <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem;">
+                        A Kriar surgiu para resolver um gargalo crítico: o atendimento que não escala. Vimos empresas
+                        perdendo leads valiosos por demora no retorno.
+                    </p>
+                    <p style="color:var(--text-secondary);line-height:1.8;">
+                        Nossa solução combina IA conversacional avançada com canais populares como WhatsApp e Instagram,
+                        permitindo que qualquer negócio ofereça um atendimento de elite, 24 horas por dia.
+                    </p>
+                </div>
+                <div>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-year">2022</div>
+                            <div class="timeline-content">
+                                <h4>Fundação</h4>
+                                <p>A Kriar é criada com o objetivo de democratizar o acesso à automação com IA.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2023</div>
+                            <div class="timeline-content">
+                                <h4>100 clientes</h4>
+                                <p>Atingimos a marca de 100 empresas atendidas e lançamos a integração oficial com a API
+                                    do WhatsApp Business.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2024</div>
+                            <div class="timeline-content">
+                                <h4>IA Avançada + GPT</h4>
+                                <p>Integramos modelos de linguagem avançados para criar chatbots que entendem contexto
+                                    real.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2025</div>
+                            <div class="timeline-content">
+                                <h4>500+ empresas</h4>
+                                <p>Superamos 500 clientes ativos e 10 mil conversas automatizadas por mês.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Valores -->
+    <section style="padding: 5rem 0;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Valores</span>
+                <h2 class="section-title">O que nos Guia</h2>
+                <p class="section-description">Princípios que norteiam cada decisão que tomamos.</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-heart"></i></div>
+                    <h4>Foco no Cliente</h4>
+                    <p style="color:var(--text-secondary);margin-top:0.5rem;">Cada funcionalidade que criamos resolve um
+                        problema real dos nossos clientes.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-lightbulb"></i></div>
+                    <h4>Inovação Constante</h4>
+                    <p style="color:var(--text-secondary);margin-top:0.5rem;">Investimos continuamente em pesquisa para
+                        oferecer sempre o melhor da IA.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h4>Transparência</h4>
+                    <p style="color:var(--text-secondary);margin-top:0.5rem;">Sem taxas ocultas, sem surpresas.
+                        Relacionamentos construídos na confiança.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-users"></i></div>
+                    <h4>Inclusão</h4>
+                    <p style="color:var(--text-secondary);margin-top:0.5rem;">Tecnologia de ponta acessível para
+                        empresas de todos os tamanhos.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-rocket"></i></div>
+                    <h4>Velocidade</h4>
+                    <p style="color:var(--text-secondary);margin-top:0.5rem;">Executamos rápido, aprendemos com os
+                        resultados e melhoramos sem parar.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-leaf"></i></div>
+                    <h4>Responsabilidade</h4>
+                    <p style="color:var(--text-secondary);margin-top:0.5rem;">IA ética, privacidade protegida e
+                        conformidade com LGPD em tudo que fazemos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipe -->
+    <section style="background: var(--bg-dark); padding: 5rem 0;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Equipe</span>
+                <h2 class="section-title">Quem Está por Trás</h2>
+                <p class="section-description">Uma equipe apaixonada por tecnologia e resultados.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-avatar"><i class="fas fa-user"></i></div>
+                    <div class="team-name">Rafael Andrade</div>
+                    <div class="team-role">CEO & Co-Fundador</div>
+                    <p class="team-bio">10 anos de experiência em tecnologia e empreendedorismo digital. Especialista em
+                        automação de processos.</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar"><i class="fas fa-user"></i></div>
+                    <div class="team-name">Camila Torres</div>
+                    <div class="team-role">CTO & Co-Fundadora</div>
+                    <p class="team-bio">Engenheira de software com foco em IA e processamento de linguagem natural.
+                        Ex-engenheira do Google.</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar"><i class="fas fa-user"></i></div>
+                    <div class="team-name">Lucas Mendes</div>
+                    <div class="team-role">Head de Produto</div>
+                    <p class="team-bio">Designer de produto com experiência em criar interfaces que qualquer pessoa
+                        consegue usar, sem tutorial.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Quer Fazer Parte da Nossa Jornada?</h2>
+                <p class="cta-description">Converse com o nosso time e descubra como a Kriar pode transformar seu
+                    negócio.</p>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/5511997666735?text=Oi,%20quero%20saber%20mais%20sobre%20a%20Kriar"
+                        class="btn btn-primary btn-lg">
+                        <i class="fab fa-whatsapp"></i> Falar com a Equipe
+                    </a>
+                    <a href="carreiras.html" class="btn btn-white btn-lg">
+                        <i class="fas fa-briefcase"></i> Ver Vagas
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-brand">
+                        <a href="index.html" class="logo"><span class="logo-icon logo-footer"><img
+                                    src="assets/images/logo-kriar.png" alt="Kriar" loading="lazy"></span></a>
+                        <p class="footer-tagline">Automações Inteligentes para o Futuro dos Negócios</p>
+                    </div>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/kriar.digit/" class="social-link"><i
+                                class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Produto</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#funcionalidades">Funcionalidades</a></li>
+                        <li><a href="index.html#precos">Preços</a></li>
+                        <li><a href="index.html#solucoes">Soluções</a></li>
+                        <li><a href="integracoes.html">Integrações</a></li>
+                        <li><a href="api.html">API</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Recursos</h4>
+                    <ul class="footer-links">
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="docs.html">Documentação</a></li>
+                        <li><a href="tutoriais.html">Tutoriais</a></li>
+                        <li><a href="webinars.html">Webinars</a></li>
+                        <li><a href="cases.html">Cases de Sucesso</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Empresa</h4>
+                    <ul class="footer-links">
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                        <li><a href="carreiras.html">Carreiras</a></li>
+                        <li><a href="parceiros.html">Parceiros</a></li>
+                        <li><a href="afiliados.html">Afiliados</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Suporte</h4>
+                    <ul class="footer-links">
+                        <li><a href="ajuda.html">Central de Ajuda</a></li>
+                        <li><a href="status.html">Status do Sistema</a></li>
+                        <li><a href="privacidade.html">Política de Privacidade</a></li>
+                        <li><a href="termos.html">Termos de Uso</a></li>
+                        <li><a href="lgpd.html">LGPD</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2026 Kriar - Automações Inteligentes. Todos os direitos reservados.</p>
+                <div class="footer-contact">
+                    <a href="mailto:contato@kriar.digital"><i class="fas fa-envelope"></i> contato@kriar.digital</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <a href="https://wa.me/5511997666735?text=Oi,%20vim%20pelo%20site%20e%20gostaria%20de%20uma%20consultoria"
+        class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <!-- Back to Top Button -->
+    <button id="backToTop" aria-label="Voltar ao topo">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

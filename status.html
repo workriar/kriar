@@ -1,0 +1,446 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Status dos Serviços Kriar - Acompanhe a disponibilidade em tempo real da plataforma.">
+    <title>Status do Sistema | Kriar - Automações Inteligentes</title>
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://kriar.digital/status.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Kriar - Agentes de IA">
+    <meta property="og:title" content="Status do Sistema | Kriar">
+    <meta property="og:description" content="Verifique em tempo real o status de todos os servicos da Kriar. Transparencia operacional 24/7.">
+    <meta property="og:url" content="https://kriar.digital/status.html">
+    <meta property="og:image" content="https://kriar.digital/assets/images/logo-kriar.png">
+    <meta property="og:locale" content="pt_BR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Status do Sistema | Kriar">
+    <meta name="twitter:description" content="Verifique em tempo real o status de todos os servicos da Kriar. Transparencia operacional 24/7.">
+    <meta name="twitter:image" content="https://kriar.digital/assets/images/logo-kriar.png">
+    <link rel="apple-touch-icon" href="assets/images/logo-kriar.png">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-hero {
+            padding: 140px 0 80px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, .15), rgba(6, 182, 212, .1));
+            text-align: center;
+        }
+
+        .status-badge-global {
+            display: inline-flex;
+            align-items: center;
+            gap: .6rem;
+            background: rgba(16, 185, 129, .15);
+            border: 1px solid rgba(16, 185, 129, .4);
+            padding: .6rem 1.5rem;
+            border-radius: 999px;
+            margin-top: 1.5rem;
+            font-weight: 600;
+            color: #6ee7b7;
+        }
+
+        .pulse {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #10b981;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1)
+            }
+
+            50% {
+                opacity: .6;
+                transform: scale(1.2)
+            }
+        }
+
+        .status-section {
+            padding: 5rem 0;
+        }
+
+        .services-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .services-header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .service-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, .05);
+        }
+
+        .service-row:last-child {
+            border-bottom: none;
+        }
+
+        .service-name {
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+            font-size: .95rem;
+        }
+
+        .service-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: .5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .status-pill {
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+            padding: .3rem .9rem;
+            border-radius: 999px;
+            font-size: .8rem;
+            font-weight: 600;
+        }
+
+        .s-ok {
+            background: rgba(16, 185, 129, .15);
+            color: #6ee7b7;
+        }
+
+        .s-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #10b981;
+        }
+
+        .uptime-bar {
+            height: 6px;
+            background: var(--border-color);
+            border-radius: 999px;
+            margin-top: .25rem;
+            overflow: hidden;
+        }
+
+        .uptime-fill {
+            height: 100%;
+            background: #10b981;
+            border-radius: 999px;
+        }
+
+        .uptime-label {
+            font-size: .72rem;
+            color: var(--text-secondary);
+            margin-top: .2rem;
+        }
+
+        .history-section h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .history-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            padding: 1rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: .75rem;
+            margin-bottom: .75rem;
+        }
+
+        .history-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #10b981;
+            margin-top: .25rem;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <header class="header" id="header">
+        <nav class="navbar container">
+            <div class="nav-brand"><a href="index.html" class="logo"><span class="logo-icon"><img
+                            src="assets/images/logo-kriar.png" alt="Kriar"></span></a></div>
+            <div class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Início</a></li>
+                    <li><a href="index.html#precos" class="nav-link">Preços</a></li>
+                    <li><a href="contato.html" class="nav-link">Contato</a></li>
+                </ul>
+                <div class="nav-buttons">
+                    <a href="login.html" class="btn btn-ghost">Entrar</a>
+                    <a href="https://wa.me/5511997666735" class="btn btn-primary">WhatsApp</a>
+                </div>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu"><span class="hamburger"></span><span
+                    class="hamburger"></span><span class="hamburger"></span></button>
+        </nav>
+        <div class="menu-overlay" id="menuOverlay"></div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container">
+            <span class="section-badge">Status</span>
+            <h1 class="section-title" style="margin-top:1rem;">Status do <span class="gradient-text">Sistema</span></h1>
+            <p class="section-description" style="max-width:480px;margin:.75rem auto 0;">Acompanhe a disponibilidade de
+                todos os serviços Kriar em tempo real.</p>
+            <div class="status-badge-global">
+                <div class="pulse"></div>
+                Todos os sistemas operacionais
+            </div>
+            <p style="color:var(--text-secondary);margin-top:1rem;font-size:.85rem;">Última verificação: <span
+                    id="lastCheck"></span></p>
+        </div>
+    </section>
+
+    <section class="status-section">
+        <div class="container" style="max-width:860px;">
+
+            <!-- Core Services -->
+            <div class="services-card">
+                <div class="services-header">🌐 Serviços Principais</div>
+                <div class="service-row">
+                    <div class="service-name">
+                        <div class="service-icon" style="background:rgba(59,130,246,.15);">🤖</div>Plataforma Kriar
+                    </div>
+                    <span class="status-pill s-ok">
+                        <div class="s-dot"></div>Operacional
+                    </span>
+                </div>
+                <div class="service-row">
+                    <div class="service-name">
+                        <div class="service-icon" style="background:rgba(6,182,212,.15);">⚡</div>API REST
+                    </div>
+                    <span class="status-pill s-ok">
+                        <div class="s-dot"></div>Operacional
+                    </span>
+                </div>
+                <div class="service-row">
+                    <div class="service-name">
+                        <div class="service-icon" style="background:rgba(16,185,129,.15);">🔔</div>Webhooks
+                    </div>
+                    <span class="status-pill s-ok">
+                        <div class="s-dot"></div>Operacional
+                    </span>
+                </div>
+                <div class="service-row">
+                    <div class="service-name">
+                        <div class="service-icon" style="background:rgba(168,85,247,.15);">🔒</div>Autenticação
+                    </div>
+                    <span class="status-pill s-ok">
+                        <div class="s-dot"></div>Operacional
+                    </span>
+                </div>
+            </div>
+
+            <!-- Channels -->
+            <div class="services-card">
+                <div class="services-header">📱 Canais de Mensagem</div>
+                <div class="service-row">
+                    <div class="service-name">
+                        <div class="service-icon" style="background:rgba(16,185,129,.15);">💬</div>WhatsApp Business API
+                    </div>
+                    <span class="status-pill s-ok">
+                        <div class="s-dot"></div>Operacional
+                    </span>
+                </div>
+                <div class="service-row">
+                    <div class="service-name">
+                        <div class="service-icon" style="background:rgba(239,68,68,.15);">📱</div>Instagram Direct
+                    </div>
+                    <span class="status-pill s-ok">
+                        <div class="s-dot"></div>Operacional
+                    </span>
+                </div>
+                <div class="service-row">
+                    <div class="service-name">
+                        <div class="service-icon" style="background:rgba(59,130,246,.15);">💙</div>Facebook Messenger
+                    </div>
+                    <span class="status-pill s-ok">
+                        <div class="s-dot"></div>Operacional
+                    </span>
+                </div>
+                <div class="service-row">
+                    <div class="service-name">
+                        <div class="service-icon" style="background:rgba(6,182,212,.15);">💻</div>Chat para Site
+                    </div>
+                    <span class="status-pill s-ok">
+                        <div class="s-dot"></div>Operacional
+                    </span>
+                </div>
+            </div>
+
+            <!-- Infrastructure  -->
+            <div class="services-card">
+                <div class="services-header">🏗️ Infraestrutura</div>
+                <div class="service-row">
+                    <div class="service-name">
+                        <div class="service-icon" style="background:rgba(234,179,8,.15);">🗄️</div>Banco de Dados
+                    </div>
+                    <span class="status-pill s-ok">
+                        <div class="s-dot"></div>Operacional
+                    </span>
+                </div>
+                <div class="service-row">
+                    <div class="service-name">
+                        <div class="service-icon" style="background:rgba(59,130,246,.15);">☁️</div>CDN & Arquivos
+                    </div>
+                    <span class="status-pill s-ok">
+                        <div class="s-dot"></div>Operacional
+                    </span>
+                </div>
+                <div class="service-row">
+                    <div class="service-name">
+                        <div class="service-icon" style="background:rgba(16,185,129,.15);">📧</div>Envio de E-mails
+                    </div>
+                    <span class="status-pill s-ok">
+                        <div class="s-dot"></div>Operacional
+                    </span>
+                </div>
+            </div>
+
+            <!-- Uptime 90 days -->
+            <div
+                style="background:var(--card-bg);border:1px solid var(--border-color);border-radius:1rem;padding:1.5rem;margin-bottom:2rem;">
+                <h3 style="font-weight:700;margin-bottom:1.25rem;">Disponibilidade — Últimos 90 dias</h3>
+                <div style="display:grid;gap:1rem;">
+                    <div>
+                        <div style="display:flex;justify-content:space-between;margin-bottom:.3rem;"><span
+                                style="font-size:.9rem;">Plataforma Kriar</span><span
+                                style="font-size:.9rem;color:#6ee7b7;font-weight:600;">99.98%</span></div>
+                        <div class="uptime-bar">
+                            <div class="uptime-fill" style="width:99.98%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div style="display:flex;justify-content:space-between;margin-bottom:.3rem;"><span
+                                style="font-size:.9rem;">API REST</span><span
+                                style="font-size:.9rem;color:#6ee7b7;font-weight:600;">99.95%</span></div>
+                        <div class="uptime-bar">
+                            <div class="uptime-fill" style="width:99.95%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div style="display:flex;justify-content:space-between;margin-bottom:.3rem;"><span
+                                style="font-size:.9rem;">WhatsApp</span><span
+                                style="font-size:.9rem;color:#6ee7b7;font-weight:600;">99.92%</span></div>
+                        <div class="uptime-bar">
+                            <div class="uptime-fill" style="width:99.92%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subscribe -->
+            <div
+                style="background:linear-gradient(135deg,rgba(59,130,246,.15),rgba(6,182,212,.1));border:1px solid rgba(59,130,246,.3);border-radius:1rem;padding:2rem;text-align:center;">
+                <h3 style="font-weight:700;margin-bottom:.5rem;">Receba alertas de status</h3>
+                <p style="color:var(--text-secondary);margin-bottom:1.25rem;">Seja notificado por WhatsApp em caso de
+                    incidentes ou manutenções programadas.</p>
+                <a href="https://wa.me/5511997666735?text=Quero%20receber%20alertas%20de%20status%20da%20Kriar"
+                    class="btn btn-primary"><i class="fab fa-whatsapp"></i> Ativar Alertas</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-brand"><a href="index.html" class="logo"><span class="logo-icon logo-footer"><img
+                                    src="assets/images/logo-kriar.png" alt="Kriar" loading="lazy"></span></a>
+                        <p class="footer-tagline">Automações Inteligentes para o Futuro dos Negócios</p>
+                    </div>
+                    <div class="footer-social"><a href="https://www.instagram.com/kriar.digit/" class="social-link"><i
+                                class="fab fa-instagram"></i></a></div>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Produto</h4>
+                    <ul class="footer-links">
+                        <li><a href="integracoes.html">Integrações</a></li>
+                        <li><a href="api.html">API</a></li>
+                        <li><a href="index.html#precos">Preços</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Recursos</h4>
+                    <ul class="footer-links">
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="docs.html">Documentação</a></li>
+                        <li><a href="tutoriais.html">Tutoriais</a></li>
+                        <li><a href="webinars.html">Webinars</a></li>
+                        <li><a href="cases.html">Cases</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Empresa</h4>
+                    <ul class="footer-links">
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="carreiras.html">Carreiras</a></li>
+                        <li><a href="parceiros.html">Parceiros</a></li>
+                        <li><a href="afiliados.html">Afiliados</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Suporte</h4>
+                    <ul class="footer-links">
+                        <li><a href="ajuda.html">Central de Ajuda</a></li>
+                        <li><a href="status.html">Status</a></li>
+                        <li><a href="privacidade.html">Privacidade</a></li>
+                        <li><a href="termos.html">Termos</a></li>
+                        <li><a href="lgpd.html">LGPD</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2026 Kriar - Automações Inteligentes. Todos os direitos reservados.</p>
+                <div class="footer-contact"><a href="mailto:contato@kriar.digital"><i class="fas fa-envelope"></i>
+                        contato@kriar.digital</a></div>
+            </div>
+        </div>
+    </footer>
+    <a href="https://wa.me/5511997666735" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <!-- Back to Top Button -->
+    <button id="backToTop" aria-label="Voltar ao topo">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="js/script.js"></script>
+    <script>
+        const now = new Date();
+        document.getElementById('lastCheck').textContent = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }) + ' - ' + now.toLocaleDateString('pt-BR');
+    </script>
+</body>
+
+</html>

@@ -1135,6 +1135,581 @@
             background: var(--bg3)
         }
 
+        /* ─── NOTIFICATION DROPDOWN ─── */
+        .notif-dropdown {
+            position: absolute;
+            top: calc(100% + 10px);
+            right: 0;
+            width: 360px;
+            background: var(--bg2);
+            border: 1px solid var(--border2);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, .5);
+            z-index: 500;
+            display: none;
+            overflow: hidden
+        }
+
+        .notif-dropdown.open {
+            display: block
+        }
+
+        .notif-header {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center
+        }
+
+        .notif-header strong {
+            font-size: .9rem;
+            font-weight: 700
+        }
+
+        .notif-mark-all {
+            font-size: .75rem;
+            color: var(--primary);
+            cursor: pointer
+        }
+
+        .notif-item {
+            padding: .875rem 1.25rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            gap: .875rem;
+            align-items: flex-start;
+            cursor: pointer;
+            transition: .2s
+        }
+
+        .notif-item:hover {
+            background: var(--bg3)
+        }
+
+        .notif-item.unread {
+            background: rgba(99, 102, 241, .05)
+        }
+
+        .notif-item.unread::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 3px;
+            top: 0;
+            bottom: 0;
+            background: var(--primary);
+            border-radius: 0 2px 2px 0
+        }
+
+        .notif-item {
+            position: relative
+        }
+
+        .notif-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .85rem
+        }
+
+        .notif-body {
+            flex: 1;
+            min-width: 0
+        }
+
+        .notif-body strong {
+            display: block;
+            font-size: .825rem;
+            font-weight: 600;
+            margin-bottom: .15rem
+        }
+
+        .notif-body span {
+            font-size: .75rem;
+            color: var(--text2);
+            line-height: 1.4;
+            display: block
+        }
+
+        .notif-time {
+            font-size: .65rem;
+            color: var(--text3);
+            margin-top: .3rem
+        }
+
+        .notif-empty {
+            padding: 2.5rem;
+            text-align: center;
+            color: var(--text3);
+            font-size: .85rem
+        }
+
+        .notif-footer {
+            padding: .75rem;
+            text-align: center;
+            border-top: 1px solid var(--border)
+        }
+
+        .notif-footer a {
+            font-size: .8rem;
+            color: var(--primary);
+            text-decoration: none
+        }
+
+        /* ─── AGENT CREATOR MODAL ─── */
+        .big-modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center
+        }
+
+        .big-modal-overlay.open {
+            display: flex
+        }
+
+        .big-modal {
+            background: var(--bg2);
+            border: 1px solid var(--border2);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2rem;
+            position: relative
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--bg3);
+            border: none;
+            color: var(--text2);
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem
+        }
+
+        .modal-close:hover {
+            color: var(--text)
+        }
+
+        .step-indicator {
+            display: flex;
+            gap: .5rem;
+            margin-bottom: 2rem;
+            align-items: center
+        }
+
+        .step-dot {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--bg4);
+            border: 2px solid var(--border2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .75rem;
+            font-weight: 700;
+            color: var(--text3)
+        }
+
+        .step-dot.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white
+        }
+
+        .step-dot.done {
+            background: var(--green);
+            border-color: var(--green);
+            color: white
+        }
+
+        .step-line {
+            flex: 1;
+            height: 2px;
+            background: var(--border2)
+        }
+
+        .step-line.done {
+            background: var(--green)
+        }
+
+        .channel-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0
+        }
+
+        .channel-card {
+            background: var(--bg3);
+            border: 2px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 1.25rem;
+            text-align: center;
+            cursor: pointer;
+            transition: .2s
+        }
+
+        .channel-card:hover {
+            border-color: var(--border2);
+            transform: translateY(-2px)
+        }
+
+        .channel-card.selected {
+            border-color: var(--primary);
+            background: var(--primary-glow)
+        }
+
+        .channel-card i {
+            font-size: 1.75rem;
+            margin-bottom: .75rem;
+            display: block
+        }
+
+        .channel-card span {
+            font-size: .8rem;
+            font-weight: 600;
+            display: block
+        }
+
+        .channel-card small {
+            font-size: .7rem;
+            color: var(--text3)
+        }
+
+        .step-content {
+            display: none
+        }
+
+        .step-content.active {
+            display: block
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+            gap: 1rem
+        }
+
+        /* ─── APIs PAGE ─── */
+        .api-section {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            margin-bottom: 1.25rem
+        }
+
+        .api-section-title {
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+            margin-bottom: 1.25rem;
+            font-size: 1rem;
+            font-weight: 700
+        }
+
+        .api-section-title i {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .95rem
+        }
+
+        .api-key-field {
+            display: flex;
+            gap: .5rem;
+            align-items: center
+        }
+
+        .api-key-field input {
+            flex: 1;
+            background: var(--bg3);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: .75rem 1rem;
+            color: var(--text);
+            font-size: .875rem;
+            outline: none;
+            font-family: 'Courier New', monospace;
+            letter-spacing: .05em;
+            transition: .2s
+        }
+
+        .api-key-field input:focus {
+            border-color: var(--primary)
+        }
+
+        .api-key-field input.saved {
+            border-color: var(--green)
+        }
+
+        .eye-btn {
+            width: 42px;
+            height: 42px;
+            background: var(--bg3);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: var(--text2);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: .2s;
+            flex-shrink: 0
+        }
+
+        .eye-btn:hover {
+            color: var(--text);
+            border-color: var(--border2)
+        }
+
+        .test-btn {
+            height: 42px;
+            padding: 0 1rem;
+            background: var(--bg3);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: var(--text2);
+            cursor: pointer;
+            font-size: .8rem;
+            font-weight: 600;
+            white-space: nowrap;
+            transition: .2s;
+            flex-shrink: 0
+        }
+
+        .test-btn:hover {
+            color: var(--text);
+            border-color: var(--primary)
+        }
+
+        .api-hint {
+            font-size: .75rem;
+            color: var(--text3);
+            margin-top: .5rem;
+            margin-left: .25rem
+        }
+
+        .api-status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: .35rem;
+            font-size: .72rem;
+            font-weight: 600;
+            padding: .2rem .65rem;
+            border-radius: 20px;
+            margin-left: .5rem
+        }
+
+        .api-status-badge.ok {
+            background: rgba(16, 185, 129, .15);
+            color: var(--green)
+        }
+
+        .api-status-badge.fail {
+            background: rgba(239, 68, 68, .15);
+            color: var(--red)
+        }
+
+        .api-status-badge.pending {
+            background: rgba(245, 158, 11, .15);
+            color: var(--yellow)
+        }
+
+        /* ─── RESELLER ─── */
+        .reseller-metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+            margin-bottom: 1.75rem
+        }
+
+        .client-table-wrap {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin-bottom: 1.25rem
+        }
+
+        .client-table-header {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center
+        }
+
+        .plan-badge {
+            padding: .25rem .65rem;
+            border-radius: 20px;
+            font-size: .72rem;
+            font-weight: 600
+        }
+
+        .plan-badge.starter {
+            background: rgba(59, 130, 246, .15);
+            color: var(--blue)
+        }
+
+        .plan-badge.professional {
+            background: rgba(139, 92, 246, .15);
+            color: var(--purple)
+        }
+
+        .plan-badge.enterprise {
+            background: rgba(245, 158, 11, .15);
+            color: var(--yellow)
+        }
+
+        .brand-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            margin-bottom: 1.75rem
+        }
+
+        .color-preview {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            border: 2px solid var(--border2);
+            cursor: pointer;
+            flex-shrink: 0
+        }
+
+        .referral-box {
+            background: linear-gradient(135deg, var(--primary-dark), var(--purple));
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.75rem
+        }
+
+        .referral-url {
+            flex: 1;
+            background: rgba(255, 255, 255, .1);
+            border: 1px solid rgba(255, 255, 255, .2);
+            border-radius: 10px;
+            padding: .65rem 1rem;
+            color: white;
+            font-size: .875rem;
+            font-family: monospace
+        }
+
+        .finance-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            margin-bottom: 1.25rem
+        }
+
+        .finance-bar {
+            height: 8px;
+            background: var(--bg3);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: .5rem
+        }
+
+        .finance-fill {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--purple))
+        }
+
+        /* ─── SETTINGS SUB-MENU TABS ─── */
+        .settings-tabs {
+            display: flex;
+            gap: .25rem;
+            background: var(--bg3);
+            border-radius: 12px;
+            padding: .3rem;
+            margin-bottom: 1.75rem
+        }
+
+        .settings-tab {
+            flex: 1;
+            padding: .6rem 1rem;
+            border-radius: 9px;
+            text-align: center;
+            font-size: .82rem;
+            font-weight: 500;
+            cursor: pointer;
+            color: var(--text2);
+            transition: .2s;
+            border: none;
+            background: none
+        }
+
+        .settings-tab.active {
+            background: var(--bg2);
+            color: var(--text);
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .25)
+        }
+
+        .settings-panel {
+            display: none
+        }
+
+        .settings-panel.active {
+            display: block
+        }
+
+        .toggle-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border)
+        }
+
+        .toggle-row:last-child {
+            border: none
+        }
+
+        .toggle-row-info strong {
+            display: block;
+            font-size: .875rem
+        }
+
+        .toggle-row-info span {
+            font-size: .775rem;
+            color: var(--text2)
+        }
+
+        .danger-zone {
+            background: rgba(239, 68, 68, .05);
+            border: 1px solid rgba(239, 68, 68, .2);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            margin-top: 1.25rem
+        }
+
         /* ─── RESPONSIVE ─── */
         @media(max-width:1100px) {
             .metrics-grid {
@@ -1194,14 +1769,20 @@
             <div class="nav-section">Principal</div>
             <div class="nav-item active" data-page="overview"><i class="fas fa-chart-line"></i> Visão Geral</div>
             <div class="nav-item" data-page="agents"><i class="fas fa-robot"></i> Meus Agentes <span
-                    class="nav-badge green">3</span></div>
+                    class="nav-badge green" id="agentCountBadge">3</span></div>
             <div class="nav-item" data-page="conversations"><i class="fas fa-comments"></i> Conversas <span
-                    class="nav-badge">12</span></div>
+                    class="nav-badge" id="convCountBadge">12</span></div>
             <div class="nav-section">Análise</div>
             <div class="nav-item" data-page="analytics"><i class="fas fa-chart-pie"></i> Analytics</div>
             <div class="nav-item" data-page="integrations"><i class="fas fa-plug"></i> Integrações</div>
-            <div class="nav-section">Conta</div>
+            <div class="nav-section">Configurações</div>
+            <div class="nav-item" data-page="apis"><i class="fas fa-key"></i> APIs & Chaves</div>
             <div class="nav-item" data-page="settings"><i class="fas fa-cog"></i> Configurações</div>
+            <div class="nav-section">Revenda</div>
+            <div class="nav-item" data-page="reseller-clients"><i class="fas fa-users"></i> Meus Clientes <span
+                    class="nav-badge green">0</span></div>
+            <div class="nav-item" data-page="reseller-brand"><i class="fas fa-palette"></i> White-label</div>
+            <div class="nav-item" data-page="reseller-finance"><i class="fas fa-dollar-sign"></i> Financeiro</div>
             <div class="nav-item" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Sair</div>
         </nav>
         <div class="sidebar-footer">
@@ -1223,10 +1804,67 @@
             </div>
             <div class="topbar-title" id="pageTitle">Visão Geral</div>
             <div class="topbar-actions">
-                <div class="icon-btn" title="Notificações"><i class="fas fa-bell"></i>
-                    <div class="notif-dot"></div>
+                <div class="icon-btn" title="Notificações" id="notifBtn" style="position:relative">
+                    <i class="fas fa-bell"></i>
+                    <div class="notif-dot" id="notifDot"></div>
+                    <!-- Dropdown de Notificações -->
+                    <div class="notif-dropdown" id="notifDropdown">
+                        <div class="notif-header">
+                            <strong>Notificações</strong>
+                            <span class="notif-mark-all" id="markAllRead">Marcar todas como lidas</span>
+                        </div>
+                        <div id="notifList">
+                            <div class="notif-item unread">
+                                <div class="notif-icon" style="background:rgba(16,185,129,.15);color:var(--green)"><i
+                                        class="fas fa-user-plus"></i></div>
+                                <div class="notif-body">
+                                    <strong>Novo lead capturado</strong>
+                                    <span>Maria Silva entrou em contato via WhatsApp</span>
+                                    <div class="notif-time">2 min atrás</div>
+                                </div>
+                            </div>
+                            <div class="notif-item unread">
+                                <div class="notif-icon" style="background:rgba(99,102,241,.15);color:var(--primary)"><i
+                                        class="fas fa-robot"></i></div>
+                                <div class="notif-body">
+                                    <strong>Agente respondeu automaticamente</strong>
+                                    <span>47 mensagens enviadas pelo Agente Vendas</span>
+                                    <div class="notif-time">15 min atrás</div>
+                                </div>
+                            </div>
+                            <div class="notif-item unread">
+                                <div class="notif-icon" style="background:rgba(245,158,11,.15);color:var(--yellow)"><i
+                                        class="fas fa-star"></i></div>
+                                <div class="notif-body">
+                                    <strong>Avaliação recebida ⭐⭐⭐⭐⭐</strong>
+                                    <span>João M. deu 5 estrelas ao atendimento</span>
+                                    <div class="notif-time">1h atrás</div>
+                                </div>
+                            </div>
+                            <div class="notif-item">
+                                <div class="notif-icon" style="background:rgba(59,130,246,.15);color:var(--blue)"><i
+                                        class="fas fa-shopping-cart"></i></div>
+                                <div class="notif-body">
+                                    <strong>Venda realizada</strong>
+                                    <span>Plano Professional — R$ 297,00</span>
+                                    <div class="notif-time">3h atrás</div>
+                                </div>
+                            </div>
+                            <div class="notif-item">
+                                <div class="notif-icon" style="background:rgba(239,68,68,.15);color:var(--red)"><i
+                                        class="fas fa-exclamation-triangle"></i></div>
+                                <div class="notif-body">
+                                    <strong>Agente ficou offline</strong>
+                                    <span>Qualificador de Leads perdeu conexão com o site</span>
+                                    <div class="notif-time">5h atrás</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="notif-footer"><a href="#">Ver todas as notificações</a></div>
+                    </div>
                 </div>
-                <div class="icon-btn" title="Ajuda"><i class="fas fa-question-circle"></i></div>
+                <div class="icon-btn" title="Ajuda" onclick="window.open('ajuda.html','_blank')"><i
+                        class="fas fa-question-circle"></i></div>
                 <div class="avatar-placeholder" id="avatarEl">K</div>
             </div>
         </div>
@@ -1981,11 +2619,12 @@
         function navigate(page) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-            document.getElementById('page-' + page).classList.add('active');
+            const pageEl = document.getElementById('page-' + page);
+            if (pageEl) pageEl.classList.add('active');
             const item = document.querySelector(`.nav-item[data-page="${page}"]`);
             if (item) item.classList.add('active');
-            const titles = { overview: 'Visão Geral', agents: 'Meus Agentes', conversations: 'Conversas', analytics: 'Analytics', integrations: 'Integrações', settings: 'Configurações' };
-            document.getElementById('pageTitle').textContent = titles[page] || '';
+            const titles = { overview: 'Visão Geral', agents: 'Meus Agentes', conversations: 'Conversas', analytics: 'Analytics', integrations: 'Integrações', settings: 'Configurações', apis: 'APIs & Chaves', 'reseller-clients': 'Meus Clientes', 'reseller-brand': 'White-label', 'reseller-finance': 'Financeiro' };
+            document.getElementById('pageTitle').textContent = titles[page] || page;
         }
         document.querySelectorAll('.nav-item[data-page]').forEach(item => {
             item.addEventListener('click', () => navigate(item.dataset.page));

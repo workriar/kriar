@@ -1,0 +1,448 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Entre em contato com a Kriar - Líder em Agentes de IA. Fale com nossa equipe de especialistas e escale seu atendimento.">
+    <title>Contato | Kriar - Agentes de IA</title>
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://kriar.digital/contato.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Kriar - Automações Inteligentes">
+    <meta property="og:title" content="Contato | Kriar">
+    <meta property="og:description"
+        content="Fale com a equipe da Kriar. Tire duvidas, solicite uma demonstracao ou entre em contato pelo WhatsApp.">
+    <meta property="og:url" content="https://kriar.digital/contato.html">
+    <meta property="og:image" content="https://kriar.digital/assets/images/logo-kriar.png">
+    <meta property="og:locale" content="pt_BR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Contato | Kriar">
+    <meta name="twitter:description"
+        content="Fale com a equipe da Kriar. Tire duvidas, solicite uma demonstracao ou entre em contato pelo WhatsApp.">
+    <meta name="twitter:image" content="https://kriar.digital/assets/images/logo-kriar.png">
+    <link rel="apple-touch-icon" href="assets/images/logo-kriar.png">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .contact-hero {
+            padding: 120px 0 80px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(6, 182, 212, 0.1));
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .contact-form {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 0.5rem;
+            font-family: var(--font-primary);
+            font-size: 1rem;
+            transition: var(--transition-base);
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .form-input.error,
+        .form-textarea.error,
+        .form-select.error {
+            border-color: #ef4444;
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="navbar container">
+            <div class="nav-brand">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">
+                        <img src="assets/images/logo-kriar.png" alt="Kriar - Automações Inteligentes">
+                    </span>
+                </a>
+            </div>
+
+            <div class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html#inicio" class="nav-link">Início</a></li>
+                    <li class="nav-item"><a href="index.html#solucoes" class="nav-link">Soluções</a></li>
+                    <li class="nav-item"><a href="index.html#funcionalidades" class="nav-link">Funcionalidades</a></li>
+                    <li class="nav-item"><a href="index.html#casos" class="nav-link">Casos de Uso</a></li>
+                    <li class="nav-item"><a href="index.html#precos" class="nav-link">Preços</a></li>
+                    <li class="nav-item"><a href="contato.html" class="nav-link active">Contato</a></li>
+                </ul>
+                <div class="nav-buttons">
+                    <a href="login.html" class="btn btn-ghost">Entrar</a>
+                    <a href="https://wa.me/5511997666735?text=Oi,%20vim%20pelo%20site%20e%20gostaria%20de%20uma%20consultoria%20em%20Agentes%20de%20IA"
+                        class="btn btn-primary">Falar no WhatsApp</a>
+                </div>
+            </div>
+
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+            </button>
+        </nav>
+        <div class="menu-overlay" id="menuOverlay"></div>
+    </header>
+
+    <!-- Contact Hero -->
+    <section class="contact-hero">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Contato</span>
+                <h1 class="section-title">Vamos Conversar?</h1>
+                <p class="section-description">
+                    Nossa equipe está pronta para ajudar você a transformar seu atendimento com automação inteligente.
+                </p>
+            </div>
+
+            <div class="contact-container">
+                <!-- Contact Info -->
+                <div class="contact-info">
+                    <h3 style="margin-bottom: 1.5rem;">Informações de Contato</h3>
+
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p style="color: var(--text-secondary);">contato@kriar.digital</p>
+                            <p style="color: var(--text-secondary);">suporte@kriar.digital</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <h4>WhatsApp</h4>
+                            <p style="color: var(--text-secondary);">+55 (11) 99766-6735</p>
+                            <p style="color: var(--text-secondary); font-size: 0.875rem;">Atendimento: Seg-Sex, 9h-18h
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4>Horário de Atendimento</h4>
+                            <p style="color: var(--text-secondary);">Segunda a Sexta: 9h - 18h</p>
+                            <p style="color: var(--text-secondary);">Sábado: 9h - 13h</p>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 2rem;">
+                        <h4 style="margin-bottom: 1rem;">Redes Sociais</h4>
+                        <div style="display: flex; gap: 0.75rem;">
+                            <a href="https://www.instagram.com/kriar.digit/" class="social-link"
+                                style="width: 45px; height: 45px; background: rgba(59, 130, 246, 0.2); color: var(--primary-light); border-radius: 0.5rem; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; border: 1px solid rgba(59, 130, 246, 0.3);">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form">
+                    <h3 style="margin-bottom: 1.5rem;">Envie sua Mensagem</h3>
+
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label class="form-label" for="name">Nome Completo *</label>
+                            <input type="text" id="name" name="name" class="form-input" required
+                                placeholder="Seu nome completo">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email *</label>
+                            <input type="email" id="email" name="email" class="form-input" required
+                                placeholder="seu@email.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="phone">Telefone / WhatsApp *</label>
+                            <input type="tel" id="phone" name="phone" class="form-input" required
+                                placeholder="(11) 99999-9999">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="company">Empresa</label>
+                            <input type="text" id="company" name="company" class="form-input"
+                                placeholder="Nome da sua empresa">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="subject">Assunto *</label>
+                            <select id="subject" name="subject" class="form-select" required>
+                                <option value="">Selecione um assunto</option>
+                                <option value="vendas">Vendas</option>
+                                <option value="suporte">Suporte Técnico</option>
+                                <option value="parceria">Parceria</option>
+                                <option value="duvidas">Dúvidas Gerais</option>
+                                <option value="outros">Outros</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="message">Mensagem *</label>
+                            <textarea id="message" name="message" class="form-textarea" required
+                                placeholder="Como podemos ajudar você?"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                                <input type="checkbox" required>
+                                <span style="font-size: 0.875rem; color: var(--text-secondary);">
+                                    Aceito receber comunicações da Kriar e concordo com a <a href="privacidade.html"
+                                        style="color: var(--primary-color);">Política de Privacidade</a>
+                                </span>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary"
+                            style="width: 100%; justify-content: center; font-size: 1.125rem;">
+                            <i class="fas fa-paper-plane"></i>
+                            Enviar Mensagem
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section style="padding: 4rem 0; background: var(--bg-dark);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">FAQ</span>
+                <h2 class="section-title">Perguntas Frequentes</h2>
+            </div>
+
+            <div style="max-width: 800px; margin: 0 auto;">
+
+                <div class="accordion-item"
+                    style="background: var(--card-bg); border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 1rem; border: 1px solid var(--border-color);">
+                    <div class="accordion-header"
+                        style="cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                        <h4>Preciso ter conhecimento técnico?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-body" style="margin-top: 1rem; color: var(--text-secondary); display: none;">
+                        <p>Não! Nossa plataforma foi desenvolvida para ser intuitiva e fácil de usar. Oferecemos
+                            templates prontos e um construtor visual drag-and-drop. Além disso, nossa equipe oferece
+                            suporte completo.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item"
+                    style="background: var(--card-bg); border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 1rem; border: 1px solid var(--border-color);">
+                    <div class="accordion-header"
+                        style="cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                        <h4>Posso cancelar a qualquer momento?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-body" style="margin-top: 1rem; color: var(--text-secondary); display: none;">
+                        <p>Sim! Não temos fidelidade. Você pode cancelar seu plano a qualquer momento sem custos
+                            adicionais ou multas.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item"
+                    style="background: var(--card-bg); border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 1rem; border: 1px solid var(--border-color);">
+                    <div class="accordion-header"
+                        style="cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                        <h4>Qual o prazo para implementação?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-body" style="margin-top: 1rem; color: var(--text-secondary); display: none;">
+                        <p>Você pode começar a usar imediatamente após o cadastro. Para implementações mais complexas
+                            com integrações personalizadas, o prazo varia de 2 a 4 semanas dependendo da complexidade.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-brand">
+                        <a href="index.html" class="logo">
+                            <span class="logo-icon logo-footer">
+                                <img src="assets/images/logo-kriar.png" alt="Kriar - Automações Inteligentes"
+                                    loading="lazy">
+                            </span>
+                        </a>
+                        <p class="footer-tagline">
+                            Automações Inteligentes para o Futuro dos Negócios
+                        </p>
+                    </div>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/kriar.digit/" class="social-link"><i
+                                class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h4 class="footer-title">Produto</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#funcionalidades">Funcionalidades</a></li>
+                        <li><a href="index.html#precos">Preços</a></li>
+                        <li><a href="index.html#solucoes">Soluções</a></li>
+                        <li><a href="integracoes.html">Integrações</a></li>
+                        <li><a href="api.html">API</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4 class="footer-title">Recursos</h4>
+                    <ul class="footer-links">
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="docs.html">Documentação</a></li>
+                        <li><a href="tutoriais.html">Tutoriais</a></li>
+                        <li><a href="webinars.html">Webinars</a></li>
+                        <li><a href="cases.html">Cases de Sucesso</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4 class="footer-title">Empresa</h4>
+                    <ul class="footer-links">
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                        <li><a href="carreiras.html">Carreiras</a></li>
+                        <li><a href="parceiros.html">Parceiros</a></li>
+                        <li><a href="afiliados.html">Afiliados</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4 class="footer-title">Suporte</h4>
+                    <ul class="footer-links">
+                        <li><a href="ajuda.html">Central de Ajuda</a></li>
+                        <li><a href="status.html">Status do Sistema</a></li>
+                        <li><a href="privacidade.html">Política de Privacidade</a></li>
+                        <li><a href="termos.html">Termos de Uso</a></li>
+                        <li><a href="lgpd.html">LGPD</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="copyright">
+                    © 2026 Kriar - Automações Inteligentes. Todos os direitos reservados.
+                </p>
+                <div class="footer-contact">
+                    <a href="mailto:contato@kriar.digital">
+                        <i class="fas fa-envelope"></i> contato@kriar.digital
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/5511997666735?text=Oi,%20vim%20pelo%20site%20e%20gostaria%20de%20uma%20consultoria%20em%20Agentes%20de%20IA"
+        class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <!-- Back to Top Button -->
+    <button id="backToTop" aria-label="Voltar ao topo">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
+

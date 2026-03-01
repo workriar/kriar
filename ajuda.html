@@ -1,0 +1,412 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Central de Ajuda Kriar - Encontre respostas para suas dúvidas sobre automações e chatbots.">
+    <title>Central de Ajuda | Kriar - Automações Inteligentes</title>
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://kriar.digital/ajuda.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Kriar - Agentes de IA">
+    <meta property="og:title" content="Central de Ajuda | Kriar">
+    <meta property="og:description" content="Encontre respostas, tutoriais e suporte para usar a plataforma Kriar de automação com IA.">
+    <meta property="og:url" content="https://kriar.digital/ajuda.html">
+    <meta property="og:image" content="https://kriar.digital/assets/images/logo-kriar.png">
+    <meta property="og:locale" content="pt_BR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Central de Ajuda | Kriar">
+    <meta name="twitter:description" content="Encontre respostas, tutoriais e suporte para usar a plataforma Kriar de automação com IA.">
+    <meta name="twitter:image" content="https://kriar.digital/assets/images/logo-kriar.png">
+    <link rel="apple-touch-icon" href="assets/images/logo-kriar.png">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-hero {
+            padding: 140px 0 80px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, .15), rgba(6, 182, 212, .1));
+            text-align: center;
+        }
+
+        .search-box {
+            display: flex;
+            max-width: 520px;
+            margin: 2rem auto 0;
+            border: 1.5px solid var(--border-color);
+            border-radius: .75rem;
+            overflow: hidden;
+            background: var(--card-bg);
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: .875rem 1.25rem;
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: .95rem;
+            outline: none;
+        }
+
+        .search-box button {
+            padding: .875rem 1.5rem;
+            background: var(--primary-color);
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .help-cats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+            margin: 4rem 0;
+        }
+
+        .help-cat {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            transition: var(--transition-base);
+            cursor: pointer;
+        }
+
+        .help-cat:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .help-cat-icon {
+            font-size: 2rem;
+            margin-bottom: .75rem;
+        }
+
+        .help-cat h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: .25rem;
+        }
+
+        .help-cat p {
+            font-size: .8rem;
+            color: var(--text-secondary);
+        }
+
+        .faq-section h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: .75rem;
+            margin-bottom: .75rem;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            gap: 1rem;
+        }
+
+        .faq-question:hover {
+            color: var(--primary-light);
+        }
+
+        .faq-icon {
+            min-width: 1.25rem;
+            transition: transform .3s;
+            color: var(--primary-light);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .4s ease;
+        }
+
+        .faq-answer-inner {
+            padding: 0 1.5rem 1.25rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 400px;
+        }
+
+        .faq-item.open .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .support-channels {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .support-channel {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition-base);
+        }
+
+        .support-channel:hover {
+            border-color: var(--primary-color);
+        }
+
+        @media(max-width:900px) {
+            .help-cats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .support-channels {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <header class="header" id="header">
+        <nav class="navbar container">
+            <div class="nav-brand"><a href="index.html" class="logo"><span class="logo-icon"><img
+                            src="assets/images/logo-kriar.png" alt="Kriar"></span></a></div>
+            <div class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Início</a></li>
+                    <li><a href="index.html#precos" class="nav-link">Preços</a></li>
+                    <li><a href="contato.html" class="nav-link">Contato</a></li>
+                </ul>
+                <div class="nav-buttons">
+                    <a href="login.html" class="btn btn-ghost">Entrar</a>
+                    <a href="https://wa.me/5511997666735" class="btn btn-primary">WhatsApp</a>
+                </div>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu"><span class="hamburger"></span><span
+                    class="hamburger"></span><span class="hamburger"></span></button>
+        </nav>
+        <div class="menu-overlay" id="menuOverlay"></div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container">
+            <span class="section-badge">Suporte</span>
+            <h1 class="section-title" style="margin-top:1rem;">Central de <span class="gradient-text">Ajuda</span></h1>
+            <p class="section-description" style="max-width:480px;margin:.75rem auto 0;">Como podemos te ajudar hoje?
+            </p>
+            <div class="search-box">
+                <input type="text" placeholder="Pesquisar perguntas frequentes..." id="faqSearch">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding:5rem 0;">
+        <div class="container">
+            <div class="help-cats">
+                <div class="help-cat">
+                    <div class="help-cat-icon">🚀</div>
+                    <h3>Início Rápido</h3>
+                    <p>Primeiros passos na plataforma</p>
+                </div>
+                <div class="help-cat">
+                    <div class="help-cat-icon">🤖</div>
+                    <h3>Chatbot & Fluxos</h3>
+                    <p>Criar e configurar automações</p>
+                </div>
+                <div class="help-cat">
+                    <div class="help-cat-icon">🔗</div>
+                    <h3>Integrações</h3>
+                    <p>Conectar com outras ferramentas</p>
+                </div>
+                <div class="help-cat">
+                    <div class="help-cat-icon">💳</div>
+                    <h3>Planos & Faturamento</h3>
+                    <p>Assinaturas e pagamentos</p>
+                </div>
+            </div>
+
+            <div class="faq-section">
+                <h2>Perguntas Frequentes</h2>
+                <div class="faq-item">
+                    <div class="faq-question"><span>Como criar meu primeiro chatbot na Kriar?</span><i
+                            class="fas fa-plus faq-icon"></i></div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Acesse o menu "Chatbots", clique em "Novo Chatbot" e escolha um
+                            template ou crie do zero. Conecte ao canal desejado e ative. Em menos de 15 minutos seu bot
+                            estará em funcionamento!</div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question"><span>Qual a diferença entre os planos Starter, Professional e
+                            Enterprise?</span><i class="fas fa-plus faq-icon"></i></div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">O <strong>Starter</strong> (R$ 97/mês) inclui 1.000 conversas/mês
+                            e 2 canais. O <strong>Professional</strong> (R$ 297/mês) oferece 10.000 conversas, canais
+                            ilimitados e IA avançada. O <strong>Enterprise</strong> (R$ 897/mês) tem conversas
+                            ilimitadas e gerente dedicado.</div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question"><span>Como funciona a integração com o WhatsApp?</span><i
+                            class="fas fa-plus faq-icon"></i></div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Utilizamos a API oficial do WhatsApp Business. Nossa equipe cuida
+                            de todo o processo de aprovação Meta. Geralmente o processo leva de 24h a 72h após o envio
+                            da documentação.</div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question"><span>Posso cancelar minha assinatura a qualquer momento?</span><i
+                            class="fas fa-plus faq-icon"></i></div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Sim! Sem multas ou taxas. Cancele pelo painel ou pelo suporte. Seu
+                            acesso permanece ativo até o final do período pago.</div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question"><span>A Kriar está em conformidade com a LGPD?</span><i
+                            class="fas fa-plus faq-icon"></i></div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Sim. Todos os dados são criptografados, armazenados no Brasil e
+                            nunca compartilhados sem consentimento. Veja nossa <a href="lgpd.html"
+                                style="color:var(--primary-light);">página de LGPD</a>.</div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question"><span>Como funciona o atendimento híbrido (bot + humano)?</span><i
+                            class="fas fa-plus faq-icon"></i></div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">O bot atende automaticamente e transfere para humano quando
+                            necessário. Configure palavras-chave de transferência e horários de atendimento humano. Fora
+                            do horário, o bot registra para followup.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="support-channels">
+                <div class="support-channel">
+                    <div style="font-size:2rem;margin-bottom:1rem;">💬</div>
+                    <h3 style="font-weight:700;margin-bottom:.5rem;">WhatsApp</h3>
+                    <p style="color:var(--text-secondary);margin-bottom:1.25rem;">Fale com nosso time em tempo real. Seg
+                        a sex, 9h às 18h.</p>
+                    <a href="https://wa.me/5511997666735?text=Preciso%20de%20ajuda%20com%20a%20plataforma%20Kriar"
+                        class="btn btn-primary btn-sm"><i class="fab fa-whatsapp"></i> Falar Agora</a>
+                </div>
+                <div class="support-channel">
+                    <div style="font-size:2rem;margin-bottom:1rem;">📧</div>
+                    <h3 style="font-weight:700;margin-bottom:.5rem;">E-mail</h3>
+                    <p style="color:var(--text-secondary);margin-bottom:1.25rem;">Resposta em até 4 horas úteis para
+                        questões técnicas.</p>
+                    <a href="mailto:suporte@kriar.digital" class="btn btn-outline btn-sm"><i
+                            class="fas fa-envelope"></i> suporte@kriar.digital</a>
+                </div>
+                <div class="support-channel">
+                    <div style="font-size:2rem;margin-bottom:1rem;">📚</div>
+                    <h3 style="font-weight:700;margin-bottom:.5rem;">Documentação</h3>
+                    <p style="color:var(--text-secondary);margin-bottom:1.25rem;">Guias completos, tutoriais e
+                        referências técnicas da API.</p>
+                    <a href="docs.html" class="btn btn-outline btn-sm"><i class="fas fa-book"></i> Ver Docs</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-brand"><a href="index.html" class="logo"><span class="logo-icon logo-footer"><img
+                                    src="assets/images/logo-kriar.png" alt="Kriar" loading="lazy"></span></a>
+                        <p class="footer-tagline">Automações Inteligentes para o Futuro dos Negócios</p>
+                    </div>
+                    <div class="footer-social"><a href="https://www.instagram.com/kriar.digit/" class="social-link"><i
+                                class="fab fa-instagram"></i></a></div>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Produto</h4>
+                    <ul class="footer-links">
+                        <li><a href="integracoes.html">Integrações</a></li>
+                        <li><a href="api.html">API</a></li>
+                        <li><a href="index.html#precos">Preços</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Recursos</h4>
+                    <ul class="footer-links">
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="docs.html">Documentação</a></li>
+                        <li><a href="tutoriais.html">Tutoriais</a></li>
+                        <li><a href="webinars.html">Webinars</a></li>
+                        <li><a href="cases.html">Cases</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Empresa</h4>
+                    <ul class="footer-links">
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="carreiras.html">Carreiras</a></li>
+                        <li><a href="parceiros.html">Parceiros</a></li>
+                        <li><a href="afiliados.html">Afiliados</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Suporte</h4>
+                    <ul class="footer-links">
+                        <li><a href="ajuda.html">Central de Ajuda</a></li>
+                        <li><a href="status.html">Status</a></li>
+                        <li><a href="privacidade.html">Privacidade</a></li>
+                        <li><a href="termos.html">Termos</a></li>
+                        <li><a href="lgpd.html">LGPD</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2026 Kriar - Automações Inteligentes. Todos os direitos reservados.</p>
+                <div class="footer-contact"><a href="mailto:contato@kriar.digital"><i class="fas fa-envelope"></i>
+                        contato@kriar.digital</a></div>
+            </div>
+        </div>
+    </footer>
+    <a href="https://wa.me/5511997666735" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <!-- Back to Top Button -->
+    <button id="backToTop" aria-label="Voltar ao topo">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="js/script.js"></script>
+    <script>
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => {
+                const item = q.parentElement;
+                const isOpen = item.classList.contains('open');
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+                if (!isOpen) item.classList.add('open');
+            });
+        });
+    </script>
+</body>
+
+</html>

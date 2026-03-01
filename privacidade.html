@@ -1,0 +1,329 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Política de Privacidade Kriar - Como coletamos, usamos e protegemos seus dados pessoais.">
+    <title>Política de Privacidade | Kriar - Automações Inteligentes</title>
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://kriar.digital/privacidade.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Kriar - Agentes de IA">
+    <meta property="og:title" content="Politica de Privacidade | Kriar">
+    <meta property="og:description" content="Politica de Privacidade da Kriar em conformidade com a LGPD. Saiba como tratamos seus dados pessoais.">
+    <meta property="og:url" content="https://kriar.digital/privacidade.html">
+    <meta property="og:image" content="https://kriar.digital/assets/images/logo-kriar.png">
+    <meta property="og:locale" content="pt_BR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Politica de Privacidade | Kriar">
+    <meta name="twitter:description" content="Politica de Privacidade da Kriar em conformidade com a LGPD. Saiba como tratamos seus dados pessoais.">
+    <meta name="twitter:image" content="https://kriar.digital/assets/images/logo-kriar.png">
+    <link rel="apple-touch-icon" href="assets/images/logo-kriar.png">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-hero {
+            padding: 140px 0 60px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, .15), rgba(6, 182, 212, .1));
+            text-align: center;
+        }
+
+        .legal-layout {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 3rem;
+            align-items: start;
+            padding: 5rem 0;
+        }
+
+        .legal-nav {
+            position: sticky;
+            top: 90px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.25rem;
+        }
+
+        .legal-nav a {
+            display: block;
+            padding: .4rem .5rem;
+            font-size: .875rem;
+            color: var(--text-secondary);
+            border-radius: .4rem;
+            transition: var(--transition-base);
+        }
+
+        .legal-nav a:hover {
+            color: var(--primary-light);
+            background: rgba(59, 130, 246, .1);
+        }
+
+        .legal-content h2 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin: 2.5rem 0 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .legal-content h2:first-child {
+            margin-top: 0;
+            border-top: none;
+        }
+
+        .legal-content p,
+        .legal-content li {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: .75rem;
+        }
+
+        .legal-content ul {
+            padding-left: 1.25rem;
+        }
+
+        .legal-content ul li {
+            margin-bottom: .4rem;
+        }
+
+        .info-box {
+            background: rgba(59, 130, 246, .08);
+            border: 1px solid rgba(59, 130, 246, .25);
+            border-radius: .75rem;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-box p {
+            margin: 0;
+            color: var(--text-primary);
+            font-size: .9rem;
+        }
+
+        @media(max-width:900px) {
+            .legal-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .legal-nav {
+                position: static;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <header class="header" id="header">
+        <nav class="navbar container">
+            <div class="nav-brand"><a href="index.html" class="logo"><span class="logo-icon"><img
+                            src="assets/images/logo-kriar.png" alt="Kriar"></span></a></div>
+            <div class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Início</a></li>
+                    <li><a href="index.html#precos" class="nav-link">Preços</a></li>
+                    <li><a href="contato.html" class="nav-link">Contato</a></li>
+                </ul>
+                <div class="nav-buttons">
+                    <a href="login.html" class="btn btn-ghost">Entrar</a>
+                    <a href="https://wa.me/5511997666735" class="btn btn-primary">WhatsApp</a>
+                </div>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu"><span class="hamburger"></span><span
+                    class="hamburger"></span><span class="hamburger"></span></button>
+        </nav>
+        <div class="menu-overlay" id="menuOverlay"></div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container">
+            <span class="section-badge">Legal</span>
+            <h1 class="section-title" style="margin-top:1rem;">Política de <span
+                    class="gradient-text">Privacidade</span></h1>
+            <p style="color:var(--text-secondary);margin-top:.75rem;">Última atualização: 21 de fevereiro de 2026</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="legal-layout">
+            <nav class="legal-nav">
+                <a href="#intro">Introdução</a>
+                <a href="#coleta">Dados Coletados</a>
+                <a href="#uso">Uso dos Dados</a>
+                <a href="#compartilhamento">Compartilhamento</a>
+                <a href="#seguranca">Segurança</a>
+                <a href="#cookies">Cookies</a>
+                <a href="#direitos">Seus Direitos</a>
+                <a href="#retencao">Retenção</a>
+                <a href="#contato-dpo">Contato (DPO)</a>
+            </nav>
+            <div class="legal-content">
+                <div class="info-box">
+                    <p>🔒 A Kriar está comprometida com a transparência e a proteção dos seus dados. Esta política
+                        explica de forma clara como tratamos suas informações.</p>
+                </div>
+
+                <h2 id="intro">1. Introdução</h2>
+                <p>A <strong>Kriar Tecnologia Ltda.</strong> ("Kriar", "nós", "nosso"), inscrita no CNPJ
+                    00.000.000/0001-00, com sede em São Paulo - SP, é responsável pelo tratamento dos dados pessoais dos
+                    usuários de sua plataforma de automações inteligentes.</p>
+                <p>Esta Política de Privacidade descreve quais dados coletamos, como os utilizamos, com quem os
+                    compartilhamos e quais direitos você possui sobre eles, em conformidade com a Lei Geral de Proteção
+                    de Dados (Lei nº 13.709/2018 — LGPD).</p>
+
+                <h2 id="coleta">2. Dados que Coletamos</h2>
+                <p>Coletamos diferentes tipos de dados dependendo de como você interage com a Kriar:</p>
+                <ul>
+                    <li><strong>Dados de cadastro:</strong> nome completo, e-mail, telefone, empresa e cargo.</li>
+                    <li><strong>Dados de pagamento:</strong> informações de faturamento processadas por gateways
+                        certificados PCI-DSS (não armazenamos dados de cartão).</li>
+                    <li><strong>Dados de uso:</strong> logs de acesso, funcionalidades utilizadas, conversas
+                        automatizadas criadas.</li>
+                    <li><strong>Dados de comunicação:</strong> mensagens trocadas via canais integrados (WhatsApp,
+                        Instagram etc.).</li>
+                    <li><strong>Dados técnicos:</strong> endereço IP, tipo de navegador, sistema operacional e cookies.
+                    </li>
+                </ul>
+
+                <h2 id="uso">3. Como Usamos seus Dados</h2>
+                <p>Utilizamos seus dados para:</p>
+                <ul>
+                    <li>Fornecer e melhorar os serviços da plataforma Kriar;</li>
+                    <li>Processar pagamentos e gerenciar sua assinatura;</li>
+                    <li>Enviar comunicações transacionais (confirmações, alertas, suporte);</li>
+                    <li>Enviar comunicações de marketing, mediante seu consentimento;</li>
+                    <li>Cumprir obrigações legais e regulatórias;</li>
+                    <li>Prevenir fraudes e garantir a segurança da plataforma.</li>
+                </ul>
+
+                <h2 id="compartilhamento">4. Compartilhamento de Dados</h2>
+                <p>Não vendemos seus dados. Podemos compartilhá-los apenas com:</p>
+                <ul>
+                    <li><strong>Prestadores de serviço:</strong> processadores de pagamento, serviços de cloud,
+                        ferramentas de analytics — todos vinculados por contratos de confidencialidade;</li>
+                    <li><strong>Autoridades legais:</strong> quando exigido por lei ou ordem judicial;</li>
+                    <li><strong>Parceiros de integração:</strong> apenas os dados necessários para o funcionamento das
+                        integrações que você habilitar.</li>
+                </ul>
+
+                <h2 id="seguranca">5. Segurança dos Dados</h2>
+                <p>Aplicamos medidas técnicas e organizacionais rigorosas para proteger seus dados:</p>
+                <ul>
+                    <li>Criptografia TLS em trânsito e AES-256 em repouso;</li>
+                    <li>Controles de acesso baseados em função (RBAC) com autenticação multifator;</li>
+                    <li>Auditorias de segurança periódicas e testes de penetração;</li>
+                    <li>Servidores localizados no Brasil (AWS São Paulo).</li>
+                </ul>
+
+                <h2 id="cookies">6. Cookies</h2>
+                <p>Utilizamos cookies essenciais (necessários para o funcionamento do site), cookies analíticos (para
+                    entender como o site é usado) e cookies de marketing (apenas com seu consentimento).</p>
+                <p>Você pode controlar os cookies nas configurações do seu navegador. A desativação de cookies
+                    essenciais pode impactar a funcionalidade do serviço.</p>
+
+                <h2 id="direitos">7. Seus Direitos (LGPD)</h2>
+                <p>Você possui os seguintes direitos sobre seus dados pessoais:</p>
+                <ul>
+                    <li><strong>Confirmação e acesso:</strong> saber se tratamos seus dados e obter uma cópia;</li>
+                    <li><strong>Correção:</strong> solicitar a atualização de dados incompletos ou incorretos;</li>
+                    <li><strong>Exclusão:</strong> solicitar a exclusão de dados tratados com base em consentimento;
+                    </li>
+                    <li><strong>Portabilidade:</strong> receber seus dados em formato estruturado;</li>
+                    <li><strong>Revogação de consentimento:</strong> retirar consentimento a qualquer momento;</li>
+                    <li><strong>Oposição:</strong> opor-se ao tratamento em determinadas situações.</li>
+                </ul>
+                <p>Para exercer seus direitos, entre em contato com nosso DPO pelo e-mail <a
+                        href="mailto:privacidade@kriar.digital"
+                        style="color:var(--primary-light);">privacidade@kriar.digital</a>.</p>
+
+                <h2 id="retencao">8. Retenção de Dados</h2>
+                <p>Mantemos seus dados pelo período necessário para a prestação dos serviços e cumprimento de obrigações
+                    legais. Após o encerramento da conta, os dados são anonimizados ou excluídos em até 90 dias, salvo
+                    obrigação legal de retenção maior.</p>
+
+                <h2 id="contato-dpo">9. Contato — Encarregado de Dados (DPO)</h2>
+                <p>Para dúvidas ou solicitações relacionadas à privacidade:</p>
+                <ul>
+                    <li><i class="fas fa-envelope" style="margin-right:.4rem;color:var(--primary-light);"></i><a
+                            href="mailto:privacidade@kriar.digital"
+                            style="color:var(--primary-light);">privacidade@kriar.digital</a></li>
+                    <li><i class="fas fa-map-marker-alt" style="margin-right:.4rem;color:var(--primary-light);"></i>São
+                        Paulo - SP, Brasil</li>
+                </ul>
+                <p>Respondemos a solicitações em até 15 dias úteis.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-brand"><a href="index.html" class="logo"><span class="logo-icon logo-footer"><img
+                                    src="assets/images/logo-kriar.png" alt="Kriar" loading="lazy"></span></a>
+                        <p class="footer-tagline">Automações Inteligentes para o Futuro dos Negócios</p>
+                    </div>
+                    <div class="footer-social"><a href="https://www.instagram.com/kriar.digit/" class="social-link"><i
+                                class="fab fa-instagram"></i></a></div>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Produto</h4>
+                    <ul class="footer-links">
+                        <li><a href="integracoes.html">Integrações</a></li>
+                        <li><a href="api.html">API</a></li>
+                        <li><a href="index.html#precos">Preços</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Recursos</h4>
+                    <ul class="footer-links">
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="docs.html">Documentação</a></li>
+                        <li><a href="tutoriais.html">Tutoriais</a></li>
+                        <li><a href="webinars.html">Webinars</a></li>
+                        <li><a href="cases.html">Cases</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Empresa</h4>
+                    <ul class="footer-links">
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="carreiras.html">Carreiras</a></li>
+                        <li><a href="parceiros.html">Parceiros</a></li>
+                        <li><a href="afiliados.html">Afiliados</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Suporte</h4>
+                    <ul class="footer-links">
+                        <li><a href="ajuda.html">Central de Ajuda</a></li>
+                        <li><a href="status.html">Status</a></li>
+                        <li><a href="privacidade.html">Privacidade</a></li>
+                        <li><a href="termos.html">Termos</a></li>
+                        <li><a href="lgpd.html">LGPD</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2026 Kriar - Automações Inteligentes. Todos os direitos reservados.</p>
+                <div class="footer-contact"><a href="mailto:contato@kriar.digital"><i class="fas fa-envelope"></i>
+                        contato@kriar.digital</a></div>
+            </div>
+        </div>
+    </footer>
+    <a href="https://wa.me/5511997666735" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <!-- Back to Top Button -->
+    <button id="backToTop" aria-label="Voltar ao topo">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,380 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Trabalhe na Kriar - vagas abertas, cultura e benefícios para quem quer transformar o atendimento com IA.">
+    <title>Carreiras | Kriar - Automações Inteligentes</title>
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://kriar.digital/carreiras.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Kriar - Agentes de IA">
+    <meta property="og:title" content="Carreiras | Kriar">
+    <meta property="og:description" content="Vagas abertas na Kriar. Junte-se a um time apaixonado por IA, automação e impacto real nos negocios.">
+    <meta property="og:url" content="https://kriar.digital/carreiras.html">
+    <meta property="og:image" content="https://kriar.digital/assets/images/logo-kriar.png">
+    <meta property="og:locale" content="pt_BR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Carreiras | Kriar">
+    <meta name="twitter:description" content="Vagas abertas na Kriar. Junte-se a um time apaixonado por IA, automação e impacto real nos negocios.">
+    <meta name="twitter:image" content="https://kriar.digital/assets/images/logo-kriar.png">
+    <link rel="apple-touch-icon" href="assets/images/logo-kriar.png">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-hero {
+            padding: 140px 0 80px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(6, 182, 212, 0.1));
+            text-align: center;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.75rem;
+            transition: var(--transition-base);
+        }
+
+        .benefit-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .benefit-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .job-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            transition: var(--transition-base);
+        }
+
+        .job-card:hover {
+            border-color: var(--primary-color);
+        }
+
+        .job-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: rgba(59, 130, 246, 0.2);
+            color: var(--primary-light);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-tag.remote {
+            background: rgba(16, 185, 129, 0.2);
+            color: #34d399;
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+
+        .culture-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .benefits-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .job-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .culture-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <header class="header" id="header">
+        <nav class="navbar container">
+            <div class="nav-brand">
+                <a href="index.html" class="logo"><span class="logo-icon"><img src="assets/images/logo-kriar.png"
+                            alt="Kriar"></span></a>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li><a href="index.html#inicio" class="nav-link">Início</a></li>
+                    <li><a href="index.html#solucoes" class="nav-link">Soluções</a></li>
+                    <li><a href="index.html#precos" class="nav-link">Preços</a></li>
+                    <li><a href="contato.html" class="nav-link">Contato</a></li>
+                </ul>
+                <div class="nav-buttons">
+                    <a href="login.html" class="btn btn-ghost">Entrar</a>
+                    <a href="https://wa.me/5511997666735" class="btn btn-primary">WhatsApp</a>
+                </div>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span class="hamburger"></span><span class="hamburger"></span><span class="hamburger"></span>
+            </button>
+        </nav>
+        <div class="menu-overlay" id="menuOverlay"></div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container">
+            <span class="section-badge">Carreiras</span>
+            <h1 class="section-title" style="margin-top:1rem;">Junte-se à <span class="gradient-text">Revolução da
+                    IA</span></h1>
+            <p class="section-description" style="max-width:600px;margin:1rem auto 0;">
+                Trabalhamos com propósito, agilidade e liberdade. Se você quer construir o futuro do atendimento
+                inteligente, seu lugar é aqui.
+            </p>
+            <div style="margin-top:2rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+                <div
+                    style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.3);border-radius:0.75rem;padding:1rem 2rem;text-align:center;">
+                    <div style="font-size:2rem;font-weight:800;color:var(--primary-color);">100%</div>
+                    <div style="color:var(--text-secondary);font-size:0.875rem;">Remoto</div>
+                </div>
+                <div
+                    style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.3);border-radius:0.75rem;padding:1rem 2rem;text-align:center;">
+                    <div style="font-size:2rem;font-weight:800;color:var(--primary-color);">15+</div>
+                    <div style="color:var(--text-secondary);font-size:0.875rem;">Pessoas no time</div>
+                </div>
+                <div
+                    style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.3);border-radius:0.75rem;padding:1rem 2rem;text-align:center;">
+                    <div style="font-size:2rem;font-weight:800;color:var(--primary-color);">4.9★</div>
+                    <div style="color:var(--text-secondary);font-size:0.875rem;">Glassdoor</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefícios -->
+    <section style="padding:5rem 0; background: var(--bg-dark);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Benefícios</span>
+                <h2 class="section-title">Por que Trabalhar na Kriar?</h2>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🌎</div>
+                    <h4>100% Remoto</h4>
+                    <p style="color:var(--text-secondary);margin-top:0.5rem;font-size:0.9rem;">Trabalhe de qualquer
+                        lugar do Brasil. Acreditamos em flexibilidade e confiança.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h4>Salário Competitivo</h4>
+                    <p style="color:var(--text-secondary);margin-top:0.5rem;font-size:0.9rem;">Remuneração acima do
+                        mercado + participação nos lucros (PLR).</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📚</div>
+                    <h4>Aprendizado Contínuo</h4>
+                    <p style="color:var(--text-secondary);margin-top:0.5rem;font-size:0.9rem;">Budget mensal para
+                        cursos, livros e conferências de tecnologia.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🏥</div>
+                    <h4>Plano de Saúde</h4>
+                    <p style="color:var(--text-secondary);margin-top:0.5rem;font-size:0.9rem;">Plano de saúde e
+                        odontológico extensivo para você e dependentes.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">⏰</div>
+                    <h4>Horário Flexível</h4>
+                    <p style="color:var(--text-secondary);margin-top:0.5rem;font-size:0.9rem;">Trabalhe nos horários que
+                        fazem mais sentido para a sua vida.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🚀</div>
+                    <h4>Crescimento Rápido</h4>
+                    <p style="color:var(--text-secondary);margin-top:0.5rem;font-size:0.9rem;">Empresa em expansão. Aqui
+                        você cresce junto com o produto.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vagas -->
+    <section style="padding:5rem 0;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Vagas Abertas</span>
+                <h2 class="section-title">Oportunidades</h2>
+                <p class="section-description">Todas as vagas são 100% remotas. CLT ou PJ, a combinar.</p>
+            </div>
+
+            <div class="job-card">
+                <div>
+                    <h3 style="font-size:1.25rem;margin-bottom:0.5rem;">Desenvolvedor(a) Full Stack</h3>
+                    <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:1rem;">Construa as
+                        funcionalidades que milhares de empresas usam todo dia.</p>
+                    <span class="job-tag">Node.js</span><span class="job-tag">React</span><span
+                        class="job-tag remote">Remoto</span><span class="job-tag">Sênior</span>
+                </div>
+                <a href="https://wa.me/5511997666735?text=Oi,%20tenho%20interesse%20na%20vaga%20de%20Full%20Stack"
+                    class="btn btn-primary" style="white-space:nowrap;"><i class="fab fa-whatsapp"></i> Candidatar</a>
+            </div>
+
+            <div class="job-card">
+                <div>
+                    <h3 style="font-size:1.25rem;margin-bottom:0.5rem;">Especialista em IA / NLP</h3>
+                    <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:1rem;">Implemente e melhore os
+                        modelos de linguagem que alimentam nossos chatbots.</p>
+                    <span class="job-tag">Python</span><span class="job-tag">LLMs</span><span
+                        class="job-tag remote">Remoto</span><span class="job-tag">Pleno/Sênior</span>
+                </div>
+                <a href="https://wa.me/5511997666735?text=Oi,%20tenho%20interesse%20na%20vaga%20de%20IA/NLP"
+                    class="btn btn-primary" style="white-space:nowrap;"><i class="fab fa-whatsapp"></i> Candidatar</a>
+            </div>
+
+            <div class="job-card">
+                <div>
+                    <h3 style="font-size:1.25rem;margin-bottom:0.5rem;">Customer Success Manager</h3>
+                    <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:1rem;">Acompanhe nossos
+                        clientes e garanta que eles extraiam o máximo valor da plataforma.</p>
+                    <span class="job-tag">CX</span><span class="job-tag">SaaS</span><span
+                        class="job-tag remote">Remoto</span><span class="job-tag">Pleno</span>
+                </div>
+                <a href="https://wa.me/5511997666735?text=Oi,%20tenho%20interesse%20na%20vaga%20de%20Customer%20Success"
+                    class="btn btn-primary" style="white-space:nowrap;"><i class="fab fa-whatsapp"></i> Candidatar</a>
+            </div>
+
+            <div class="job-card">
+                <div>
+                    <h3 style="font-size:1.25rem;margin-bottom:0.5rem;">Designer de Produto (UX/UI)</h3>
+                    <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:1rem;">Crie experiências que
+                        fazem usuários dizerem "que fácil!" na primeira vez que usam.</p>
+                    <span class="job-tag">Figma</span><span class="job-tag">UX Research</span><span
+                        class="job-tag remote">Remoto</span><span class="job-tag">Pleno</span>
+                </div>
+                <a href="https://wa.me/5511997666735?text=Oi,%20tenho%20interesse%20na%20vaga%20de%20Designer%20de%20Produto"
+                    class="btn btn-primary" style="white-space:nowrap;"><i class="fab fa-whatsapp"></i> Candidatar</a>
+            </div>
+
+            <div
+                style="text-align:center;margin-top:2rem;padding:2rem;background:var(--card-bg);border:1px dashed var(--border-color);border-radius:1rem;">
+                <p style="color:var(--text-secondary);">Não encontrou uma vaga para você? Mande seu currículo assim
+                    mesmo — adoramos descobrir talentos.</p>
+                <a href="https://wa.me/5511997666735?text=Oi,%20quero%20enviar%20meu%20currículo%20para%20a%20Kriar"
+                    class="btn btn-outline" style="margin-top:1rem;"><i class="fas fa-paper-plane"></i> Enviar
+                    Currículo</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Pronto para Fazer Parte do Time?</h2>
+                <p class="cta-description">Candidate-se agora e vamos marcar uma conversa.</p>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/5511997666735?text=Oi,%20quero%20trabalhar%20na%20Kriar"
+                        class="btn btn-primary btn-lg"><i class="fab fa-whatsapp"></i> Falar com RH</a>
+                    <a href="sobre.html" class="btn btn-white btn-lg"><i class="fas fa-users"></i> Conhecer a
+                        Empresa</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-brand"><a href="index.html" class="logo"><span class="logo-icon logo-footer"><img
+                                    src="assets/images/logo-kriar.png" alt="Kriar" loading="lazy"></span></a>
+                        <p class="footer-tagline">Automações Inteligentes para o Futuro dos Negócios</p>
+                    </div>
+                    <div class="footer-social"><a href="https://www.instagram.com/kriar.digit/" class="social-link"><i
+                                class="fab fa-instagram"></i></a></div>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Produto</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#funcionalidades">Funcionalidades</a></li>
+                        <li><a href="index.html#precos">Preços</a></li>
+                        <li><a href="integracoes.html">Integrações</a></li>
+                        <li><a href="api.html">API</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Recursos</h4>
+                    <ul class="footer-links">
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="docs.html">Documentação</a></li>
+                        <li><a href="tutoriais.html">Tutoriais</a></li>
+                        <li><a href="cases.html">Cases de Sucesso</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Empresa</h4>
+                    <ul class="footer-links">
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                        <li><a href="carreiras.html">Carreiras</a></li>
+                        <li><a href="parceiros.html">Parceiros</a></li>
+                        <li><a href="afiliados.html">Afiliados</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Suporte</h4>
+                    <ul class="footer-links">
+                        <li><a href="ajuda.html">Central de Ajuda</a></li>
+                        <li><a href="status.html">Status do Sistema</a></li>
+                        <li><a href="privacidade.html">Privacidade</a></li>
+                        <li><a href="termos.html">Termos de Uso</a></li>
+                        <li><a href="lgpd.html">LGPD</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2026 Kriar - Automações Inteligentes. Todos os direitos reservados.</p>
+                <div class="footer-contact"><a href="mailto:contato@kriar.digital"><i class="fas fa-envelope"></i>
+                        contato@kriar.digital</a></div>
+            </div>
+        </div>
+    </footer>
+    <a href="https://wa.me/5511997666735" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <!-- Back to Top Button -->
+    <button id="backToTop" aria-label="Voltar ao topo">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

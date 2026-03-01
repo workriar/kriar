@@ -1,0 +1,312 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Programa de Afiliados Kriar - indique a Kriar e ganhe comissões por cada cliente referenciado.">
+    <title>Afiliados | Kriar - Automações Inteligentes</title>
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://kriar.digital/afiliados.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Kriar - Agentes de IA">
+    <meta property="og:title" content="Afiliados | Kriar">
+    <meta property="og:description" content="Programa de afiliados da Kriar. Ganhe comissoes indicando nossa plataforma de automação com IA.">
+    <meta property="og:url" content="https://kriar.digital/afiliados.html">
+    <meta property="og:image" content="https://kriar.digital/assets/images/logo-kriar.png">
+    <meta property="og:locale" content="pt_BR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Afiliados | Kriar">
+    <meta name="twitter:description" content="Programa de afiliados da Kriar. Ganhe comissoes indicando nossa plataforma de automação com IA.">
+    <meta name="twitter:image" content="https://kriar.digital/assets/images/logo-kriar.png">
+    <link rel="apple-touch-icon" href="assets/images/logo-kriar.png">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-hero {
+            padding: 140px 0 80px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(6, 182, 212, 0.1));
+            text-align: center;
+        }
+
+        .how-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step-card {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .step-num {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: white;
+            margin: 0 auto 1rem;
+        }
+
+        .commission-box {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(6, 182, 212, 0.1));
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            text-align: center;
+            margin: 3rem auto;
+            max-width: 600px;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .faq-item h4 {
+            margin-bottom: 0.75rem;
+        }
+
+        .faq-item p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .how-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <header class="header" id="header">
+        <nav class="navbar container">
+            <div class="nav-brand"><a href="index.html" class="logo"><span class="logo-icon"><img
+                            src="assets/images/logo-kriar.png" alt="Kriar"></span></a></div>
+            <div class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Início</a></li>
+                    <li><a href="index.html#precos" class="nav-link">Preços</a></li>
+                    <li><a href="contato.html" class="nav-link">Contato</a></li>
+                </ul>
+                <div class="nav-buttons">
+                    <a href="login.html" class="btn btn-ghost">Entrar</a>
+                    <a href="https://wa.me/5511997666735" class="btn btn-primary">WhatsApp</a>
+                </div>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu"><span class="hamburger"></span><span
+                    class="hamburger"></span><span class="hamburger"></span></button>
+        </nav>
+        <div class="menu-overlay" id="menuOverlay"></div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container">
+            <span class="section-badge">Programa de Afiliados</span>
+            <h1 class="section-title" style="margin-top:1rem;">Indique e <span class="gradient-text">Ganhe
+                    Dinheiro</span></h1>
+            <p class="section-description" style="max-width:600px;margin:1rem auto 0;">
+                Compartilhe a Kriar com sua audiência e receba 25% de comissão recorrente por cada cliente que
+                contratar, todo mês.
+            </p>
+            <a href="https://wa.me/5511997666735?text=Quero%20me%20cadastrar%20como%20afiliado%20da%20Kriar"
+                class="btn btn-primary btn-lg" style="margin-top:2rem;">
+                <i class="fas fa-link"></i> Quero ser Afiliado
+            </a>
+        </div>
+    </section>
+
+    <!-- Comissão destaque -->
+    <section style="padding: 5rem 0; background: var(--bg-dark);">
+        <div class="container">
+            <div class="commission-box">
+                <p
+                    style="color:var(--text-secondary);margin-bottom:0.5rem;font-size:0.875rem;text-transform:uppercase;letter-spacing:1px;">
+                    SUA COMISSÃO</p>
+                <div
+                    style="font-size:5rem;font-weight:800;background:linear-gradient(135deg,#7DD3FC,#06B6D4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">
+                    25%</div>
+                <p style="font-size:1.25rem;color:var(--text-primary);margin:0.5rem 0;">de comissão recorrente mensal
+                </p>
+                <p style="color:var(--text-secondary);margin-top:1rem;">Por cada plano que seu indicado contratar, você
+                    ganha 25% do valor pago, todos os meses enquanto ele for cliente.</p>
+                <div style="display:flex;gap:1rem;justify-content:center;margin-top:2rem;flex-wrap:wrap;">
+                    <div
+                        style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.3);border-radius:0.75rem;padding:1rem 1.5rem;text-align:center;">
+                        <div style="font-size:1.5rem;font-weight:700;color:var(--primary-color);">R$ 24</div>
+                        <div style="color:var(--text-secondary);font-size:0.8rem;">por afiliado Starter/mês</div>
+                    </div>
+                    <div
+                        style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.3);border-radius:0.75rem;padding:1rem 1.5rem;text-align:center;">
+                        <div style="font-size:1.5rem;font-weight:700;color:var(--primary-color);">R$ 74</div>
+                        <div style="color:var(--text-secondary);font-size:0.8rem;">por afiliado Professional/mês</div>
+                    </div>
+                    <div
+                        style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.3);border-radius:0.75rem;padding:1rem 1.5rem;text-align:center;">
+                        <div style="font-size:1.5rem;font-weight:700;color:var(--primary-color);">R$ 224</div>
+                        <div style="color:var(--text-secondary);font-size:0.8rem;">por afiliado Enterprise/mês</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Como funciona -->
+    <section style="padding: 5rem 0;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Como Funciona</span>
+                <h2 class="section-title">Simples e Transparente</h2>
+            </div>
+            <div class="how-grid">
+                <div class="step-card">
+                    <div class="step-num">1</div>
+                    <h4>Cadastre-se</h4>
+                    <p style="color:var(--text-secondary);font-size:0.875rem;margin-top:0.5rem;">Fale pelo WhatsApp e
+                        receba seu link exclusivo de afiliado gratuitamente.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">2</div>
+                    <h4>Compartilhe</h4>
+                    <p style="color:var(--text-secondary);font-size:0.875rem;margin-top:0.5rem;">Divulgue nos seus
+                        canais: YouTube, Instagram, blog, newsletter etc.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">3</div>
+                    <h4>Converta</h4>
+                    <p style="color:var(--text-secondary);font-size:0.875rem;margin-top:0.5rem;">Quem clicar no seu link
+                        e assinar a Kriar é registrado automaticamente.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">4</div>
+                    <h4>Receba</h4>
+                    <p style="color:var(--text-secondary);font-size:0.875rem;margin-top:0.5rem;">Receba todo mês via PIX
+                        ou transferência bancária, sem complicação.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section style="padding: 5rem 0; background: var(--bg-dark);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">FAQ</span>
+                <h2 class="section-title">Dúvidas Frequentes</h2>
+            </div>
+            <div style="max-width: 700px; margin: 3rem auto 0;">
+                <div class="faq-item">
+                    <h4>Preciso ser cliente da Kriar para ser afiliado?</h4>
+                    <p>Não. Qualquer pessoa pode ser afiliada, mesmo sem usar a plataforma.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Quando recebo minha comissão?</h4>
+                    <p>Pagamentos são feitos mensalmente até o dia 10 do mês seguinte ao recebimento da comissão.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Existe limite de indicações?</h4>
+                    <p>Não! Você pode indicar quantos clientes quiser e acumular comissões ilimitadas.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Por quanto tempo recebo a comissão?</h4>
+                    <p>Enquanto o cliente indicado continuar ativo na Kriar, você recebe 25% todo mês.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Comece a Ganhar Hoje</h2>
+                <p class="cta-description">Cadastre-se gratuitamente no programa de afiliados.</p>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/5511997666735?text=Quero%20me%20cadastrar%20como%20afiliado%20da%20Kriar"
+                        class="btn btn-primary btn-lg"><i class="fab fa-whatsapp"></i> Cadastrar como Afiliado</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-brand"><a href="index.html" class="logo"><span class="logo-icon logo-footer"><img
+                                    src="assets/images/logo-kriar.png" alt="Kriar" loading="lazy"></span></a>
+                        <p class="footer-tagline">Automações Inteligentes para o Futuro dos Negócios</p>
+                    </div>
+                    <div class="footer-social"><a href="https://www.instagram.com/kriar.digit/" class="social-link"><i
+                                class="fab fa-instagram"></i></a></div>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Produto</h4>
+                    <ul class="footer-links">
+                        <li><a href="integracoes.html">Integrações</a></li>
+                        <li><a href="api.html">API</a></li>
+                        <li><a href="index.html#precos">Preços</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Recursos</h4>
+                    <ul class="footer-links">
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="docs.html">Documentação</a></li>
+                        <li><a href="cases.html">Cases</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Empresa</h4>
+                    <ul class="footer-links">
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="carreiras.html">Carreiras</a></li>
+                        <li><a href="parceiros.html">Parceiros</a></li>
+                        <li><a href="afiliados.html">Afiliados</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Suporte</h4>
+                    <ul class="footer-links">
+                        <li><a href="ajuda.html">Central de Ajuda</a></li>
+                        <li><a href="status.html">Status</a></li>
+                        <li><a href="privacidade.html">Privacidade</a></li>
+                        <li><a href="termos.html">Termos</a></li>
+                        <li><a href="lgpd.html">LGPD</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2026 Kriar - Automações Inteligentes. Todos os direitos reservados.</p>
+                <div class="footer-contact"><a href="mailto:contato@kriar.digital"><i class="fas fa-envelope"></i>
+                        contato@kriar.digital</a></div>
+            </div>
+        </div>
+    </footer>
+    <a href="https://wa.me/5511997666735" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <!-- Back to Top Button -->
+    <button id="backToTop" aria-label="Voltar ao topo">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
