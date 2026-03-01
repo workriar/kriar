@@ -184,9 +184,9 @@ function initScrollAnimations() {
         });
     }, observerOptions);
 
-    // Elements to animate
+    // Seletores atualizados para corresponder ao HTML real do projeto
     const animatedElements = document.querySelectorAll(
-        '.solution-card, .feature-card, .use-case-card, .pricing-card'
+        '.service-card, .testimonial-card, .case-card, .metric-card, .agent-card'
     );
 
     animatedElements.forEach(el => {
@@ -257,7 +257,9 @@ function initCounterAnimation() {
 // Form Validation and Submission
 // ===================================
 function initFormHandling() {
-    const forms = document.querySelectorAll('form');
+    // Ignora forms com handler próprio (onsubmit) ou com IDs específicos
+    // para evitar conflito de duplo disparo com submitLeadForm() do index.html
+    const forms = document.querySelectorAll('form:not([onsubmit]):not(#leadForm)');
 
     forms.forEach(form => {
         form.addEventListener('submit', function (e) {
@@ -446,22 +448,36 @@ function initChatWidget() {
 function initTypingEffect() {
     const typingElement = document.querySelector('.gradient-text');
 
-    if (typingElement) {
-        const text = typingElement.textContent;
-        typingElement.textContent = '';
-        let index = 0;
+    if (!typingElement) return;
 
-        function type() {
-            if (index < text.length) {
-                typingElement.textContent += text.charAt(index);
-                index++;
-                setTimeout(type, 100);
-            }
-        }
+    // Respeita preferência de movement reduzido (acessibilidade)
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-        // Start typing after a small delay
-        setTimeout(type, 500);
+    const text = typingElement.textContent.trim();
+
+    // Reserva o espaço antes de limpar para evitar CLS (Cumulative Layout Shift)
+    const width = typingElement.getBoundingClientRect().width;
+    if (width > 0) {
+        typingElement.style.display = 'inline-block';
+        typingElement.style.minWidth = width + 'px';
     }
+
+    typingElement.textContent = '';
+    let index = 0;
+
+    function type() {
+        if (index < text.length) {
+            typingElement.textContent += text.charAt(index);
+            index++;
+            setTimeout(type, 100);
+        } else {
+            // Remove a reserva de espaço após terminar
+            typingElement.style.minWidth = '';
+        }
+    }
+
+    // Inicia após pequeno delay
+    setTimeout(type, 500);
 }
 
 // ===================================
@@ -779,6 +795,9 @@ function initParticles() {
     const hero = document.querySelector('.hero');
     if (!hero) return;
 
+    // Acessibilidade: respeita preferência de animação reduzida (WCAG 2.1 - 2.3)
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
     // Insert canvas as first child of hero
     const canvas = document.createElement('canvas');
     canvas.id = 'hero-particles';
@@ -955,8 +974,19 @@ function initCookieConsent() {
         localStorage.setItem(COOKIE_KEY, accepted ? 'accepted' : 'declined');
         banner.classList.add('hide');
         setTimeout(() => banner.remove(), 450);
+
         if (accepted) {
             showToast('Preferências de cookie salvas!', 'success', 3000);
+        } else {
+            // LGPD: sinaliza recusa ao Meta Pixel e GTM
+            try {
+                if (typeof fbq === 'function') {
+                    fbq('consent', 'revoke');
+                }
+                if (window.dataLayer) {
+                    window.dataLayer.push({ 'event': 'cookieConsentDeclined' });
+                }
+            } catch (e) { /* ignora se não estiver carregado */ }
         }
     }
 
@@ -991,6 +1021,33 @@ function applyScrollAnimationClasses() {
     // Section headers
     document.querySelectorAll('.section-header').forEach(el => {
         el.classList.add('animate-on-scroll');
+    });
+}
+
+// ===================================
+// Theme Toggle Functionality
+// ===================================
+function initTheme() {
+    const themeToggles = document.querySelectorAll('#themeToggle, #themeToggleMobile');
+    const savedTheme = localStorage.getItem('kriar-theme') || 'dark';
+
+    // Apply saved theme on load
+    document.body.classList.add(`theme-${savedTheme}`);
+
+    themeToggles.forEach(toggle => {
+        toggle.addEventListener('click', () => {
+            const isDark = document.body.classList.contains('theme-dark');
+            const newTheme = isDark ? 'light' : 'dark';
+
+            document.body.classList.remove('theme-dark', 'theme-light');
+            document.body.classList.add(`theme-${newTheme}`);
+            localStorage.setItem('kriar-theme', newTheme);
+
+            // Opcional: feedback visual
+            if (window.showToast) {
+                showToast(`Modo ${newTheme === 'dark' ? 'Escuro' : 'Claro'} ativado`, 'info', 2000);
+            }
+        });
     });
 }
 
@@ -1046,6 +1103,8 @@ document.addEventListener('DOMContentLoaded', function () {
     initBackToTop();
     initNewsletterForm();
     initFaq();
+    initTheme();
+    initTypingEffect();
 
     // Premium
     applyScrollAnimationClasses();

@@ -4,10 +4,13 @@
 User-agent: *
 Allow: /
 
-# Bloquear apenas diretórios administrativos (quando existirem)
-Disallow: /admin/
-Disallow: /dashboard/
+# Bloquear páginas privadas e funcionais (não devem ser indexadas)
+Disallow: /dashboard.html
+Disallow: /login.html
+Disallow: /cadastro.html
+Disallow: /checkout.html
 Disallow: /api/
+Disallow: /admin/
 
 # Sitemap
 Sitemap: https://kriar.digital/sitemap.xml

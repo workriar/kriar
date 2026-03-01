@@ -1,10 +1,11 @@
 ﻿{
-    "dependencies":  {
-                         "@hapi/boom":  "^10.0.1",
-                         "@whiskeysockets/baileys":  "^7.0.0-rc.9",
-                         "qrcode":  "^1.5.4"
-                     },
-    "scripts":  {
-
-                }
+    "dependencies": {
+        "@hapi/boom": "^10.0.1",
+        "@whiskeysockets/baileys": "^7.0.0-rc.9",
+        "qrcode": "^1.5.4"
+    },
+    "scripts": {
+        "start": "node server.js",
+        "dev": "node --watch server.js"
+    }
 }

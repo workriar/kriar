@@ -1,4 +1,16 @@
 // Firebase Configuration — Kriar
+//
+// ⚠️  SEGURANÇA IMPORTANTE:
+// Chaves de API do Firebase são expostas no frontend por design — isso é esperado.
+// O que PROTEGE o projeto é a restrição de domínio configurada no Firebase Console:
+//
+//   Firebase Console → APIs & Services → Credentials → API Key → "Application restrictions"
+//   → Selecione "HTTP referrers" → Adicione apenas: https://kriar.digital/*
+//
+// Sem essa restrição, qualquer pessoa pode usar esta chave em outro domínio.
+// Verifique também as Security Rules do Firestore e Firebase Auth para garantir
+// que apenas usuários autenticados acessem os dados.
+//
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
 import {
@@ -21,6 +33,7 @@ const firebaseConfig = {
     appId: "1:870486120689:web:e08ef360685da279f33150",
     measurementId: "G-71QVY7FXWQ"
 };
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

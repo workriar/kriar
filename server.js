@@ -25,8 +25,18 @@ let connectedNumber = null;
 let sock = null;
 
 // ── CORS helper ──
-function cors(res) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
+// SEGURANÇA: restrito apenas ao domínio da Kriar.
+// Em desenvolvimento local, adicione 'http://localhost:PORT' se necessário.
+const ALLOWED_ORIGINS = [
+    'https://kriar.digital',
+    'https://www.kriar.digital'
+];
+
+function cors(res, req) {
+    const origin = req ? req.headers['origin'] : null;
+    const allowedOrigin = ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0];
+    res.setHeader('Access-Control-Allow-Origin', allowedOrigin);
+    res.setHeader('Vary', 'Origin');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     res.setHeader('Content-Type', 'application/json');
@@ -90,7 +100,7 @@ async function startWA() {
 
 // ── Servidor HTTP ──
 const server = http.createServer(async (req, res) => {
-    cors(res);
+    cors(res, req);
 
     if (req.method === 'OPTIONS') {
         res.writeHead(204);

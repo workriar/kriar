@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Portfólio Kriar — Cases de sucesso em desenvolvimento web, apps mobile, automação e design UX/UI para clientes reais.">
+    <title>M Portfólio | Kriar - Automações Inteligentes</title>
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://kriar.digital/portfolio.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Portfólio | Kriar">
+    <meta property="og:description"
+        content="Conheça nossos projetos de desenvolvimento web, apps, automação e design. Resultados reais para empresas reais.">
+    <meta property="og:url" content="https://kriar.digital/portfolio.html">
+    <meta property="og:image" content="https://kriar.digital/assets/images/logo-kriar.png">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-hero {
+            padding: 140px 0 80px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, .12), rgba(6, 182, 212, .08));
+            text-align: center;
+        }
+
+        /* FILTER */
+        .filter-bar {
+            display: flex;
+            gap: .75rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 2.5rem 0 3rem;
+        }
+
+        .filter-btn {
+            padding: .5rem 1.25rem;
+            border-radius: 999px;
+            border: 1.5px solid var(--border-color);
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-family: inherit;
+            font-size: .875rem;
+            font-weight: 500;
+            transition: all .2s;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-light);
+            background: rgba(59, 130, 246, .1);
+        }
+
+        /* PORTFOLIO GRID */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.75rem;
+        }
+
+        .portfolio-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 1.125rem;
+            overflow: hidden;
+            transition: all .25s;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .portfolio-card:hover {
+            border-color: rgba(59, 130, 246, .35);
+            transform: translateY(-5px);
+            box-shadow: 0 16px 40px -8px rgba(59, 130, 246, .18);
+        }
+
+        .pc-thumb {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(59, 130, 246, .07);
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pc-thumb i {
+            font-size: 3.5rem;
+            color: var(--primary-light);
+            opacity: .6;
+        }
+
+        .pc-thumb-label {
+            position: absolute;
+            bottom: .75rem;
+            left: .75rem;
+            background: rgba(59, 130, 246, .15);
+            border: 1px solid rgba(59, 130, 246, .25);
+            color: var(--primary-light);
+            font-size: .7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            padding: .25rem .6rem;
+            border-radius: 999px;
+        }
+
+        .pc-body {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pc-cat {
+            font-size: .72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            color: var(--primary-light);
+            margin-bottom: .5rem;
+        }
+
+        .pc-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: .5rem;
+        }
+
+        .pc-desc {
+            font-size: .875rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        .pc-metrics {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .pc-metric {
+            text-align: center;
+        }
+
+        .pc-metric-num {
+            display: block;
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--primary-light);
+        }
+
+        .pc-metric-label {
+            font-size: .7rem;
+            color: var(--text-secondary);
+        }
+
+        /* MODAL */
+        .port-modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .78);
+            backdrop-filter: blur(6px);
+            z-index: 9998;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .port-modal-overlay.active {
+            display: flex;
+        }
+
+        .port-modal-box {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: modalIn .3s ease;
+        }
+
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: scale(.95) translateY(16px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .pm-header {
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(59, 130, 246, .08);
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .pm-header i {
+            font-size: 4.5rem;
+            color: var(--primary-light);
+            opacity: .5;
+        }
+
+        .pm-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all .2s;
+        }
+
+        .pm-close:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .pm-body {
+            padding: 2rem;
+        }
+
+        .pm-tag {
+            display: inline-block;
+            padding: .25rem .75rem;
+            background: rgba(59, 130, 246, .12);
+            border: 1px solid rgba(59, 130, 246, .2);
+            color: var(--primary-light);
+            font-size: .72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            border-radius: 999px;
+            margin-bottom: 1rem;
+        }
+
+        .pm-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: .5rem;
+            color: var(--text-primary);
+        }
+
+        .pm-client {
+            font-size: .875rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.25rem;
+        }
+
+        .pm-desc {
+            font-size: .95rem;
+            color: var(--text-secondary);
+            line-height: 1.75;
+            margin-bottom: 1.5rem;
+        }
+
+        .pm-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pm-m {
+            background: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            border-radius: .75rem;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .pm-m-num {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-light);
+            display: block;
+        }
+
+        .pm-m-lbl {
+            font-size: .75rem;
+            color: var(--text-secondary);
+        }
+
+        .pm-techs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pm-tech {
+            background: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: .78rem;
+            font-weight: 500;
+            padding: .25rem .75rem;
+            border-radius: 999px;
+        }
+
+        .pm-footer {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .pm-footer .btn {
+            flex: 1;
+            justify-content: center;
+            min-width: 160px;
+        }
+
+        body.theme-light .pm-header {
+            background: rgba(59, 130, 246, .05);
+        }
+
+        body.theme-light .port-modal-box {
+            background: #fff;
+        }
+
+        @media (max-width: 900px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 560px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pm-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .pm-body {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <header class="header" id="header">
+        <nav class="navbar container">
+            <div class="nav-brand"><a href="index.html" class="logo"><span class="logo-icon"><img
+                            src="assets/images/logo-kriar.png" alt="Kriar"></span></a></div>
+            <div class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Início</a></li>
+                    <li><a href="index.html#servicos" class="nav-link">Serviços</a></li>
+                    <li><a href="index.html#precos" class="nav-link">Preços</a></li>
+                    <li><a href="contato.html" class="nav-link">Contato</a></li>
+                </ul>
+                <div class="nav-buttons">
+                    <a href="login.html" class="btn btn-ghost">Entrar</a>
+                    <a href="cadastro.html" class="btn btn-primary">Começar Grátis</a>
+                </div>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu"><span class="hamburger"></span><span
+                    class="hamburger"></span><span class="hamburger"></span></button>
+        </nav>
+        <div class="menu-overlay" id="menuOverlay"></div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container">
+            <span class="section-badge">Portfólio</span>
+            <h1 class="section-title" style="margin-top:1rem;">Projetos que <span class="gradient-text">geram resultados
+                    reais</span></h1>
+            <p class="section-description" style="max-width:580px;margin:1rem auto 0;">Mais de 200 projetos entregues em
+                web, mobile, automação e design. Conheça alguns dos nossos trabalhos mais relevantes.</p>
+        </div>
+    </section>
+
+    <section style="padding:5rem 0 6rem;">
+        <div class="container">
+            <div class="filter-bar">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="mobile">Apps Mobile</button>
+                <button class="filter-btn" data-filter="uxui">UX/UI</button>
+                <button class="filter-btn" data-filter="automacao">Automação</button>
+            </div>
+
+            <div class="portfolio-grid" id="portfolioGrid">
+
+                <!-- 1 -->
+                <div class="portfolio-card" data-cat="web" data-proj="medcare">
+                    <div class="pc-thumb">
+                        <i class="fas fa-hospital-user"></i>
+                        <span class="pc-thumb-label">Web</span>
+                    </div>
+                    <div class="pc-body">
+                        <div class="pc-cat">Desenvolvimento Web</div>
+                        <div class="pc-title">MedCare — Portal de Agendamento Médico</div>
+                        <div class="pc-desc">Plataforma completa para consultas online: agendamento, teleconsulta
+                            integrada e gestão de prontuários para rede de clínicas.</div>
+                        <div class="pc-metrics">
+                            <div class="pc-metric"><span class="pc-metric-num">+340%</span><span
+                                    class="pc-metric-label">agendamentos online</span></div>
+                            <div class="pc-metric"><span class="pc-metric-num">98</span><span
+                                    class="pc-metric-label">PageSpeed Score</span></div>
+                            <div class="pc-metric"><span class="pc-metric-num">3 sem</span><span
+                                    class="pc-metric-label">prazo de entrega</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2 -->
+                <div class="portfolio-card" data-cat="mobile" data-proj="logimove">
+                    <div class="pc-thumb">
+                        <i class="fas fa-truck-moving"></i>
+                        <span class="pc-thumb-label">Mobile</span>
+                    </div>
+                    <div class="pc-body">
+                        <div class="pc-cat">App Mobile</div>
+                        <div class="pc-title">LogiMove — Rastreamento de Frota</div>
+                        <div class="pc-desc">App Android e iOS para motoristas e gestores rastrearem entregas em tempo
+                            real, com assinatura digital e relatórios automáticos.</div>
+                        <div class="pc-metrics">
+                            <div class="pc-metric"><span class="pc-metric-num">12k+</span><span
+                                    class="pc-metric-label">downloads em 60 dias</span></div>
+                            <div class="pc-metric"><span class="pc-metric-num">4.8★</span><span
+                                    class="pc-metric-label">avaliação nas lojas</span></div>
+                            <div class="pc-metric"><span class="pc-metric-num">-60%</span><span
+                                    class="pc-metric-label">tempo de reporte</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3 -->
+                <div class="portfolio-card" data-cat="uxui" data-proj="finflow">
+                    <div class="pc-thumb">
+                        <i class="fas fa-chart-line"></i>
+                        <span class="pc-thumb-label">UX/UI</span>
+                    </div>
+                    <div class="pc-body">
+                        <div class="pc-cat">Design UX/UI</div>
+                        <div class="pc-title">FinFlow — Dashboard de Gestão Financeira</div>
+                        <div class="pc-desc">Redesign completo do painel de controle para fintech: simplificamos a
+                            jornada do usuário de 7 etapas para 2 e aumentamos a retenção.</div>
+                        <div class="pc-metrics">
+                            <div class="pc-metric"><span class="pc-metric-num">+45%</span><span
+                                    class="pc-metric-label">engajamento</span></div>
+                            <div class="pc-metric"><span class="pc-metric-num">-35%</span><span
+                                    class="pc-metric-label">churn mensal</span></div>
+                            <div class="pc-metric"><span class="pc-metric-num">NPS 78</span><span
+                                    class="pc-metric-label">satisfação</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4 -->
+                <div class="portfolio-card" data-cat="automacao" data-proj="pedidoja">
+                    <div class="pc-thumb">
+                        <i class="fas fa-bolt"></i>
+                        <span class="pc-thumb-label">Automação</span>
+                    </div>
+                    <div class="pc-body">
+                        <div class="pc-cat">Automação de Processos</div>
+                        <div class="pc-title">PedidoJá — Automação de E-commerce</div>
+                        <div class="pc-desc">Integração total entre loja Shopify, WhatsApp e sistema de NF-e: pedido
+                            confirmado, nota emitida e cliente notificado automaticamente.</div>
+                        <div class="pc-metrics">
+                            <div class="pc-metric"><span class="pc-metric-num">-70%</span><span
+                                    class="pc-metric-label">trabalho manual</span></div>
+                            <div class="pc-metric"><span class="pc-metric-num">2min</span><span
+                                    class="pc-metric-label">tempo por pedido</span></div>
+                            <div class="pc-metric"><span class="pc-metric-num">ROI 9x</span><span
+                                    class="pc-metric-label">em 3 meses</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5 -->
+                <div class="portfolio-card" data-cat="web" data-proj="educamax">
+                    <div class="pc-thumb">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span class="pc-thumb-label">Web</span>
+                    </div>
+                    <div class="pc-body">
+                        <div class="pc-cat">Desenvolvimento Web</div>
+                        <div class="pc-title">EducaMax — Plataforma EAD</div>
+                        <div class="pc-desc">LMS completo para escola de cursos online: área de alunos, player de vídeo,
+                            certificados automáticos e área de afiliados integrada.</div>
+                        <div class="pc-metrics">
+                            <div class="pc-metric"><span class="pc-metric-num">3.2k</span><span
+                                    class="pc-metric-label">alunos ativos</span></div>
+                            <div class="pc-metric"><span class="pc-metric-num">92%</span><span
+                                    class="pc-metric-label">conclusão de curso</span></div>
+                            <div class="pc-metric"><span class="pc-metric-num">R$280k</span><span
+                                    class="pc-metric-label">receita/mês</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6 -->
+                <div class="portfolio-card" data-cat="mobile" data-proj="fideliza">
+                    <div class="pc-thumb">
+                        <i class="fas fa-star"></i>
+                        <span class="pc-thumb-label">Mobile</span>
+                    </div>
+                    <div class="pc-body">
+                        <div class="pc-cat">App Mobile</div>
+                        <div class="pc-title">Fideliza — Programa de Fidelidade</div>
+                        <div class="pc-desc">App de fidelidade para rede de restaurantes: acúmulo de pontos, cashback
+                            automático, push de ofertas personalizadas e QR code no caixa.</div>
+                        <div class="pc-metrics">
+                            <div class="pc-metric"><span class="pc-metric-num">18k+</span><span
+                                    class="pc-metric-label">usuários ativos</span></div>
+                            <div class="pc-metric"><span class="pc-metric-num">+28%</span><span
+                                    class="pc-metric-label">ticket médio</span></div>
+                            <div class="pc-metric"><span class="pc-metric-num">4.9★</span><span
+                                    class="pc-metric-label">App Store</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7 -->
+                <div class="portfolio-card" data-cat="uxui" data-proj="konekt">
+                    <div class="pc-thumb">
+                        <i class="fas fa-network-wired"></i>
+                        <span class="pc-thumb-label">UX/UI</span>
+                    </div>
+                    <div class="pc-body">
+                        <div class="pc-cat">Design UX/UI</div>
+                        <div class="pc-title">Konekt — Plataforma de RH Digital</div>
+                        <div class="pc-desc">Design System completo e redesign da jornada de recrutamento — da triagem
+                            ao onboarding — para startup de gestão de talentos.</div>
+                        <div class="pc-metrics">
+                            <div class="pc-metric"><span class="pc-metric-num">-50%</span><span
+                                    class="pc-metric-label">tempo de seleção</span></div>
+                            <div class="pc-metric"><span class="pc-metric-num">+62%</span><span
+                                    class="pc-metric-label">aprovação de candidatos</span></div>
+                            <div class="pc-metric"><span class="pc-metric-num">3x</span><span
+                                    class="pc-metric-label">mais rápido</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8 -->
+                <div class="portfolio-card" data-cat="automacao" data-proj="agenciafly">
+                    <div class="pc-thumb">
+                        <i class="fas fa-paper-plane"></i>
+                        <span class="pc-thumb-label">Automação</span>
+                    </div>
+                    <div class="pc-body">
+                        <div class="pc-cat">Automação de Marketing</div>
+                        <div class="pc-title">AgênciaFly — CRM + WhatsApp Integrado</div>
+                        <div class="pc-desc">Funil de vendas automatizado: lead entra no formulário, recebe proposta
+                            pelo WhatsApp em 2 minutos e entra no CRM automaticamente.</div>
+                        <div class="pc-metrics">
+                            <div class="pc-metric"><span class="pc-metric-num">+180%</span><span
+                                    class="pc-metric-label">leads convertidos</span></div>
+                            <div class="pc-metric"><span class="pc-metric-num">2min</span><span
+                                    class="pc-metric-label">primeiro contato</span></div>
+                            <div class="pc-metric"><span class="pc-metric-num">ROI 14x</span><span
+                                    class="pc-metric-label">em 6 meses</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9 -->
+                <div class="portfolio-card" data-cat="web" data-proj="imobtech">
+                    <div class="pc-thumb">
+                        <i class="fas fa-house-chimney"></i>
+                        <span class="pc-thumb-label">Web</span>
+                    </div>
+                    <div class="pc-body">
+                        <div class="pc-cat">Desenvolvimento Web</div>
+                        <div class="pc-title">ImobTech — Portal Imobiliário</div>
+                        <div class="pc-desc">Portal com busca avançada de imóveis, calculadora de financiamento, tour
+                            virtual 360° e integração com WhatsApp para corretores.</div>
+                        <div class="pc-metrics">
+                            <div class="pc-metric"><span class="pc-metric-num">+290%</span><span
+                                    class="pc-metric-label">leads orgânicos</span></div>
+                            <div class="pc-metric"><span class="pc-metric-num">96</span><span
+                                    class="pc-metric-label">PageSpeed</span></div>
+                            <div class="pc-metric"><span class="pc-metric-num">22k</span><span
+                                    class="pc-metric-label">visitas/mês</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 10 -->
+                <div class="portfolio-card" data-cat="mobile" data-proj="saude360">
+                    <div class="pc-thumb">
+                        <i class="fas fa-heartbeat"></i>
+                        <span class="pc-thumb-label">Mobile</span>
+                    </div>
+                    <div class="pc-body">
+                        <div class="pc-cat">App Mobile</div>
+                        <div class="pc-title">Saúde360 — App de Bem-estar Corporativo</div>
+                        <div class="pc-desc">Plataforma mobile para RH corporativo: desafios de saúde, lembretes de
+                            hidratação, meditações guiadas e relatório de bem-estar para gestores.</div>
+                        <div class="pc-metrics">
+                            <div class="pc-metric"><span class="pc-metric-num">5.4k</span><span
+                                    class="pc-metric-label">colaboradores</span></div>
+                            <div class="pc-metric"><span class="pc-metric-num">-22%</span><span
+                                    class="pc-metric-label">absenteísmo</span></div>
+                            <div class="pc-metric"><span class="pc-metric-num">4.7★</span><span
+                                    class="pc-metric-label">avaliação</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 11 -->
+                <div class="portfolio-card" data-cat="uxui" data-proj="cartao">
+                    <div class="pc-thumb">
+                        <i class="fas fa-credit-card"></i>
+                        <span class="pc-thumb-label">UX/UI</span>
+                    </div>
+                    <div class="pc-body">
+                        <div class="pc-cat">Design UX/UI</div>
+                        <div class="pc-title">CartãoX — Super App Financeiro</div>
+                        <div class="pc-desc">UX research e design do super app: conta digital, cartão virtual, pix e
+                            investimentos numa interface limpa e acessível para todos os públicos.</div>
+                        <div class="pc-metrics">
+                            <div class="pc-metric"><span class="pc-metric-num">+55%</span><span
+                                    class="pc-metric-label">conversão no onboard</span></div>
+                            <div class="pc-metric"><span class="pc-metric-num">-40%</span><span
+                                    class="pc-metric-label">chamados de suporte</span></div>
+                            <div class="pc-metric"><span class="pc-metric-num">NPS 84</span><span
+                                    class="pc-metric-label">satisfação</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 12 -->
+                <div class="portfolio-card" data-cat="automacao" data-proj="clinicbot">
+                    <div class="pc-thumb">
+                        <i class="fas fa-robot"></i>
+                        <span class="pc-thumb-label">Automação + IA</span>
+                    </div>
+                    <div class="pc-body">
+                        <div class="pc-cat">IA & Automação</div>
+                        <div class="pc-title">ClínicBot — Atendimento com IA 24/7</div>
+                        <div class="pc-desc">Agente de IA treinado com protocolos da clínica: agenda consultas, responde
+                            dúvidas pós-consulta e envia lembretes automáticos pelo WhatsApp.</div>
+                        <div class="pc-metrics">
+                            <div class="pc-metric"><span class="pc-metric-num">-78%</span><span
+                                    class="pc-metric-label">atendimento manual</span></div>
+                            <div class="pc-metric"><span class="pc-metric-num">97%</span><span
+                                    class="pc-metric-label">satisfação dos pacientes</span></div>
+                            <div class="pc-metric"><span class="pc-metric-num">24/7</span><span
+                                    class="pc-metric-label">disponibilidade</span></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- CTA -->
+            <div
+                style="text-align:center;margin-top:4rem;padding:3rem;background:rgba(59,130,246,.06);border:1px solid rgba(59,130,246,.15);border-radius:1.5rem;">
+                <h2 style="font-size:1.75rem;font-weight:800;margin-bottom:.75rem;">Quer um projeto assim para sua
+                    empresa?</h2>
+                <p
+                    style="color:var(--text-secondary);margin-bottom:1.75rem;max-width:500px;margin-left:auto;margin-right:auto;">
+                    Fale com nosso time e descubra como podemos transformar sua presença digital em resultados reais.
+                </p>
+                <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+                    <a href="cadastro.html" class="btn btn-primary btn-lg"><i class="fas fa-rocket"></i> Começar Meu
+                        Projeto</a>
+                    <a href="https://wa.me/5511997666735?text=Olá!%20Vi%20o%20portfólio%20e%20quero%20um%20projeto%20similar"
+                        class="btn btn-outline btn-lg" target="_blank"><i class="fab fa-whatsapp"></i> Falar por
+                        WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="portModal" class="port-modal-overlay"></div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-brand"><a href="index.html" class="logo"><span class="logo-icon logo-footer"><img
+                                    src="assets/images/logo-kriar.png" alt="Kriar" loading="lazy"></span></a>
+                        <p class="footer-tagline">Automações Inteligentes para o Futuro dos Negócios</p>
+                    </div>
+                    <div class="footer-social"><a href="https://www.instagram.com/kriar.digit/" class="social-link"><i
+                                class="fab fa-instagram"></i></a></div>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Produto</h4>
+                    <ul class="footer-links">
+                        <li><a href="integracoes.html">Integrações</a></li>
+                        <li><a href="api.html">API</a></li>
+                        <li><a href="index.html#precos">Preços</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Recursos</h4>
+                    <ul class="footer-links">
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="docs.html">Documentação</a></li>
+                        <li><a href="portfolio.html">Portfólio</a></li>
+                        <li><a href="cases.html">Cases</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Empresa</h4>
+                    <ul class="footer-links">
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="carreiras.html">Carreiras</a></li>
+                        <li><a href="parceiros.html">Parceiros</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Suporte</h4>
+                    <ul class="footer-links">
+                        <li><a href="ajuda.html">Central de Ajuda</a></li>
+                        <li><a href="status.html">Status</a></li>
+                        <li><a href="privacidade.html">Privacidade</a></li>
+                        <li><a href="termos.html">Termos</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2026 Kriar - Automações Inteligentes. Todos os direitos reservados.</p>
+                <div class="footer-contact"><a href="mailto:contato@kriar.digital"><i class="fas fa-envelope"></i>
+                        contato@kriar.digital</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5511997666735" class="whatsapp-float" target="_blank" aria-label="WhatsApp"><i
+            class="fab fa-whatsapp"></i></a>
+    <button id="backToTop" aria-label="Voltar ao topo"><i class="fas fa-chevron-up"></i></button>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Filter
+        document.querySelectorAll('.filter-btn').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('.filter-btn').forEach(function (b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+                var filter = btn.getAttribute('data-filter');
+                document.querySelectorAll('.portfolio-card').forEach(function (card) {
+                    if (filter === 'all' || card.getAttribute('data-cat') === filter) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Project details data
+        var PROJECTS = {
+            medcare: {
+                icon: 'fas fa-hospital-user', tag: 'Web', client: 'Cliente: MedCare Clínicas — Rede de Saúde · São Paulo, SP',
+                title: 'MedCare — Portal de Agendamento Médico',
+                desc: 'Desenvolvimento de uma plataforma web completa para uma rede de clínicas com 8 unidades. O projeto incluiu sistema de agendamento online, teleconsulta com videoconferência integrada, gestão de prontuário eletrônico, integração com planos de saúde e painel administrativo para gestores. A plataforma substituiu um sistema legado de 2012 e foi construída com React, Node.js e PostgreSQL.',
+                metrics: [{ n: '+340%', l: 'agendamentos online' }, { n: '98', l: 'PageSpeed Score' }, { n: '3 semanas', l: 'prazo de entrega' }],
+                techs: ['React', 'Node.js', 'PostgreSQL', 'AWS', 'WebRTC', 'Stripe']
+            },
+            logimove: {
+                icon: 'fas fa-truck-moving', tag: 'Mobile', client: 'Cliente: LogiMove Transportes — Logística · Campinas, SP',
+                title: 'LogiMove — Rastreamento de Frota em Tempo Real',
+                desc: 'App multiplataforma (iOS e Android) para gestão de frota. Motoristas recebem roteiros otimizados, registram paradas com QR code e assinam eletronicamente os recibos de entrega. Gestores acompanham tudo em tempo real no dashboard web. Integrado ao sistema ERP da empresa via API REST.',
+                metrics: [{ n: '12k+', l: 'downloads em 60 dias' }, { n: '4.8★', l: 'avaliação nas lojas' }, { n: '-60%', l: 'tempo de reporte' }],
+                techs: ['React Native', 'Node.js', 'Google Maps API', 'Firebase', 'JWT', 'REST API']
+            },
+            finflow: {
+                icon: 'fas fa-chart-line', tag: 'UX/UI', client: 'Cliente: FinFlow — Fintech · Rio de Janeiro, RJ',
+                title: 'FinFlow — Redesign de Dashboard Financeiro',
+                desc: 'UX Research com 40 usuários reais, mapeamento de jornada e redesign completo do painel de controle de uma fintech B2B. Reduzimos de 7 para 2 etapas o fluxo de aprovação de transações. Entregamos Design System, protótipo navegável e handoff completo para o time de desenvolvimento.',
+                metrics: [{ n: '+45%', l: 'engajamento' }, { n: '-35%', l: 'churn mensal' }, { n: 'NPS 78', l: 'satisfação' }],
+                techs: ['Figma', 'Design System', 'User Research', 'Prototyping', 'Hotjar', 'A/B Testing']
+            },
+            pedidoja: {
+                icon: 'fas fa-bolt', tag: 'Automação', client: 'Cliente: PedidoJá — E-commerce · Belo Horizonte, MG',
+                title: 'PedidoJá — Automação Total do Pedido',
+                desc: 'Integração via Zapier + API própria entre Shopify, sistema de NF-e (NFe.io), Omie ERP e WhatsApp Business. Cada pedido confirmado dispara automaticamente: emissão da NF-e, baixa no estoque, notificação ao cliente pelo WhatsApp e registro no CRM. O que levava 25 minutos passou a levar 2 minutos, sem intervenção humana.',
+                metrics: [{ n: '-70%', l: 'trabalho manual' }, { n: '2min', l: 'tempo por pedido' }, { n: 'ROI 9x', l: 'em 3 meses' }],
+                techs: ['Zapier', 'Shopify API', 'NFe.io', 'Omie', 'WhatsApp Business API', 'n8n']
+            },
+            educamax: {
+                icon: 'fas fa-graduation-cap', tag: 'Web', client: 'Cliente: EducaMax — EdTech · Online · Brasil',
+                title: 'EducaMax — Plataforma EAD Completa',
+                desc: 'LMS (Learning Management System) desenvolvido do zero para escola de cursos online de marketing digital. Inclui player de vídeo responsivo, quizzes interativos, emissão automática de certificados (PDF personalizado), área de afiliados com comissionamento automático, blog integrado e painel de métricas por aluno.',
+                metrics: [{ n: '3.2k', l: 'alunos ativos' }, { n: '92%', l: 'conclusão de curso' }, { n: 'R$280k', l: 'receita/mês' }],
+                techs: ['Next.js', 'TypeScript', 'MySQL', 'AWS S3', 'Stripe', 'OAuth 2.0']
+            },
+            fideliza: {
+                icon: 'fas fa-star', tag: 'Mobile', client: 'Cliente: Fideliza — Food Tech · Porto Alegre, RS',
+                title: 'Fideliza — App de Fidelidade para Restaurantes',
+                desc: 'Aplicativo de fidelidade white-label para rede de 12 restaurantes. Clientes acumulam pontos automaticamente via QR code no caixa, trocam por recompensas e recebem offers personalizadas por push notification com base no histórico de pedidos (IA de segmentação). Gestores controlam tudo pelo painel web.',
+                metrics: [{ n: '18k+', l: 'usuários ativos' }, { n: '+28%', l: 'ticket médio' }, { n: '4.9★', l: 'App Store' }],
+                techs: ['React Native', 'Firebase', 'Push Notifications', 'Node.js', 'ML Segmentation', 'QR Code']
+            },
+            konekt: {
+                icon: 'fas fa-network-wired', tag: 'UX/UI', client: 'Cliente: Konekt RH — HR Tech · São Paulo, SP',
+                title: 'Konekt — Design System e UX de Plataforma de RH',
+                desc: 'Projeto de UX e Design System para startup de RH digital. Pesquisa com 60 recrutadores e candidatos, identificação de gargalos no funil de seleção, redesign da jornada completa e criação de biblioteca de componentes em Figma com +180 elementos. O projeto foi adotado por 3 times de produto.',
+                metrics: [{ n: '-50%', l: 'tempo de seleção' }, { n: '+62%', l: 'aprovação de candidatos' }, { n: '3x', l: 'mais rápido' }],
+                techs: ['Figma', 'Design Tokens', 'Storybook', 'UserTesting', 'Miro', 'Notion']
+            },
+            agenciafly: {
+                icon: 'fas fa-paper-plane', tag: 'Automação', client: 'Cliente: AgênciaFly — Marketing Digital · Curitiba, PR',
+                title: 'AgênciaFly — Funil de Vendas Automatizado',
+                desc: 'Automação completa do processo de prospecção e fechamento: lead preenche formulário → IA classifica o perfil → proposta é gerada automaticamente → enviada pelo WhatsApp em até 2 minutos. O lead entra automaticamente no CRM (Pipedrive) e o vendedor é notificado apenas quando o cliente responde.',
+                metrics: [{ n: '+180%', l: 'leads convertidos' }, { n: '2min', l: 'primeiro contato' }, { n: 'ROI 14x', l: 'em 6 meses' }],
+                techs: ['n8n', 'WhatsApp Business API', 'Pipedrive', 'GPT-4', 'Make', 'Webhooks']
+            },
+            imobtech: {
+                icon: 'fas fa-house-chimney', tag: 'Web', client: 'Cliente: ImobTech — Imobiliária Digital · Florianópolis, SC',
+                title: 'ImobTech — Portal Imobiliário de Alta Performance',
+                desc: 'Portal imobiliário com busca avançada por filtros (bairro, metragem, preço, tipo), calculadora de financiamento interativa, galeria de fotos otimizada, tour virtual 360° integrado ao Matterport e botão de contato direto com o corretor responsável pelo WhatsApp. SEO estruturado resultou em posição 1 no Google para as principais buscas locais.',
+                metrics: [{ n: '+290%', l: 'leads orgânicos' }, { n: '96', l: 'PageSpeed' }, { n: '22k', l: 'visitas/mês' }],
+                techs: ['Next.js', 'Algolia Search', 'Cloudinary', 'Matterport', 'Google My Business', 'SEO']
+            },
+            saude360: {
+                icon: 'fas fa-heartbeat', tag: 'Mobile', client: 'Cliente: Saúde360 — Corporate Health · Brasília, DF',
+                title: 'Saúde360 — App de Bem-estar Corporativo',
+                desc: 'Aplicativo para programa de bem-estar de grandes empresas. Colaboradores participam de desafios semanais (passos, hidratação, sono), acessam meditações guiadas e recebem conteúdo personalizado por IA. O RH acompanha o índice de bem-estar por departamento e recebe relatórios mensais automatizados.',
+                metrics: [{ n: '5.4k', l: 'colaboradores' }, { n: '-22%', l: 'absenteísmo' }, { n: '4.7★', l: 'avaliação' }],
+                techs: ['React Native', 'HealthKit', 'Google Fit', 'Firebase', 'Python ML', 'Power BI']
+            },
+            cartao: {
+                icon: 'fas fa-credit-card', tag: 'UX/UI', client: 'Cliente: CartãoX — Fintech · São Paulo, SP',
+                title: 'CartãoX — UX de Super App Financeiro',
+                desc: 'Projeto de UX Research, Information Architecture e Interface Design para super app financeiro com +200k usuários. Conduziamos testes de usabilidade com personas de diferentes faixas de renda e escolaridade, garantindo acessibilidade WCAG 2.1 AA. O onboarding passou de 12 para 4 etapas.',
+                metrics: [{ n: '+55%', l: 'conversão no onboard' }, { n: '-40%', l: 'chamados de suporte' }, { n: 'NPS 84', l: 'satisfação' }],
+                techs: ['Figma', 'WCAG 2.1', 'Maze', 'Hotjar', 'Lottie', 'Design Tokens']
+            },
+            clinicbot: {
+                icon: 'fas fa-robot', tag: 'IA & Automação', client: 'Cliente: ClínicBot — HealthTech · São Paulo, SP',
+                title: 'ClínicBot — Agente de IA para Clínica Médica',
+                desc: 'Agente de IA treinado com todos os protocolos, preços e FAQ da clínica. Atende pelo WhatsApp 24/7, agenda consultas no sistema (Doctoralia), envia lembretes na véspera, coleta anamnese pré-consulta e responde dúvidas pós-atendimento. Integrado ao prontuário eletrônico para acesso ao histórico do paciente.',
+                metrics: [{ n: '-78%', l: 'atendimento manual' }, { n: '97%', l: 'satisfação dos pacientes' }, { n: '24/7', l: 'disponibilidade' }],
+                techs: ['GPT-4', 'WhatsApp Business API', 'Doctoralia', 'Node.js', 'Vector DB', 'Fine-tuning']
+            }
+        };
+
+        // Card click → modal
+        document.querySelectorAll('.portfolio-card').forEach(function (card) {
+            card.addEventListener('click', function () { openPortModal(card.getAttribute('data-proj')); });
+        });
+
+        function openPortModal(key) {
+            var p = PROJECTS[key]; if (!p) return;
+            var mHtml = p.metrics.map(function (m) {
+                return '<div class="pm-m"><span class="pm-m-num">' + m.n + '</span><span class="pm-m-lbl">' + m.l + '</span></div>';
+            }).join('');
+            var tHtml = p.techs.map(function (t) { return '<span class="pm-tech">' + t + '</span>'; }).join('');
+
+            document.getElementById('portModal').innerHTML =
+                '<div class="port-modal-box">' +
+                '  <div class="pm-header"><i class="' + p.icon + '"></i>' +
+                '  <button class="pm-close" id="pmClose">&times;</button></div>' +
+                '  <div class="pm-body">' +
+                '    <span class="pm-tag">' + p.tag + '</span>' +
+                '    <h2 class="pm-title">' + p.title + '</h2>' +
+                '    <p class="pm-client"><i class="fas fa-building" style="margin-right:.4rem;opacity:.6"></i>' + p.client + '</p>' +
+                '    <p class="pm-desc">' + p.desc + '</p>' +
+                '    <div class="pm-metrics">' + mHtml + '</div>' +
+                '    <h4 style="font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text-secondary);margin-bottom:.75rem;">Tecnologias Utilizadas</h4>' +
+                '    <div class="pm-techs">' + tHtml + '</div>' +
+                '    <div class="pm-footer">' +
+                '      <a href="cadastro.html" class="btn btn-primary btn-lg"><i class="fas fa-rocket"></i> Quero um projeto assim</a>' +
+                '      <a href="https://wa.me/5511997666735?text=Olá!%20Vi%20o%20projeto%20' + encodeURIComponent(p.title) + '%20no%20portfólio%20e%20quero%20algo%20similar" class="btn btn-outline btn-lg" target="_blank"><i class="fab fa-whatsapp"></i> Falar no WhatsApp</a>' +
+                '    </div>' +
+                '  </div>' +
+                '</div>';
+            document.getElementById('portModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            document.getElementById('pmClose').addEventListener('click', closePortModal);
+        }
+        function closePortModal() {
+            document.getElementById('portModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        document.getElementById('portModal').addEventListener('click', function (e) { if (e.target === this) closePortModal(); });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closePortModal(); });
+    </script>
+</body>
+
+</html>
