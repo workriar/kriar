@@ -134,35 +134,40 @@
     <!-- Header -->
     <header class="header" id="header">
         <nav class="navbar container">
-            <div class="nav-brand">
-                <a href="index.html" class="logo">
-                    <span class="logo-icon">
-                        <img src="assets/images/logo-kriar.png" alt="Kriar - Automações Inteligentes">
-                    </span>
-                </a>
-            </div>
+            <a href="index.html" class="logo">
+                <span class="logo-icon">
+                    <img src="assets/images/logo-kriar.png" alt="Kriar - Automações Inteligentes">
+                </span>
+            </a>
 
             <div class="nav-menu" id="navMenu">
                 <ul class="nav-list">
-                    <li class="nav-item"><a href="index.html#inicio" class="nav-link">Início</a></li>
-                    <li class="nav-item"><a href="index.html#solucoes" class="nav-link">Soluções</a></li>
-                    <li class="nav-item"><a href="index.html#funcionalidades" class="nav-link">Funcionalidades</a></li>
-                    <li class="nav-item"><a href="index.html#casos" class="nav-link">Casos de Uso</a></li>
-                    <li class="nav-item"><a href="index.html#precos" class="nav-link">Preços</a></li>
-                    <li class="nav-item"><a href="contato.html" class="nav-link active">Contato</a></li>
+                    <li><a href="index.html" class="nav-link">Início</a></li>
+                    <li><a href="index.html#solucoes" class="nav-link">Soluções</a></li>
+                    <li><a href="index.html#precos" class="nav-link">Preços</a></li>
+                    <li><a href="contato.html" class="nav-link active">Contato</a></li>
                 </ul>
-                <div class="nav-buttons">
+                <div class="nav-actions">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+                        <span class="theme-icon theme-icon-dark"><i class="fas fa-moon"></i></span>
+                        <span class="theme-icon theme-icon-light"><i class="fas fa-sun"></i></span>
+                    </button>
                     <a href="login.html" class="btn btn-ghost">Entrar</a>
-                    <a href="https://wa.me/5511997666735?text=Oi,%20vim%20pelo%20site%20e%20gostaria%20de%20uma%20consultoria%20em%20Agentes%20de%20IA"
-                        class="btn btn-primary">Falar no WhatsApp</a>
+                    <a href="https://wa.me/5511997666735" class="btn btn-primary">Fale Conosco</a>
                 </div>
             </div>
 
-            <button class="nav-toggle" id="navToggle" aria-label="Menu">
-                <span class="hamburger"></span>
-                <span class="hamburger"></span>
-                <span class="hamburger"></span>
-            </button>
+            <div class="nav-right-mobile">
+                <button class="theme-toggle" id="themeToggleMobile" aria-label="Alternar tema">
+                    <span class="theme-icon theme-icon-dark"><i class="fas fa-moon"></i></span>
+                    <span class="theme-icon theme-icon-light"><i class="fas fa-sun"></i></span>
+                </button>
+                <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </button>
+            </div>
         </nav>
         <div class="menu-overlay" id="menuOverlay"></div>
     </header>
