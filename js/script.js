@@ -792,7 +792,7 @@ function initScrollReveal() {
 // PREMIUM — Canvas Particle Hero
 // ===================================
 function initParticles() {
-    const hero = document.querySelector('.hero');
+    const hero = document.querySelector('.hero') || document.querySelector('.page-hero');
     if (!hero) return;
 
     // Acessibilidade: respeita preferência de animação reduzida (WCAG 2.1 - 2.3)
@@ -807,8 +807,9 @@ function initParticles() {
     let animId;
     let particles = [];
 
-    const PARTICLE_COUNT = window.innerWidth < 768 ? 35 : 65;
-    const CONNECT_DIST = 130;
+    // Aumentando a densidade para efeito premium solicitado pelo usuário
+    const PARTICLE_COUNT = window.innerWidth < 768 ? 55 : 85;
+    const CONNECT_DIST = window.innerWidth < 768 ? 100 : 135;
     const COLORS = ['59,130,246', '6,182,212', '14,165,233'];
 
     function resize() {
@@ -1032,6 +1033,7 @@ function initTheme() {
     const savedTheme = localStorage.getItem('kriar-theme') || 'dark';
 
     // Apply saved theme on load
+    document.body.classList.remove('theme-dark', 'theme-light');
     document.body.classList.add(`theme-${savedTheme}`);
 
     themeToggles.forEach(toggle => {

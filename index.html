@@ -730,355 +730,381 @@
 
     <script src="js/script.js"></script>
 
-    // ===== LEAD FORM =====
-    function submitLeadForm(e) {
-    e.preventDefault();
-    var name = document.getElementById('lead-name').value;
-    var phone = document.getElementById('lead-phone').value;
-    var seg = document.getElementById('lead-segment').value;
-    var waMsg = encodeURIComponent(
-    'Olá! Me chamo ' + name + ' (' + seg + '). Solicito uma consultoria gratuita. Meu WhatsApp: ' + phone
-    );
-    document.getElementById('leadForm').style.display = 'none';
-    document.getElementById('formSuccess').style.display = 'block';
-    setTimeout(function () {
-    window.open('https://wa.me/5511997666735?text=' + waMsg, '_blank');
-    }, 800);
-    }
+    <script>
+        // ===== LEAD FORM =====
+        function submitLeadForm(e) {
+            e.preventDefault();
+            var name = document.getElementById('lead-name').value;
+            var phone = document.getElementById('lead-phone').value;
+            var seg = document.getElementById('lead-segment').value;
+            var waMsg = encodeURIComponent(
+                'Olá! Me chamo ' + name + ' (' + seg + '). Solicito uma consultoria gratuita. Meu WhatsApp: ' + phone
+            );
+            document.getElementById('leadForm').style.display = 'none';
+            document.getElementById('formSuccess').style.display = 'block';
+            setTimeout(function () {
+                window.open('https://wa.me/5511997666735?text=' + waMsg, '_blank');
+            }, 800);
+        }
 
-    // ===== SERVICE CARD MODALS =====
-    var MODALS = {
-    ia: {
-    icon: 'fas fa-brain', color: '#3B82F6',
-    title: 'Inteligência Artificial & Agentes',
-    subtitle: 'IA treinada com o DNA do seu negócio',
-    desc: 'Nossos agentes de IA vão além de scripts fixos — eles entendem contexto, memória da conversa e intenção do
-    usuário. Treinamos cada agente com os dados, FAQ, produtos e tom de voz da sua empresa para que ele atenda como um
+        // ===== SERVICE CARD MODALS =====
+        var MODALS = {
+            ia: {
+                icon: 'fas fa-brain', color: '#3B82F6',
+                title: 'Inteligência Artificial & Agentes',
+                subtitle: 'IA treinada com o DNA do seu negócio',
+                desc: 'Nossos agentes de IA vão além de scripts fixos — eles entendem contexto, memória da conversa e intenção do
+    usuário.Treinamos cada agente com os dados, FAQ, produtos e tom de voz da sua empresa para que ele atenda como um
     colaborador de verdade.',
     cases: ['E-commerce: atende, qualifica e fecha vendas 24/7 sem equipe humana', 'Clínicas: agenda consultas, envia
     lembretes e responde dúvidas frequentes', 'Educação: tira dúvidas de alunos e processa matrículas automaticamente'],
     benefits: ['+70% de redução no volume de tickets manuais', 'Tempo médio de resposta: < 3
-        segundos', 'Satisfação média de clientes: 97%' , 'Disponível 24h, 7 dias por semana, sem custo extra' ],
-        cta: 'Quero um Agente de IA' , cta_url: 'cadastro.html' }, whatsapp: { icon: 'fab fa-whatsapp' ,
-        color: '#22c55e' , title: 'WhatsApp Business API Oficial' ,
-        subtitle: 'API Meta Oficial — zero risco de banimento' ,
-        desc: 'Conectamos sua empresa à API Oficial do WhatsApp (Meta Business). Isso significa mensagens em escala, sem limites de contatos, com total conformidade com as políticas da Meta e sem risco de bloqueio do seu número.'
-        , cases: ['Recuperação de carrinho abandonado com taxa de 35% de
-        conversão', 'Confirmação e lembrete de pedidos/agendamentos automáticos'
-        , 'Campanhas de reativação de clientes inativos (ROI médio: 12x)' ], benefits: ['Envie para milhares de contatos
+        segundos', 'Satisfação média de clientes: 97 % ' , 'Disponível 24h, 7 dias por semana, sem custo extra' ],
+        cta: 'Quero um Agente de IA' , cta_url: 'cadastro.html'
+            }, whatsapp: {
+                icon: 'fab fa-whatsapp',
+                color: '#22c55e', title: 'WhatsApp Business API Oficial',
+                subtitle: 'API Meta Oficial — zero risco de banimento',
+                desc: 'Conectamos sua empresa à API Oficial do WhatsApp (Meta Business). Isso significa mensagens em escala, sem limites de contatos, com total conformidade com as políticas da Meta e sem risco de bloqueio do seu número.'
+                , cases: ['Recuperação de carrinho abandonado com taxa de 35% de
+        conversão', 'Confirmação e lembrete de pedidos / agendamentos automáticos'
+                    , 'Campanhas de reativação de clientes inativos (ROI médio: 12x)'], benefits: ['Envie para milhares de contatos
         simultaneamente', 'Botões interativos, listas e mensagens rich media'
-        , 'Relatórios de entrega e leitura em tempo real' , 'Integração com CRM, ERP e e-commerce' ],
-        cta: 'Conectar meu WhatsApp' , cta_url: 'integracoes.html' }, marketing: { icon: 'fas fa-chart-pie' ,
-        color: '#8B5CF6' , title: 'Marketing Digital com IA' ,
-        subtitle: 'Estratégias data-driven que geram ROI mensurável' ,
-        desc: 'Unimos tecnologia e criatividade para construir estratégias de marketing que realmente funcionam. Usamos IA para otimizar anúncios em tempo real, identificar os melhores públicos e criar conteúdo relevante que converte visitantes em clientes.'
-        , cases: ['Google Ads: redução de 40% no custo por lead com IA de
+                        , 'Relatórios de entrega e leitura em tempo real', 'Integração com CRM, ERP e e-commerce'],
+                cta: 'Conectar meu WhatsApp', cta_url: 'integracoes.html'
+            }, marketing: {
+                icon: 'fas fa-chart-pie',
+                color: '#8B5CF6', title: 'Marketing Digital com IA',
+                subtitle: 'Estratégias data-driven que geram ROI mensurável',
+                desc: 'Unimos tecnologia e criatividade para construir estratégias de marketing que realmente funcionam. Usamos IA para otimizar anúncios em tempo real, identificar os melhores públicos e criar conteúdo relevante que converte visitantes em clientes.'
+                , cases: ['Google Ads: redução de 40% no custo por lead com IA de
         lances', 'SEO: páginas na primeira posição em 90 dias com conteúdo otimizado'
-        , 'Email marketing automatizado com taxa de abertura 3x acima da média' ], benefits: ['ROI médio comprovado: 8x
+                    , 'Email marketing automatizado com taxa de abertura 3x acima da média'], benefits: ['ROI médio comprovado: 8x
         o valor investido', 'Relatórios mensais com métricas claras e acionáveis'
-        , 'Gestão completa: criação, veiculação e otimização' , 'Estratégia multicanal: Google, Meta, LinkedIn e SEO' ],
-        cta: 'Solicitar Proposta de Marketing' , cta_url: '#contato' }, web: { icon: 'fas fa-laptop-code' ,
-        color: '#06B6D4' , title: 'Desenvolvimento Web' ,
-        subtitle: 'Sites e landing pages que convertem visitantes em clientes' ,
-        desc: 'Desenvolvemos sites modernos, ultrarrápidos e focados em conversão. Cada projeto é único, construído do zero com atenção à experiência do usuário, performance e SEO. Entregamos um ativo digital que trabalha por você 24 horas por dia.'
-        , cases: ['Landing pages com taxa de conversão média de 12% (2x a média do
-        mercado)', 'Sites institucionais com 95+ no Google PageSpeed Score'
-        , 'Plataformas de e-commerce integradas com WhatsApp e IA de atendimento' ], benefits: ['Entrega em 2–4 semanas
-        dependendo do escopo', 'SEO on-page implementado desde a primeira linha de código'
+                        , 'Gestão completa: criação, veiculação e otimização', 'Estratégia multicanal: Google, Meta, LinkedIn e SEO'],
+                cta: 'Solicitar Proposta de Marketing', cta_url: '#contato'
+            }, web: {
+                icon: 'fas fa-laptop-code',
+                color: '#06B6D4', title: 'Desenvolvimento Web',
+                subtitle: 'Sites e landing pages que convertem visitantes em clientes',
+                desc: 'Desenvolvemos sites modernos, ultrarrápidos e focados em conversão. Cada projeto é único, construído do zero com atenção à experiência do usuário, performance e SEO. Entregamos um ativo digital que trabalha por você 24 horas por dia.'
+                , cases: ['Landing pages com taxa de conversão média de 12% (2x a média do
+        mercado) ', 'Sites institucionais com 95 + no Google PageSpeed Score'
+                    , 'Plataformas de e-commerce integradas com WhatsApp e IA de atendimento'], benefits: ['Entrega em 2–4 semanas
+        dependendo do escopo', 'SEO on- page implementado desde a primeira linha de código'
         , 'Integração nativa com WhatsApp, CRM e ferramentas de marketing'
-        , 'Suporte e atualizações por 3 meses após entrega' ], cta: 'Solicitar Meu Site' , cta_url: '#contato' },
-        consultoria: { icon: 'fas fa-cogs' , color: '#F59E0B' , title: 'Consultoria em TI & Transformação Digital' ,
-        subtitle: 'Mapeamos, planejamos e executamos sua transformação digital' ,
-        desc: 'Nossa consultoria vai além do diagnóstico. Entregamos um roadmap detalhado e acompanhamos a implementação passo a passo. Nossos consultores têm experiência em empresas de todos os tamanhos, do pequeno negócio à grande corporação.'
-        , cases: ['PME: digitalização completa em 60 dias — do papel ao
+        , 'Suporte e atualizações por 3 meses após entrega' ], cta: 'Solicitar Meu Site', cta_url: '#contato'
+        },
+            consultoria: {
+                icon: 'fas fa-cogs', color: '#F59E0B', title: 'Consultoria em TI & Transformação Digital',
+                subtitle: 'Mapeamos, planejamos e executamos sua transformação digital',
+                desc: 'Nossa consultoria vai além do diagnóstico. Entregamos um roadmap detalhado e acompanhamos a implementação passo a passo. Nossos consultores têm experiência em empresas de todos os tamanhos, do pequeno negócio à grande corporação.'
+                , cases: ['PME: digitalização completa em 60 dias — do papel ao
         CloudOps', 'Indústria: integração de sistemas legados com ferramentas modernas de BI'
-        , 'Clínicas e hospitais: automação de processos administrativos e conformidade LGPD' ], benefits: ['Diagnóstico
+                    , 'Clínicas e hospitais: automação de processos administrativos e conformidade LGPD'], benefits: ['Diagnóstico
         digital completo em 5 dias úteis', 'Roadmap priorizado por impacto e custo-benefício'
-        , 'Implementação acompanhada — sem abandono no meio do projeto'
-        , 'Gestão de fornecedores e parceiros tecnológicos por você' ], cta: 'Agendar Diagnóstico Gratuito' ,
-        cta_url: '#contato' }, mobile: { icon: 'fas fa-mobile-alt' , color: '#EC4899' ,
-        title: 'Desenvolvimento de Apps Mobile' , subtitle: 'iOS e Android — um código, dois mercados' ,
-        desc: 'Desenvolvemos aplicativos mobile usando React Native — o que reduz custo e prazo sem sacrificar performance. Nossos apps são publicados na App Store e na Google Play e recebem atualizações e manutenção contínua após o lançamento.'
-        , cases: ['App de fidelidade para rede de restaurantes com 10k+ downloads em 30
+            , 'Implementação acompanhada — sem abandono no meio do projeto'
+            , 'Gestão de fornecedores e parceiros tecnológicos por você' ], cta: 'Agendar Diagnóstico Gratuito',
+                cta_url: '#contato' }, mobile: {
+                    icon: 'fas fa-mobile-alt', color: '#EC4899',
+                        title: 'Desenvolvimento de Apps Mobile', subtitle: 'iOS e Android — um código, dois mercados',
+                            desc: 'Desenvolvemos aplicativos mobile usando React Native — o que reduz custo e prazo sem sacrificar performance. Nossos apps são publicados na App Store e na Google Play e recebem atualizações e manutenção contínua após o lançamento.'
+                                , cases: ['App de fidelidade para rede de restaurantes com 10k+ downloads em 30
         dias', 'App de delivery regional com integração de pagamento e rastreamento ao vivo'
-        , 'App corporativo para gestão de equipes externas com app e dashboard web' ], benefits: ['React Native:
+                                    , 'App corporativo para gestão de equipes externas com app e dashboard web'], benefits: ['React Native:
         desenvolvimento simultâneo para iOS e Android', 'Push notifications para reengajamento e vendas recorrentes'
-        , 'Publicação completa nas lojas incluída no projeto' , 'Manutenção e atualizações por 6 meses pós-lançamento'
-        ], cta: 'Orçar Meu App' , cta_url: '#contato' }, uxui: { icon: 'fas fa-magic' , color: '#A855F7' ,
-        title: 'Design UX/UI' , subtitle: 'Interfaces que encantam e convertem' ,
-        desc: 'Nosso processo de design começa com pesquisa com usuários reais e termina com um produto visualmente impactante e intuitivo. Usamos metodologias como Design Thinking, testes de usabilidade e prototipagem rápida para garantir que cada projeto entrega resultados.'
-        , cases: ['Redesign de plataforma SaaS: +45% de engajamento e -30% de
-        churn', 'App de e-commerce: tempo de checkout reduzido de 4 min para 90 segundos'
-        , 'Dashboard analítico: usuários encontram insights 3x mais rápido' ], benefits: ['Processo completo: pesquisa →
+                                        , 'Publicação completa nas lojas incluída no projeto', 'Manutenção e atualizações por 6 meses pós-lançamento'
+                                    ], cta: 'Orçar Meu App', cta_url: '#contato'
+                }, uxui: {
+                    icon: 'fas fa-magic', color: '#A855F7',
+                        title: 'Design UX/UI', subtitle: 'Interfaces que encantam e convertem',
+                            desc: 'Nosso processo de design começa com pesquisa com usuários reais e termina com um produto visualmente impactante e intuitivo. Usamos metodologias como Design Thinking, testes de usabilidade e prototipagem rápida para garantir que cada projeto entrega resultados.'
+                                , cases: ['Redesign de plataforma SaaS: +45% de engajamento e -30% de
+        churn', 'App de e - commerce: tempo de checkout reduzido de 4 min para 90 segundos'
+                                    , 'Dashboard analítico: usuários encontram insights 3x mais rápido'], benefits: ['Processo completo: pesquisa →
         wireframe → protótipo → entrega', 'Design System escalável para uso pela equipe interna'
-        , 'Testes de usabilidade com usuários reais antes da entrega'
-        , 'Arquitetura de informação e fluxos de usuário documentados' ], cta: 'Solicitar Avaliação de UX' ,
-        cta_url: '#contato' }, automacao: { icon: 'fas fa-bolt' , color: '#F97316' , title: 'Automação de Processos' ,
-        subtitle: 'Elimine o trabalho manual e escale sem contratar' ,
-        desc: 'Automatizamos processos repetitivos conectando seus sistemas via APIs, webhooks e ferramentas como Zapier, Make e n8n. Desde o simples disparo de emails automáticos até fluxos complexos de CRM e faturamento — tudo sem precisar de código.'
-        , cases: ['Agência: proposta gerada e enviada automaticamente em 2 minutos após lead
-        entrar', 'E-commerce: nota fiscal emitida e enviada automaticamente a cada venda'
-        , 'Clínica: confirmação, lembrete 24h antes e reagendamento tudo pelo WhatsApp' ], benefits: ['Redução média de
-        70% em tarefas repetitivas da equipe', 'Integração com +200 ferramentas (CRM, ERP, planilhas, emails)'
-        , 'Zero código necessário na maioria dos fluxos' , 'ROI médio de 4x nos primeiros 3 meses' ],
-        cta: 'Automatizar meu Negócio' , cta_url: 'cadastro.html' }, dados: { icon: 'fas fa-chart-bar' ,
-        color: '#14B8A6' , title: 'Análise de Dados & Business Intelligence' ,
-        subtitle: 'Transforme dados em decisões estratégicas' ,
-        desc: 'Construímos dashboards e pipelines de dados que consolidam informações de todas as suas fontes — vendas, marketing, operações — em uma única visão clara e atualizada em tempo real. Tome decisões com base em dados, não em achismo.'
-        , cases: ['Varejista: dashboard integrado com vendas, estoque e metas em tempo
+                                        , 'Testes de usabilidade com usuários reais antes da entrega'
+                                        , 'Arquitetura de informação e fluxos de usuário documentados'], cta: 'Solicitar Avaliação de UX',
+                                            cta_url: '#contato'
+                }, automacao: {
+                    icon: 'fas fa-bolt', color: '#F97316', title: 'Automação de Processos',
+                        subtitle: 'Elimine o trabalho manual e escale sem contratar',
+                            desc: 'Automatizamos processos repetitivos conectando seus sistemas via APIs, webhooks e ferramentas como Zapier, Make e n8n. Desde o simples disparo de emails automáticos até fluxos complexos de CRM e faturamento — tudo sem precisar de código.'
+                                , cases: ['Agência: proposta gerada e enviada automaticamente em 2 minutos após lead
+        entrar', 'E - commerce: nota fiscal emitida e enviada automaticamente a cada venda'
+                                    , 'Clínica: confirmação, lembrete 24h antes e reagendamento tudo pelo WhatsApp'], benefits: ['Redução média de
+        70 % em tarefas repetitivas da equipe', 'Integração com + 200 ferramentas(CRM, ERP, planilhas, emails)'
+                                        , 'Zero código necessário na maioria dos fluxos', 'ROI médio de 4x nos primeiros 3 meses'],
+                                        cta: 'Automatizar meu Negócio', cta_url: 'cadastro.html'
+                }, dados: {
+                    icon: 'fas fa-chart-bar',
+                        color: '#14B8A6', title: 'Análise de Dados & Business Intelligence',
+                            subtitle: 'Transforme dados em decisões estratégicas',
+                                desc: 'Construímos dashboards e pipelines de dados que consolidam informações de todas as suas fontes — vendas, marketing, operações — em uma única visão clara e atualizada em tempo real. Tome decisões com base em dados, não em achismo.'
+                                    , cases: ['Varejista: dashboard integrado com vendas, estoque e metas em tempo
         real', 'Marketing: relatório unificado de todas as mídias em uma tela só'
-        , 'Indústria: previsão de demanda com 90% de acurácia usando Machine Learning' ], benefits: ['Dashboards no
+                                        , 'Indústria: previsão de demanda com 90% de acurácia usando Machine Learning'], benefits: ['Dashboards no
         Power BI, Looker Studio ou plataforma própria', 'Atualização automática de dados a cada hora ou em tempo real'
-        , 'Alertas automáticos por email/WhatsApp quando métricas saem do alvo'
-        , 'Integração com Google Ads, Meta Ads, planilhas, ERP e CRM' ], cta: 'Solicitar Demo de BI' ,
-        cta_url: '#contato' } }; // Assign click to each card var cardMap=[ ['ia', 'automacao' , 'whatsapp'
-        , 'marketing' , 'web' , 'consultoria' , 'mobile' , 'uxui' , 'dados' ] ];
-        document.querySelectorAll('.service-card').forEach(function (card, i) { var keys=['ia', 'whatsapp' , 'marketing'
-        , 'web' , 'consultoria' , 'mobile' , 'uxui' , 'automacao' , 'dados' ]; var key=keys[i] || 'ia' ;
-        card.style.cursor='pointer' ; card.setAttribute('data-modal-key', key); card.addEventListener('click', function
-        (e) { if (e.target.tagName==='A' ) return; // leave CTA link working normally openServiceModal(key); }); });
-        function openServiceModal(key) { var m=MODALS[key]; if (!m) return; var casesHtml=m.cases.map(function (c) {
-        return '<li><i class="fas fa-arrow-right"></i>' + c + '</li>' ; }).join(''); var
-        benefitsHtml=m.benefits.map(function (b) { return '<li><i class="fas fa-check-circle"></i>' + b + '</li>' ;
-        }).join(''); var ctaHref=m.cta_url.startsWith('#') ? m.cta_url : m.cta_url;
-        document.getElementById('svcModal').innerHTML='<div class="svc-modal-box">'
-        + '  <button class="svc-modal-close" id="svcClose" aria-label="Fechar">&times;</button>'
-        + '  <div class="svc-modal-header">' + '    <div class="svc-modal-icon"><i class="' + m.icon + '"></i></div>'
-        + '    <div>' + '      <h2>' + m.title + '</h2>' + '      <p class="svc-modal-sub">' + m.subtitle + '</p>'
-        + '    </div>' + '  </div>' + '  <p class="svc-modal-desc">' + m.desc + '</p>'
-        + '  <div class="svc-modal-cols">' + '    <div>'
-        + '      <h4><i class="fas fa-lightbulb"></i> Casos de Uso</h4>' + '      <ul class="svc-list cases">' +
-        casesHtml + '</ul>' + '    </div>' + '    <div>'
-        + '      <h4><i class="fas fa-trophy"></i> Resultados Comprovados</h4>' + '      <ul class="svc-list benefits">'
-        + benefitsHtml + '</ul>' + '    </div>' + '  </div>' + '  <div class="svc-modal-footer">' + '    <a href="' +
-        m.cta_url + '" class="btn btn-primary btn-lg">' + '      <i class="fas fa-rocket"></i> ' + m.cta + '    </a>'
-        + '    <a href="https://wa.me/5511997666735?text=Olá!%20Tenho%20interesse%20em%20' + encodeURIComponent(m.title)
-        + '" ' + '       class="btn btn-outline btn-lg" target="_blank">'
-        + '      <i class="fab fa-whatsapp"></i> Falar por WhatsApp' + '    </a>' + '  </div>' + '</div>' ;
-        document.getElementById('svcModal').classList.add('active'); document.body.style.overflow='hidden' ;
-        document.getElementById('svcClose').addEventListener('click', closeServiceModal); } function closeServiceModal()
-        { document.getElementById('svcModal').classList.remove('active'); document.body.style.overflow='' ; }
-        document.getElementById('svcModal').addEventListener('click', function (e) { if (e.target===this)
-        closeServiceModal(); }); document.addEventListener('keydown', function (e) { if (e.key==='Escape' )
-        closeServiceModal(); }); </script>
+                                            , 'Alertas automáticos por email/WhatsApp quando métricas saem do alvo'
+                                            , 'Integração com Google Ads, Meta Ads, planilhas, ERP e CRM'], cta: 'Solicitar Demo de BI',
+                                                cta_url: '#contato'
+                } }; // Assign click to each card var cardMap=[ ['ia', 'automacao' , 'whatsapp'
+        , 'marketing', 'web', 'consultoria', 'mobile', 'uxui', 'dados' ] ];
+        document.querySelectorAll('.service-card').forEach(function (card, i) {
+            var keys = ['ia', 'whatsapp', 'marketing'
+                , 'web', 'consultoria', 'mobile', 'uxui', 'automacao', 'dados']; var key = keys[i] || 'ia';
+            card.style.cursor = 'pointer'; card.setAttribute('data-modal-key', key); card.addEventListener('click', function
+                (e) {
+                    if (e.target.tagName === 'A') return; // leave CTA link working normally openServiceModal(key); }); });
+                function openServiceModal(key) {
+                    var m = MODALS[key]; if (!m) return; var casesHtml = m.cases.map(function (c) {
+                        return '<li><i class="fas fa-arrow-right"></i>' + c + '</li>';
+                    }).join(''); var
+                        benefitsHtml = m.benefits.map(function (b) {
+                            return '<li><i class="fas fa-check-circle"></i>' + b + '</li>';
+                        }).join(''); var ctaHref = m.cta_url.startsWith('#') ? m.cta_url : m.cta_url;
+                    document.getElementById('svcModal').innerHTML = '<div class="svc-modal-box">'
+                        + '  <button class="svc-modal-close" id="svcClose" aria-label="Fechar">&times;</button>'
+                        + '  <div class="svc-modal-header">' + '    <div class="svc-modal-icon"><i class="' + m.icon + '"></i></div>'
+                        + '    <div>' + '      <h2>' + m.title + '</h2>' + '      <p class="svc-modal-sub">' + m.subtitle + '</p>'
+                        + '    </div>' + '  </div>' + '  <p class="svc-modal-desc">' + m.desc + '</p>'
+                        + '  <div class="svc-modal-cols">' + '    <div>'
+                        + '      <h4><i class="fas fa-lightbulb"></i> Casos de Uso</h4>' + '      <ul class="svc-list cases">' +
+                        casesHtml + '</ul>' + '    </div>' + '    <div>'
+                        + '      <h4><i class="fas fa-trophy"></i> Resultados Comprovados</h4>' + '      <ul class="svc-list benefits">'
+                        + benefitsHtml + '</ul>' + '    </div>' + '  </div>' + '  <div class="svc-modal-footer">' + '    <a href="' +
+                        m.cta_url + '" class="btn btn-primary btn-lg">' + '      <i class="fas fa-rocket"></i> ' + m.cta + '    </a>'
+                        + '    <a href="https://wa.me/5511997666735?text=Olá!%20Tenho%20interesse%20em%20' + encodeURIComponent(m.title)
+                        + '" ' + '       class="btn btn-outline btn-lg" target="_blank">'
+                        + '      <i class="fab fa-whatsapp"></i> Falar por WhatsApp' + '    </a>' + '  </div>' + '</div>';
+                    document.getElementById('svcModal').classList.add('active'); document.body.style.overflow = 'hidden';
+                    document.getElementById('svcClose').addEventListener('click', closeServiceModal);
+                } function closeServiceModal() { document.getElementById('svcModal').classList.remove('active'); document.body.style.overflow = ''; }
+                document.getElementById('svcModal').addEventListener('click', function (e) {
+                    if (e.target === this)
+                        closeServiceModal();
+                }); document.addEventListener('keydown', function (e) {
+                    if (e.key === 'Escape')
+                        closeServiceModal();
+                }); </script>
 
-        <!-- SERVICE MODAL OVERLAY -->
-        <div id="svcModal" class="svc-modal-overlay"></div>
+    <!-- SERVICE MODAL OVERLAY -->
+    <div id="svcModal" class="svc-modal-overlay"></div>
 
-        <style>
-            .service-card {
-                cursor: pointer;
-                position: relative;
-            }
+    <style>
+        .service-card {
+            cursor: pointer;
+            position: relative;
+        }
 
-            .service-card::before {
-                content: 'Ver detalhes';
-                position: absolute;
-                top: 1rem;
-                right: 1rem;
-                font-size: 0.7rem;
-                font-weight: 600;
-                color: var(--primary-color);
+        .service-card::before {
+            content: 'Ver detalhes';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            opacity: 0;
+            transition: opacity 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .svc-modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(6px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .svc-modal-overlay.active {
+            display: flex;
+        }
+
+        .svc-modal-box {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            max-width: 780px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2.5rem;
+            position: relative;
+            animation: modalIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes modalIn {
+            from {
                 opacity: 0;
-                transition: opacity 0.2s;
-                text-transform: uppercase;
-                letter-spacing: 0.5px;
+                transform: scale(0.95) translateY(20px);
             }
 
-            .service-card:hover::before {
+            to {
                 opacity: 1;
+                transform: scale(1) translateY(0);
             }
+        }
 
-            .svc-modal-overlay {
-                display: none;
-                position: fixed;
-                inset: 0;
-                background: rgba(0, 0, 0, 0.75);
-                backdrop-filter: blur(6px);
-                z-index: 9999;
-                align-items: center;
-                justify-content: center;
-                padding: 1rem;
-            }
+        .svc-modal-close {
+            position: absolute;
+            top: 1.25rem;
+            right: 1.25rem;
+            background: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 1.25rem;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            transition: all 0.2s;
+        }
 
-            .svc-modal-overlay.active {
-                display: flex;
+        .svc-modal-close:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .svc-modal-header {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .svc-modal-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 1rem;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            color: var(--primary-light);
+            flex-shrink: 0;
+        }
+
+        .svc-modal-header h2 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 0.25rem;
+            color: var(--text-primary);
+        }
+
+        .svc-modal-sub {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .svc-modal-desc {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.75;
+            margin-bottom: 2rem;
+        }
+
+        .svc-modal-cols {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 600px) {
+            .svc-modal-cols {
+                grid-template-columns: 1fr;
             }
 
             .svc-modal-box {
-                background: var(--bg-secondary);
-                border: 1px solid var(--border-color);
-                border-radius: 1.25rem;
-                max-width: 780px;
-                width: 100%;
-                max-height: 90vh;
-                overflow-y: auto;
-                padding: 2.5rem;
-                position: relative;
-                animation: modalIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                padding: 1.5rem;
             }
+        }
 
-            @keyframes modalIn {
-                from {
-                    opacity: 0;
-                    transform: scale(0.95) translateY(20px);
-                }
+        .svc-modal-cols h4 {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-secondary);
+            margin-bottom: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
 
-                to {
-                    opacity: 1;
-                    transform: scale(1) translateY(0);
-                }
-            }
+        .svc-modal-cols h4 i {
+            color: var(--primary-color);
+        }
 
-            .svc-modal-close {
-                position: absolute;
-                top: 1.25rem;
-                right: 1.25rem;
-                background: var(--bg-dark);
-                border: 1px solid var(--border-color);
-                color: var(--text-secondary);
-                font-size: 1.25rem;
-                width: 36px;
-                height: 36px;
-                border-radius: 50%;
-                cursor: pointer;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                line-height: 1;
-                transition: all 0.2s;
-            }
+        .svc-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.625rem;
+        }
 
-            .svc-modal-close:hover {
-                background: var(--primary-color);
-                color: white;
-                border-color: var(--primary-color);
-            }
+        .svc-list li {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            line-height: 1.5;
+        }
 
-            .svc-modal-header {
-                display: flex;
-                align-items: center;
-                gap: 1.25rem;
-                margin-bottom: 1.5rem;
-                padding-bottom: 1.5rem;
-                border-bottom: 1px solid var(--border-color);
-            }
+        .svc-list.cases i {
+            color: var(--primary-color);
+            font-size: 0.7rem;
+            margin-top: 0.3rem;
+            flex-shrink: 0;
+        }
 
-            .svc-modal-icon {
-                width: 60px;
-                height: 60px;
-                border-radius: 1rem;
-                background: rgba(59, 130, 246, 0.1);
-                border: 1px solid rgba(59, 130, 246, 0.2);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 1.75rem;
-                color: var(--primary-light);
-                flex-shrink: 0;
-            }
+        .svc-list.benefits i {
+            color: #22c55e;
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+            flex-shrink: 0;
+        }
 
-            .svc-modal-header h2 {
-                font-size: 1.4rem;
-                font-weight: 800;
-                margin-bottom: 0.25rem;
-                color: var(--text-primary);
-            }
+        .svc-modal-footer {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
 
-            .svc-modal-sub {
-                font-size: 0.875rem;
-                color: var(--text-secondary);
-                margin: 0;
-            }
+        .svc-modal-footer .btn {
+            flex: 1;
+            justify-content: center;
+            min-width: 180px;
+        }
 
-            .svc-modal-desc {
-                font-size: 0.95rem;
-                color: var(--text-secondary);
-                line-height: 1.75;
-                margin-bottom: 2rem;
-            }
-
-            .svc-modal-cols {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 2rem;
-                margin-bottom: 2rem;
-            }
-
-            @media (max-width: 600px) {
-                .svc-modal-cols {
-                    grid-template-columns: 1fr;
-                }
-
-                .svc-modal-box {
-                    padding: 1.5rem;
-                }
-            }
-
-            .svc-modal-cols h4 {
-                font-size: 0.85rem;
-                font-weight: 700;
-                text-transform: uppercase;
-                letter-spacing: 0.5px;
-                color: var(--text-secondary);
-                margin-bottom: 0.875rem;
-                display: flex;
-                align-items: center;
-                gap: 0.4rem;
-            }
-
-            .svc-modal-cols h4 i {
-                color: var(--primary-color);
-            }
-
-            .svc-list {
-                list-style: none;
-                display: flex;
-                flex-direction: column;
-                gap: 0.625rem;
-            }
-
-            .svc-list li {
-                font-size: 0.875rem;
-                color: var(--text-secondary);
-                display: flex;
-                align-items: flex-start;
-                gap: 0.5rem;
-                line-height: 1.5;
-            }
-
-            .svc-list.cases i {
-                color: var(--primary-color);
-                font-size: 0.7rem;
-                margin-top: 0.3rem;
-                flex-shrink: 0;
-            }
-
-            .svc-list.benefits i {
-                color: #22c55e;
-                font-size: 0.75rem;
-                margin-top: 0.25rem;
-                flex-shrink: 0;
-            }
-
-            .svc-modal-footer {
-                display: flex;
-                gap: 1rem;
-                flex-wrap: wrap;
-                padding-top: 1.5rem;
-                border-top: 1px solid var(--border-color);
-            }
-
-            .svc-modal-footer .btn {
-                flex: 1;
-                justify-content: center;
-                min-width: 180px;
-            }
-
-            body.theme-light .svc-modal-box {
-                background: #FFFFFF;
-            }
-        </style>
+        body.theme-light .svc-modal-box {
+            background: #FFFFFF;
+        }
+    </style>
 
 
 </body>

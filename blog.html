@@ -142,21 +142,39 @@
     <div class="scroll-progress" id="scrollProgress"></div>
     <header class="header" id="header">
         <nav class="navbar container">
-            <div class="nav-brand"><a href="index.html" class="logo"><span class="logo-icon"><img
-                            src="assets/images/logo-kriar.png" alt="Kriar"></span></a></div>
+            <a href="index.html" class="logo">
+                <span class="logo-icon">
+                    <img src="assets/images/logo-kriar.png" alt="Kriar - Automações Inteligentes">
+                </span>
+            </a>
+
             <div class="nav-menu" id="navMenu">
                 <ul class="nav-list">
                     <li><a href="index.html" class="nav-link">Início</a></li>
                     <li><a href="index.html#precos" class="nav-link">Preços</a></li>
                     <li><a href="contato.html" class="nav-link">Contato</a></li>
                 </ul>
-                <div class="nav-buttons">
+                <div class="nav-actions">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+                        <span class="theme-icon theme-icon-dark"><i class="fas fa-moon"></i></span>
+                        <span class="theme-icon theme-icon-light"><i class="fas fa-sun"></i></span>
+                    </button>
                     <a href="login.html" class="btn btn-ghost">Entrar</a>
-                    <a href="https://wa.me/5511997666735" class="btn btn-primary">WhatsApp</a>
+                    <a href="https://wa.me/5511997666735" class="btn btn-primary">Fale Conosco</a>
                 </div>
             </div>
-            <button class="nav-toggle" id="navToggle" aria-label="Menu"><span class="hamburger"></span><span
-                    class="hamburger"></span><span class="hamburger"></span></button>
+
+            <div class="nav-right-mobile">
+                <button class="theme-toggle" id="themeToggleMobile" aria-label="Alternar tema">
+                    <span class="theme-icon theme-icon-dark"><i class="fas fa-moon"></i></span>
+                    <span class="theme-icon theme-icon-light"><i class="fas fa-sun"></i></span>
+                </button>
+                <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </button>
+            </div>
         </nav>
         <div class="menu-overlay" id="menuOverlay"></div>
     </header>
