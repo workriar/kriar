@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kriar - Gerador Premium com IA</title>
+    <!-- Fontes Premium -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <style>
+        body {
+            background-color: var(--bg-primary); /* Fundo dark do projeto */
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Ambient Background Glow */
+        .ambient-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: 
+                radial-gradient(circle at 15% 30%, rgba(59, 130, 246, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 85% 70%, rgba(6, 182, 212, 0.08) 0%, transparent 40%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Glassmorphism Panels */
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.6); /* var(--card-bg) com opacidade */
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-xl);
+            padding: var(--spacing-lg);
+            transition: var(--transition-base);
+        }
+
+        .glass-panel:hover {
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Inputs estilizados (Dark Mode) */
+        .form-control, .form-select {
+            background-color: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            border-radius: var(--radius-md);
+            transition: var(--transition-base);
+        }
+        
+        .form-control:focus, .form-select:focus {
+            background-color: var(--bg-dark);
+            color: white;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.25);
+        }
+
+        .form-control::placeholder {
+            color: var(--text-light);
+        }
+
+        /* O Canvas do Post (onde a arte é gerada) */
+        .post-preview-wrapper {
+            width: 432px;
+            height: 432px;
+            overflow: hidden;
+            border-radius: var(--radius-xl);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            margin: 0 auto;
+            border: 2px solid var(--border-color);
+            transition: var(--transition-base);
+        }
+
+        /* --- NOVO ESTILO: LAYOUT FIXO INFERIOR (COMPATÍVEL C/ HTML2CANVAS) --- */
+        .post-preview-container {
+            width: 1080px;
+            height: 1080px;
+            background-color: var(--bg-dark);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            position: relative;
+            transform: scale(0.4);
+            transform-origin: top left;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        #bgImage {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            display: none;
+        }
+
+        /* Overlay principal com gradiente sólido na base para o texto brilhar */
+        #bgOverlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.5) 40%, transparent 100%);
+            z-index: 1;
+        }
+
+        .post-content-box {
+            position: absolute;
+            bottom: 0; left: 0; width: 100%;
+            padding: 80px;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            box-sizing: border-box;
+        }
+
+        .client-logo-preview {
+            max-height: 120px;
+            max-width: 400px;
+            object-fit: contain;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5));
+        }
+
+        .post-title-wrapper {
+            display: flex;
+            align-items: stretch;
+            gap: 40px;
+            width: 100%;
+        }
+
+        .post-accent-bar {
+            width: 16px;
+            border-radius: 8px;
+            background: var(--primary-color);
+            flex-shrink: 0;
+        }
+
+        .post-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 85px;
+            font-weight: 900;
+            line-height: 1.15;
+            color: #ffffff;
+            margin: 0;
+            letter-spacing: -2px;
+            text-shadow: 0px 4px 15px rgba(0,0,0,0.5);
+            /* Impede que o titulo estique infinitamente */
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 6; /* Maximo de 6 linhas */
+            -webkit-box-orient: vertical;
+        }
+
+        #clientLogoText {
+            font-size: 50px;
+            font-weight: 900;
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+        /* --- FIM DO ESTILO DA ARTE --- */
+
+        /* Formatos Premium (badges e títulos) */
+        .premium-title {
+            font-weight: var(--font-weight-extrabold);
+            background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .brand-section-title {
+            font-size: 1.1rem;
+            color: var(--primary-light);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .brand-section-title::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--primary-color) 0%, transparent 100%);
+            opacity: 0.3;
+        }
+
+        /* Seletor de cor customizado */
+        .color-picker-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        input[type="color"] {
+            -webkit-appearance: none;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+        input[type="color"]::-webkit-color-swatch-wrapper {
+            padding: 0;
+        }
+        input[type="color"]::-webkit-color-swatch {
+            border: none;
+            border-radius: 50%;
+        }
+
+        /* Animação loading */
+        .generating-glow {
+            animation: pulse-glow 2s infinite;
+        }
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(59, 130, 246, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="ambient-bg"></div>
+
+    <div class="container py-5">
+        <div class="row mb-5">
+            <div class="col-12 text-center">
+                <div class="hero-badge mx-auto mb-3">✨ Inteligência Artificial</div>
+                <h1 class="premium-title mb-3">Kriar Social Pro</h1>
+                <p class="text-secondary fs-5 mx-auto" style="max-width: 600px;">
+                    O seu assistente de mídias sociais que aprende a identidade visual, as cores e o tom de voz da sua marca.
+                </p>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            
+            <!-- Coluna da Esquerda (Configurações e Prompt) -->
+            <div class="col-lg-5">
+                
+                <!-- BRAND KIT PANEL -->
+                <div class="glass-panel mb-4">
+                    <div class="brand-section-title">
+                        🎨 Kit da Marca (Brand Kit)
+                    </div>
+                    <p class="text-muted small mb-4">Configure o perfil do seu cliente. A IA usará essas informações para personalizar a arte e a legenda do post.</p>
+                    
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold text-light">1. Logotipo da Empresa</label>
+                        <input class="form-control" type="file" id="logoUpload" accept="image/png, image/jpeg, image/svg+xml">
+                        <div class="text-muted small mt-1">Formato PNG com fundo transparente.</div>
+                    </div>
+
+                    <div class="mb-4 color-picker-wrapper">
+                        <div>
+                            <label class="form-label fw-semibold text-light mb-1 d-block">2. Cor Primária da Marca</label>
+                            <input type="color" id="brandColor" value="#3B82F6">
+                        </div>
+                        <div class="text-muted small pt-4">Esta cor será usada na composição visual da arte gerada.</div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold text-light">3. Inteligência Artificial (Tom de Voz)</label>
+                        <div class="d-flex align-items-center gap-2 mb-3 p-3" style="background: rgba(59, 130, 246, 0.1); border-radius: var(--radius-md); border: 1px solid rgba(59, 130, 246, 0.2);">
+                            <div style="font-size: 2rem;">🤖</div>
+                            <div>
+                                <h6 class="mb-1 text-white">Análise Automática</h6>
+                                <p class="small text-muted mb-2">Conecte a conta do Instagram para nossa IA ler os posts antigos e extrair o Tom de Voz perfeitamente.</p>
+                                <button id="connectMetaBtn" class="btn btn-sm btn-primary px-3 fw-bold" style="background-color: #1877f2; border: none;">
+                                    Conectar Facebook/Instagram
+                                </button>
+                            </div>
+                        </div>
+                        <div class="text-muted small mb-1">Ou defina manualmente:</div>
+                        <select id="brandTone" class="form-select">
+                            <option value="Jovem, descontraído e usa gírias modernas e emojis">Jovem e Descontraído</option>
+                            <option value="Profissional, sério, corporativo e com autoridade">Profissional e Corporativo</option>
+                            <option value="Inspirador, motivacional, acolhedor e poético">Inspirador e Acolhedor</option>
+                            <option value="Divertido, humorístico e focado em memes">Divertido e Humorístico</option>
+                            <option value="Luxuoso, exclusivo, sofisticado e minimalista">Luxuoso e Sofisticado</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- GERADOR PANEL -->
+                <div class="glass-panel mb-4">
+                    <div class="brand-section-title">
+                        🤖 Criação de Conteúdo
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold text-light">Qual o tema do post de hoje?</label>
+                        <textarea id="topicInput" class="form-control" rows="3" placeholder="Ex: 5 erros comuns ao investir em tráfego pago no Instagram"></textarea>
+                    </div>
+                    
+                    <button id="generateBtn" class="btn btn-primary w-100 btn-lg fw-bold border-0 shadow-lg" style="background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));">
+                        ✨ Gerar Post Personalizado
+                    </button>
+                </div>
+
+                <!-- LEGENDA GERADA -->
+                <div class="glass-panel" id="captionCard" style="display: none; border-color: var(--primary-color);">
+                    <div class="brand-section-title text-white">
+                        📝 Legenda da IA
+                    </div>
+                    <textarea id="captionOutput" class="form-control mb-3 text-white" rows="10" style="background: rgba(0,0,0,0.3); border:none; resize:none;"></textarea>
+                    <button class="btn btn-outline w-100" onclick="copyCaption()">📋 Copiar para Área de Transferência</button>
+                </div>
+
+            </div>
+
+            <!-- Coluna da Direita (Preview da Arte Visual) -->
+            <div class="col-lg-7">
+                <div class="glass-panel h-100 d-flex flex-column align-items-center justify-content-center" style="min-height: 600px;">
+                    
+                    <h5 class="fw-bold mb-4 w-100 text-start text-light">👁️ Preview da Arte (1080x1080)</h5>
+                    
+                    <div class="post-preview-wrapper mb-5" id="canvasWrapper">
+                        <div id="postCanvas" class="post-preview-container">
+                            
+                            <!-- Imagem gerada por IA -->
+                            <img id="bgImage" alt="Background">
+                            <!-- Overlay gradiente escuro na base -->
+                            <div id="bgOverlay"></div>
+                            
+                            <!-- Efeito de textura Premium Noise na arte toda -->
+                            <div style="position:absolute; top:0; left:0; width:100%; height:100%; background: url('https://grainy-gradients.vercel.app/noise.svg'); opacity: 0.1; pointer-events:none; z-index:2;"></div>
+                            
+                            <!-- Conteúdo da arte (Logo e Título na Base) -->
+                            <div class="post-content-box">
+                                <img id="clientLogo" class="client-logo-preview" style="display: none;" alt="Logo da Marca">
+                                <div id="clientLogoText">Sua Marca</div>
+                                
+                                <div class="post-title-wrapper">
+                                    <div class="post-accent-bar" id="accentBar"></div>
+                                    <h1 id="artTitle" class="post-title">O Título Perfeito e Chamativo Para Seu Post Nas Redes</h1>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <button id="downloadBtn" class="btn btn-secondary btn-lg fw-bold px-5 py-3 shadow-lg" style="display: none; width: 432px;">
+                        📥 Fazer Download PNG
+                    </button>
+                    
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Biblioteca de Conversão HTML para Imagem -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- Lógica JS do Gerador Kriar -->
+    <script src="js/gerador.js"></script>
+</body>
+</html>

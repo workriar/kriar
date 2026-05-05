@@ -1,8 +1,12 @@
-﻿{
+{
     "dependencies": {
+        "@google/generative-ai": "^0.24.1",
         "@hapi/boom": "^10.0.1",
         "@whiskeysockets/baileys": "^7.0.0-rc.9",
-        "qrcode": "^1.5.4"
+        "dotenv": "^17.4.2",
+        "openai": "^6.36.0",
+        "qrcode": "^1.5.4",
+        "stripe": "^22.1.0"
     },
     "scripts": {
         "start": "node server.js",
